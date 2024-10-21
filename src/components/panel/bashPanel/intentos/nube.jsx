@@ -16,7 +16,7 @@ export default function Nube(props){
 
     const [tags, setTags] = useState(['default']);
     const [interes, setInteres] = useState({
-        asesor: 1,
+        asesor: 21,
         dia: null,
         mes: null,
         ano: null,
@@ -211,7 +211,7 @@ export default function Nube(props){
                                         <button className={interes.asesor == 1 ? 'Active' : null} onClick={()=> {
                                             setInteres({
                                                 ...interes,
-                                                asesor: 1
+                                                asesor: 2
                                             })
                                         }}>
                                             <span>Diana</span>
@@ -219,19 +219,12 @@ export default function Nube(props){
                                         <button className={interes.asesor == 2 ? 'Active' : null} onClick={()=> {
                                             setInteres({
                                                 ...interes,
-                                                asesor: 2
-                                            })
-                                        }}>
-                                            <span>Felipe</span>
-                                        </button>
-                                        <button className={interes.asesor == 3 ? 'Active' : null} onClick={()=> {
-                                            setInteres({
-                                                ...interes,
                                                 asesor: 3
                                             })
                                         }}>
                                             <span>Bryan</span>
                                         </button>
+
                                     </div>
                                 </div>
 
