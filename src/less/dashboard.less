@@ -1,0 +1,238 @@
+.dashboard{
+    height:100vh;
+    box-sizing: border-box;
+    background-color: #F4F7FC;
+    .dashb{
+        height:100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .dashPanel{
+            width:95%;
+            margin:auto;
+            height: 88%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+
+            .center{
+                width:74%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                flex-direction:column;
+                .boxTop{
+                    height:23%;
+                    
+                    .boxTopBox{
+                        height:100%;
+                        .containerBox{
+                            width:100%;
+                            display:flex;
+                            justify-content: space-between;
+                            height:100%;
+                            .box{
+                                width:24%;
+                                border-radius: 5px;
+                                height: 100%;
+                                padding:10px 20px;
+                                box-sizing: border-box;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                background-color: white;
+                                -webkit-box-shadow: 0px 1px 10px 0px rgba(184,184,184,1);
+                                -moz-box-shadow: 0px 1px 10px 0px rgba(184,184,184,1);
+                                box-shadow: 0px 1px 10px 0px rgba(184,184,184,1);
+                                .top{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    .info{
+                                        width:60%;
+                                        span{
+                                            font-size: 12px;
+                                            color: #666;
+
+                                           
+                                        }
+                                        h3{
+                                            font-weight: 300;
+                                            color: black;
+                                            font-size: 26px;
+                                        }
+                                    }
+                                    .icono{
+                                        border-radius: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        .icon{
+                                            font-size: 34px;
+                                        }
+                                    }
+
+                                }
+                                .bottom{
+                                    box-sizing: border-box;
+
+                                    nav{
+                                        ul{
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: space-between;
+                                            li{
+                                                display: block;
+                                                div{
+                                                    text-align: center;
+                                                    h3{
+                                                        font-size: 13px;
+                                                        margin:0px;
+                                                        padding:0px;
+                                                    }
+                                                    span{
+                                                        font-size: 12px;
+                                                        color: #666;
+                                                    }
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    
+                }
+                .map{
+                    height:75%;
+                    background-color: white;
+                    border:1px solid #ccc;
+                    border-radius: 5px;
+                    .routes{
+                        height: 100%;
+                    }
+                }
+
+            }
+            .right{
+                width:25%;
+                box-sizing: border-box;
+                .topRight{
+                    height:23%;
+                    .containerRight{
+                        height:100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .box{
+                            width:48%;
+                            height:100%;
+                            border-radius: 5px;
+                            padding:10px 20px;
+                            box-sizing: border-box;
+                            -webkit-box-shadow: 0px 1px 10px 0px rgba(184,184,184,1);
+                            -moz-box-shadow: 0px 1px 10px 0px rgba(184,184,184,1);
+                            box-shadow: 0px 1px 10px 0px rgba(184,184,184,1);
+
+                            .title{
+                                margin-bottom:10px;
+                                span{
+                                    color: white;
+                                    font-size: 16px;
+                                }
+                            }
+                            h1{
+                                font-size: 38px;
+                                font-weight: 300;
+                                color: white;
+                            }
+                        }
+                        .box.Prospect{
+                            background-color: #57B8FF;
+                        }
+                        .box.Coti{
+                            background-color: #21D59B;
+                        }
+                    }
+                }
+
+            }
+            .graph{
+                padding:30px 20px;
+                margin:10px 0px;
+                border:1px solid #21D59B;
+                text-align: center;
+                background-color: white;
+                border-radius: 10px;
+                h3{
+                    font-size: 42px;
+                    color: #21D59B;
+                }
+            }
+            .calendary{
+                background-color: #21D59B;
+                padding:30px 20px;
+                border-radius: 5px;
+                .containerCal{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .left{
+                        span{
+                            font-size: 14px;
+                            color: white;
+                        }
+                        h1{
+                            font-weight: 400;
+                            color: white;
+                        }
+
+                    }
+                    .icono{
+                        .icon{
+                            font-size: 24px;
+                            color: white;
+                        }
+                    }
+                }
+            }
+            .bottonOptions{
+                button{
+                    width:100%;
+                    padding:8px;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    margin-top: 10px;
+                    border:1px solid #ccc;
+                    background-color: white;
+                    border-radius: 5px;
+                    transition: .3s;
+                    cursor: pointer;
+                    span{
+                        font-size: 12px;
+                    }
+                }
+                button:hover{
+                    transform: scale(1.05);
+                }
+                .new{
+                    background-color: #57B8FF;
+                    border:1px solid #21D59B;
+                    span{
+                        color: white;
+                    }
+                }
+                .info{
+                    span{
+                        color: #21D59B;
+                    }
+                }
+            }
+        }
+    }
+}
