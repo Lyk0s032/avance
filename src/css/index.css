@@ -3,7 +3,6 @@
   font-weight: 400;
   margin: 0px;
   padding: 0px;
-  color: black;
 }
 .newFuente {
   background-color: rgba(104, 104, 104, 0.111);
@@ -891,6 +890,56 @@
 }
 .dashboard .dashb .dashPanel .bottonOptions .info span {
   color: #21D59B;
+}
+.sign {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.sign .containerSign {
+  width: 40%;
+}
+.sign .containerSign .img {
+  width: 100%;
+  text-align: center;
+}
+.sign .containerSign .img img {
+  width: 25%;
+}
+.sign .containerSign .form {
+  margin-top: 30px;
+}
+.sign .containerSign .form .inputDiv {
+  margin: 20px 0px;
+}
+.sign .containerSign .form .inputDiv label {
+  font-size: 14px;
+  color: #666;
+}
+.sign .containerSign .form .inputDiv input {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  outline: 0px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.sign .containerSign .form .inputDiv input:focus {
+  border: 1px solid #21D59B;
+}
+.sign .containerSign .form .inputDiv button {
+  width: 100%;
+  border-radius: 20px;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #21D59B;
+  border: 1px solid #21D59B;
+  cursor: pointer;
 }
 .navTop {
   height: 10%;

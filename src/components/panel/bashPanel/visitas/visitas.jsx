@@ -5,14 +5,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
 
 
-export default function Visitas(){
+export default function Visitas(props){
+    const usuario = props.usuario;
     const dispatch = useDispatch();
     const visitas = useSelector(store => store.visitas);
     const loading = useSelector(store => store.loadingVisitas);
 
     
     useEffect(() => {
-        dispatch(actions.AxiosGetVisitas())
+        usuario.rango == 'lider' ?
+            dispatch(actions.AxiosGetVisitas())
+        :
+            dispatch(actions.AxiosGetVisitasByAsesor(true, usuario.id))
+
     },[])
     return (
         <div className='intentos'>

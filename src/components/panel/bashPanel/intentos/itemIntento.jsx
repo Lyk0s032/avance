@@ -11,7 +11,7 @@ export default function ItemIntento(props){
 
     const [call, setCall] = useState('one');
 
-
+    const clients = props.clients;
     return (
         item.state == 'intento 1' ?
         <tr>
@@ -32,7 +32,7 @@ export default function ItemIntento(props){
                             <div className='stateBtn' id="nube" >
                                 {
                                     clic ? 
-                                        <Nube item={item} />
+                                        <Nube item={item} clients={clients}/>
                                     :
                                     <div>
                                         Se solicitó una llamada para el:
@@ -117,7 +117,7 @@ export default function ItemIntento(props){
                             <div className='stateBtn'>    
                                 {
                                     clic ? 
-                                        <Nube item={item} />
+                                        <Nube item={item} clients={clients} />
                                     :                       
                                     <div>
                                         Ideal llamar el
@@ -218,7 +218,7 @@ export default function ItemIntento(props){
                             <div className='stateBtn'>                           
                                 {
                                     clic ? 
-                                        <Nube item={item}/>
+                                        <Nube item={item} clients={clients}/>
                                     :                       
                                     <div>
                                         Ideal llamar el

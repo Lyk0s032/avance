@@ -4,11 +4,12 @@ import ItemIntento from './itemIntento';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
 
-export default function Intentos(){
+export default function Intentos(props){
+
     const dispatch = useDispatch();
     const intentos = useSelector(store => store.intentos);
     const loading = useSelector(store => store.loadingIntentos);
-
+    const clients = props.clients;
     const [stateShow, setStateShow] = useState('intento 1');
     useEffect(() => {
         dispatch(actions.AxiosGetIntentos(true));
@@ -53,7 +54,7 @@ export default function Intentos(){
                                         intentos.map((item, i) => {
                                             return (
                                                 item.state == stateShow ?
-                                                    <ItemIntento key={i+1} item={item} />
+                                                    <ItemIntento key={i+1} item={item} clients={clients}/>
                                                 :
                                                 null
                                             )

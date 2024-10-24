@@ -5,6 +5,7 @@ import * as actions from './../../../store/action/action';
 
 export default function Nube(props){
     const item = props.item;
+    const clients = props.clients;
     const [call, setCall] = useState('question');
     const dispatch = useDispatch();
 
@@ -16,7 +17,7 @@ export default function Nube(props){
 
     const [tags, setTags] = useState(['default']);
     const [interes, setInteres] = useState({
-        asesor: 21,
+        asesor: 2,
         dia: null,
         mes: null,
         ano: null,
@@ -206,26 +207,29 @@ export default function Nube(props){
                                     }}/>
                                 </div>
                                 <div className="asesor">
-                                    <label htmlFor="">Asesor</label>
                                     <div className='choose'>
-                                        <button className={interes.asesor == 1 ? 'Active' : null} onClick={()=> {
-                                            setInteres({
-                                                ...interes,
-                                                asesor: 2
-                                            })
-                                        }}>
-                                            <span>Diana</span>
-                                        </button>
-                                        <button className={interes.asesor == 2 ? 'Active' : null} onClick={()=> {
-                                            setInteres({
-                                                ...interes,
-                                                asesor: 3
-                                            })
-                                        }}>
-                                            <span>Bryan</span>
-                                        </button>
+                                    <label htmlFor="">Asesor </label>
 
-                                    </div>
+                                    {
+                                        clients.asesores && clients.asesores.length ?
+                                            clients.asesores.map((asesor, i) => {
+                                                return (
+                                                    <button className={interes.asesor == asesor.id ? 'Active' : null} onClick={()=> {
+                                                        setInteres({
+                                                            ...interes,
+                                                            asesor: asesor.id
+                                                        })
+                                                    }}>
+                                                        <span>{asesor.name}</span>
+                                                    </button>
+                                                )
+                                            })
+                                        : <span>No hemos encontrado asesores</span>
+                                    }
+                                        </div>
+
+                                        
+                                        
                                 </div>
 
                                 <div className='time'>

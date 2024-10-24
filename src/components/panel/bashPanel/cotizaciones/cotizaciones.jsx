@@ -5,14 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
 
 export default function Cotizaciones(props){
-
+    const usuario = props.usuario;
     const dispatch = useDispatch();
     const cotizaciones = useSelector(store => store.cotizaciones);
     const loading = useSelector(store => store.loadingCotizaciones);
 
     
     useEffect(() => {
+    usuario.rango == 'lider' ?
         dispatch(actions.AxiosGetCotizaciones(true))
+    :
+        dispatch(actions.AxiosGetCotizacionesByAsesor(true, usuario.id))
+
     },[])
     return (
         <div className='intentos'>

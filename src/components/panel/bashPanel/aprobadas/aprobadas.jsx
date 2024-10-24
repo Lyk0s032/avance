@@ -5,10 +5,15 @@ import * as actions from './../../../store/action/action';
 import ItemAprobadas from './itemAprobadas';
 
 export default function Aprobadas(props){
+    const usuario = props.usuario;
     const clients = props.clients;
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(actions.AxiosGetClients(false))
+        usuario.rango == 'lider' ?
+            dispatch(actions.AxiosGetClients(false))
+        :
+            dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id))
+
     },[])
     return (
         <div className='intentos'>

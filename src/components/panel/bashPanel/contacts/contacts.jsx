@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import ItemContact from './contactoItem';
 
 export default function Contacts(props){
+    const usuario = props.usuario;
+
     const dispatch = useDispatch();
     const contactos = useSelector(store => store.contactos);
     const loading = useSelector(store => store.loadingContactos);
@@ -14,7 +16,10 @@ export default function Contacts(props){
 
 
     useEffect(() => {
-        dispatch(actions.AxiosGetContactos(true))
+        usuario.rango == 'lider' ?
+            dispatch(actions.AxiosGetContactos(true))
+        :
+            dispatch(actions.AxiosGetContactosByAsesor(true, usuario.id))
     }, [])
     return (
         <div className='intentos'>
