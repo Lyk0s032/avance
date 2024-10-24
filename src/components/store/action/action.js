@@ -8,15 +8,15 @@ export function GET_USER(user){
         payload: user
     }
 }
-export function GETTING_USER(){
+export function GETTING_USER(carga){
     return {
         type: 'GETTING_USER',
         payload: true
     }
 }
-export function AxiosAuthUser(token){
+export function AxiosAuthUser(token, carga){
     return function(dispatch){
-        dispatch(GETTING_USER());
+        dispatch(GETTING_USER(carga));
         axios.get('/app/signIn', {
             headers:{
                 'authorization': `Bearer ${token}`
@@ -55,6 +55,29 @@ export function AxiosGetClients(carga){
         axios.get(`/clients/get/all/panel/`)
         .then((info) => info.data)
         .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_CLIENTS(false));
+            return dispatch(GET_CLIENTS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_CLIENTS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_CLIENTS(404))
+            }else{
+                return dispatch(GET_CLIENTS('request'));
+            }
+        })
+    }
+}
+
+export function AxiosGetClientsByAsesor(carga, asesorId){
+    return function(dispatch){
+        dispatch(GETTING_CLIENTS(carga))
+        axios.get(`/clients/get/all/panel/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(asesorId)
             dispatch(GETTING_CLIENTS(false));
             return dispatch(GET_CLIENTS(inf));
         })
@@ -136,6 +159,26 @@ export function AxiosGetContactos(carga){
         })
     }
 }
+export function AxiosGetContactosByAsesor(carga,asesorId){
+    return function(dispatch){
+        dispatch(GETTING_CONTACTOS(carga))
+        axios.get(`/clients/get/all/contactos/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            dispatch(GETTING_CONTACTOS(false));
+            return dispatch(GET_CONTACTOS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_CONTACTOS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_CONTACTOS(404))
+            }else{
+                return dispatch(GET_CONTACTOS('request'));
+            }
+        })
+    }
+}
 
 
 // VISITAS
@@ -167,7 +210,27 @@ export function AxiosGetVisitas(carga){
             }else{
                 return dispatch(GET_VISITAS('request'));
             }
+        }) 
+    }
+}
+export function AxiosGetVisitasByAsesor(carga, asesorId){
+    return function(dispatch){
+        dispatch(GETTING_VISITAS(carga))
+        axios.get(`/clients/get/all/visitas/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            dispatch(GETTING_VISITAS(false));
+            return dispatch(GET_VISITAS(inf));
         })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_VISITAS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_VISITAS(404))
+            }else{
+                return dispatch(GET_VISITAS('request'));
+            }
+        }) 
     }
 }
 
@@ -206,7 +269,27 @@ export function AxiosGetCotizaciones(carga){
         })
     }
 }
-
+export function AxiosGetCotizacionesByAsesor(carga,asesorId){
+    return function(dispatch){
+        dispatch(GETTING_COTIZACIONES(carga))
+        axios.get(`/clients/get/all/cotizaciones/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_COTIZACIONES(false));
+            return dispatch(GET_COTIZACIONES(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_COTIZACIONES(false));
+            if(e.response.status == 404){
+                return dispatch(GET_COTIZACIONES(404))
+            }else{
+                return dispatch(GET_COTIZACIONES('request'));
+            }
+        })
+    }
+}
 
 
 // VISITAS

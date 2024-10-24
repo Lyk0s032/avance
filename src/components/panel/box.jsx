@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Box(props){
     const type = props.type;
+    const usuario = props.user;
     const clients = props.clients;
-    console.log(clients)
     const navigate = useNavigate();
+
     let sumas = {
-        IntentoUno: clients.intentoOne.length ? clients.intentoOne.length : 0,
-        IntentoDos: clients.intentoTwo.length ? clients.intentoTwo.length : 0,
-        IntentoTres: clients.intentoThree.length ? clients.intentoThree.length : 0,
+        IntentoUno: usuario.rango == 'asesor' ? 0 : clients.intentoOne.length ? clients.intentoOne.length : 0,
+        IntentoDos: usuario.rango == 'asesor' ? 0 : clients.intentoTwo.length ? clients.intentoTwo.length : 0,
+        IntentoTres: usuario.rango == 'asesor' ? 0 : clients.intentoThree.length ? clients.intentoThree.length : 0,
         contactoUno: clients.contactOne.length ? clients.contactOne.length : 0,
         contactoDos: clients.contactTwo.length ? clients.contactTwo.length : 0,
         contactoTres: clients.contactThree.length ? clients.contactThree.length : 0,

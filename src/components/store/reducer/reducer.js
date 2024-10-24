@@ -53,6 +53,11 @@ export default (state = initialState, action) => {
                 usuario: action.payload,
                 loadingUser: false,
             }
+        case 'GETTING_USER':
+            return {
+                ...state,
+                loadingUser: action.payload
+            }
         case 'GET_CLIENTS':
             return {
                 ...state,

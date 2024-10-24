@@ -3,15 +3,16 @@ import Box from './box';
 
 export default function BoxTop(props){
     const clients = props.clients;
+    const user = props.user;
     return (
         <div className='boxTopBox'>
             <div className='containerBox'>
-                <Box type='Intentos' clients={clients}/>
-                <Box type='Contacto' clients={clients}/>
-                <Box type='Visita' clients={clients}/>
-                <Box type='Cotizaciones' clients={clients}/>
+                { user.rango == 'lider' ? <Box type='Intentos' user={user} clients={clients}/> : null }
+                <Box type='Contacto' user={user} clients={clients}/>
+                <Box type='Visita' user={user} clients={clients}/>
+                <Box type='Cotizaciones' user={user} clients={clients}/>
 
-            </div>
+            </div> 
         </div>
     )
 }

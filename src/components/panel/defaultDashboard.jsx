@@ -4,37 +4,42 @@ import BoxTop from './boxTop';
 import { BsCalendar } from 'react-icons/bs';
 import RoutesPanel from './bashPanel/routes';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import Graph from './graph';
 
 export default function DashboardDefault(props){
     const [params, setParams] = useSearchParams();
     const navigate = useNavigate();
     const clients = props.clients;
+    const user = props.user;
 
     return (
         <div className='dashb'>
-            <NavTop />
+            <NavTop user={user}/>
             
             <div className='dashPanel'>
                 <div className='center'>
                     <div className='boxTop'>
-                        <BoxTop clients={clients}/>
+                        <BoxTop clients={clients} user={user} />
                     </div>
                     <div className='map'>
-                        <RoutesPanel clients={clients} />
+                        <RoutesPanel clients={clients} user={user} />
                     </div>
                 </div>
                 <div className='right'>
                     <div className="topRight">
                         <div className="containerRight">
-                            <div className='box Prospect' onClick={() => {
-                                navigate('/panel');
-                            }}>
-                                <div className='title'>
-                                    <span>Prospectos pendientes</span>
-                                </div>
-                                <h1>
-                                </h1>
-                            </div>
+                            {
+                                user.rango == 'lider' ?
+                                    <div className='box Prospect' onClick={() => {
+                                    navigate('/panel');
+                                    }}>
+                                        <div className='title'>
+                                             <span>Prospectos</span>
+                                        </div>
+                                    </div>
+                                : null
+                            }
+                            
 
                             <div className='box Coti' onClick={() => navigate('/panel/aprobadas')}>
                                 <div className='title'>
@@ -46,7 +51,7 @@ export default function DashboardDefault(props){
                             </div>
                         </div>
                         <div className="graph">
-                            <h3>0%</h3>
+                            <Graph clientes={clients.aprobadas ? clients.aprobadas : 0} asesor={clients.asesor} />
                         </div>
                         <div className="calendary" onClick={() => {
                             params.set('w', 'calendario');
