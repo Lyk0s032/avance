@@ -26,6 +26,7 @@ export default function ItemIntento(props){
         <tr>
             <td>
                 <div className='prospectProfile'>
+                    <h3 className="business">{item.nombreEmpresa}</h3>
                     <h3>{item.name}</h3>
                     <span>{item.phone}</span>
                 </div>
