@@ -36,6 +36,11 @@ export default function NewProspect(props){
         let body = {
             name: prospect.nombre,
             phone: prospect.phone,
+            nombreEmpresa: prospect.nombreEmpresa,
+            direccion: prospect.direccion,
+            fijo: prospect.fijo,
+            url: prospect.url,
+            cargo: prospect.cargo,
             email: prospect.email && prospect.arroba && prospect.punto ? `${prospect.email}@${prospect.arroba}.${prospect.punto}` : null,
             fuenteId: prospect.fuente
         }

@@ -89,7 +89,6 @@ export default function PrimerIntento(props){
                 mes:null,
                 ano: null
             })
-            setInteres(null)
             closeDiv()
 
         })
