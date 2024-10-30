@@ -44,7 +44,7 @@ export default function Contacts(props){
                     <table id="example" className="display">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
+                                <th>General</th>
                                 <th>Primer Contacto</th>
                                 <th>Segundo Contacto</th>
                                 <th>Tercer Contacto</th>

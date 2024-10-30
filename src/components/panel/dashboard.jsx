@@ -26,10 +26,20 @@ export default function Dashboard(props){
         <div className="dashboard">
             {
             !usuario || loadingUsuario ?
-                <h1> Cargando panel...</h1>
+            <div className="loadingPanel">
+                <div className='containerLoading'>
+                    <h1>Revisando estado de la cuenta...</h1>
+                    <span>Para nosotros es muy importante, que todas las funciones esten a tu alcance.</span>
+                </div>
+            </div>
             :
                 loadingClients || !clients ?
-                    <h1>Cargando clientes</h1>
+                <div className="loadingPanel">
+                    <div className='containerLoading'>
+                        <h1>Cargando base de clientes...</h1>
+                        <span>Todo esta en orden, solo estamos ordenando tus prospectos y clientes.</span>
+                    </div>
+                </div>
                 :
                 <Routes>
                     <Route path="/*" element={<DashboardDefault user={usuario.user} clients={clients}/>} />

@@ -29,6 +29,7 @@ export function AxiosAuthUser(token, carga){
             dispatch(GET_USER(data.user))
         })
         .catch(err => {
+            dispatch(GET_USER(null))
             console.log(err);
             console.log('no trae registro');
             window.localStorage.removeItem('loggedPeople');
@@ -68,6 +69,13 @@ export function AxiosGetClients(carga){
                 return dispatch(GET_CLIENTS('request'));
             }
         })
+    }
+}
+
+export function ActionGetCliente(cliente){
+    return {
+        type: 'GET_CLIENTE',
+        payload: cliente
     }
 }
 

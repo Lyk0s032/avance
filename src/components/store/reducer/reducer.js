@@ -8,6 +8,9 @@ const initialState = {
     // Business
     clients: null,
     loadingClients: false,
+
+    cliente: null,
+    loadingCliente: false,
     
     intentos: null,
     loadingIntentos:false,
@@ -70,6 +73,17 @@ export default (state = initialState, action) => {
                 loadingClients: action.payload
             }
 
+        case 'GET_CLIENTE':
+            return {
+                ...state,
+                cliente: action.payload,
+                loadingCliente:false
+            }
+        case 'GETTING_CLIENTE':
+            return {
+                ...state,
+                loadingCliente:true
+            }
         case 'GET_INTENTOS':
             return {
                 ...state,

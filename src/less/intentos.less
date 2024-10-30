@@ -64,7 +64,57 @@
                             font-size: 12px;
                             padding:15px 10px;
                             text-align: left;
-
+                            .cl{
+                                // CONTACTO DISEÑO
+                                padding-bottom:5px;
+                                margin-bottom: 5px;
+                                .business{
+                                    color: #1797f2;
+                                }
+                                .businessPersona{
+                                    color: #484343
+                                }
+                                .phone{
+                                    font-style: italic;
+                                    letter-spacing: 1px;
+                                    color: #666;
+                                    font-weight: bold;
+                                }
+                            }
+                            .containerAsesor{
+                                display: flex;
+                                align-items: center;
+                                .img{
+                                    margin-right: 10px;
+                                    width:40px;
+                                    height:40px;
+                                    border-radius: 100%;
+                                    border:none;
+                                    background-color: #ccc;
+                                    img{
+                                        width:100%;
+                                        height:100%;
+                                        border-radius: 100%;
+                                        object-fit: cover;
+                                    }
+                                }
+                                .data{
+                                    h3{
+                                        font-size: 16px;
+                                        font-weight: 400;
+                                        color: #666;
+                                    }
+                                    span{
+                                        font-size: 12px;
+                                        font-style: italic;
+                                    }
+                                }
+                            }
+                            .asesor{
+                                color: #484343;
+                                font-size: 14px;
+                                
+                            }
                             .tryButton{
                                 display: flex;
                                 align-items: center;
@@ -80,10 +130,13 @@
                                     transition: .3s;
                                     display: flex;
                                     align-items: center;
+                                    position: relative;
                                     .icono{
                                         width:100%;
                                         text-align: center;
+                                        transition: .3;
                                         .icon{
+                                            transition: .3;
                                             font-size: 24px;
                                         }
                                     }
@@ -94,6 +147,7 @@
                                         z-index: 2;
                                         border-radius: 4px;
                                         position:absolute;
+                                        width: 120px;
                                         margin-left:40px;
                                         padding:5px 10px;
                                         box-sizing: border-box;
@@ -361,6 +415,22 @@
                                         display: block;
                                         z-index:2;
                                         margin:0px;
+                                    }
+                                }
+                                .tt.Active{
+                                    background-color: #21D59B;
+                                    border:1px solid #21D59B;
+                                    .icon{
+                                        color: white;
+                                    }
+                                }
+                                .tt.Cancel{
+                                    background-color: #f44336;
+                                    border:1px solid #f44336;
+                                                
+                                    .icon{
+                                        color: white;
+                                        font-size: 18px;
                                     }
                                 }
                                 .tt:hover{

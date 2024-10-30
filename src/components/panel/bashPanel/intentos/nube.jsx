@@ -50,6 +50,8 @@ export default function Nube(props){
         const send = await axios.put('/intentos/put/contestoPeroLlamarLuego', body)
         .then((res) => {
             dispatch(actions.AxiosGetIntentos(false))
+            dispatch(actions.AxiosGetClients(false));
+
             setCall('question');
             setTime({
                 dia:null,

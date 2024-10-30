@@ -18,15 +18,17 @@ function App() {
     const log = JSON.parse(window.localStorage.getItem("loggedPeople"));
     if(log && !user){
         dispatch(actions.AxiosAuthUser(log, true));
+    }else{
+      console.log('No hay token');
     }
   }, []);
   return (
     <div className="d">
       <Router>
             <Routes>
-              <Route path="/" element={<h1>Bienvenido</h1>} />
-              <Route path="/sign/*" element={<PanelSign />} />
-              <Route path="/panel/*" element={<PanelDashboard /> } />
+              <Route path="/" element={user ? <Navigate to="/panel" /> : <Navigate to="/sign" />} />
+              <Route path="/sign/*" element={user ? <Navigate to="/panel" /> : <PanelSign />} />
+              <Route path="/panel/*" element={!user ? <Navigate to="/sign" /> :<PanelDashboard /> } />
             </Routes>
       </Router>
     </div>

@@ -10,14 +10,14 @@ export default function NavTop(props){
                 </div>
                 <div className="logged">
                     <div className='containerLogged'>
-                        <img src="" alt="" />
+                        <img src={user.photo} alt="" />
                         <div className='infoLogged'>
                             <h3>{user.name}</h3>
                             <span>{user.rango == 'lider' ? 'Lider de área' : 'Asesor/a'}</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     )
 }

@@ -3,15 +3,24 @@ import { BsQuestion } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
 import Nube from './nube';
 import { MdClose } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
 
+import * as actions from './../../../store/action/action';
 export default function ItemIntento(props){
     const item = props.item;
     const [params, setParams] = useSearchParams();
     const [clic, setClick] = useState(false);
-
     const [call, setCall] = useState('one');
-
     const clients = props.clients;
+    const dispatch = useDispatch();
+
+    const open = async (cliente) => {
+        dispatch(actions.ActionGetCliente(cliente));
+        params.set('w', 'action');
+        params.set('y', 'Primer');
+        setParams(params);
+    }
+
     return (
         item.state == 'intento 1' ?
         <tr>
@@ -23,17 +32,15 @@ export default function ItemIntento(props){
             </td>
             <td>
                 <div className='tryButton'>
-                        <button className='tt'>
+                        <button className='tt Active'>
                             <div className='icono' onClick={() => {
                                 setClick(!clic);
+                                open(item);
                             }}>
                                 <BsQuestion className='icon' />
-                            </div>
+                            </div> 
                             <div className='stateBtn' id="nube" >
                                 {
-                                    clic ? 
-                                        <Nube item={item} clients={clients}/>
-                                    :
                                     <div>
                                         Se solicitó una llamada para el:
                                         {item.createdAt.split('T')[0]}
@@ -83,7 +90,7 @@ export default function ItemIntento(props){
             </td>
             <td>
                 <div className='tryButton'>
-                        <button className='tt' >
+                        <button className='tt Cancel' >
                             <div className='icono'>
                                 <MdClose className='icon' />
                             </div>
@@ -107,9 +114,10 @@ export default function ItemIntento(props){
             </td>
             <td>
                 <div className='tryButton'>
-                    <button className='tt'>
+                    <button className='tt Active'>
                             <div className='icono'  onClick={() => {
                                 setClick(!clic);
+                                open(item);
                             }}>
                                 <BsQuestion className='icon' />
                             </div>
@@ -158,7 +166,7 @@ export default function ItemIntento(props){
             </td>
             <td>
                 <div className='tryButton'>
-                        <button className='tt' >
+                        <button className='tt Cancel' >
                             <div className='icono'>
                                 <MdClose className='icon' />
                             </div>
@@ -182,11 +190,9 @@ export default function ItemIntento(props){
             </td>
             <td>
                 <div className='tryButton'>
-                    <button className='tt' onClick={() => {
-                                setClick(!clic);
-                            }}>
+                    <button className='tt Cancel'>
                             <div className='icono' >
-                                <BsQuestion className='icon' />
+                                <MdClose className='icon' />
                             </div>
                             
                             <div className='stateBtn'>    
@@ -209,17 +215,15 @@ export default function ItemIntento(props){
             </td>
             <td>
                 <div className='tryButton'>
-                    <button className='tt' >
+                    <button className='tt Active' >
                             <div className='icono' onClick={() => {
                                 setClick(!clic);
+                                open(item);
                             }}>
                                 <BsQuestion className='icon' />
                             </div>
                             <div className='stateBtn'>                           
-                                {
-                                    clic ? 
-                                        <Nube item={item} clients={clients}/>
-                                    :                       
+                                {                  
                                     <div>
                                         Ideal llamar el
                                         <br />2024 - 10 -22

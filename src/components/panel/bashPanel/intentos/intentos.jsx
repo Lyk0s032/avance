@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
 
 export default function Intentos(props){
-
     const dispatch = useDispatch();
     const intentos = useSelector(store => store.intentos);
     const loading = useSelector(store => store.loadingIntentos);

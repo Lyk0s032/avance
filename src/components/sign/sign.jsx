@@ -50,15 +50,16 @@ export default function PanelSign(){
             });
 
             if(sign){
-                dispatch(actions.AxiosAuthUser(res.data, true))
+                console.log(sign)
+                dispatch(actions.AxiosAuthUser(sign.data, true))
             }
                 
         }
     }
 
     useEffect(() => {
-    
         usuario ? navigate('/panel/') : console.log('No ha iniciado sección')
+    
     }, [usuario])
     return (
         <div className='sign'>

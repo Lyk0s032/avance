@@ -32,7 +32,7 @@ export default function Visitas(props){
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Responsable</th>
+                                <th>Asesor</th>
                                 <th>Fecha visita</th>
                                 <th>Estado</th>
 
@@ -47,7 +47,7 @@ export default function Visitas(props){
                                         visitas && visitas.length ?
                                             visitas.map((item, i) => {
                                                 return (
-                                                    <ItemVisitas  key={i+1} item={item}/> 
+                                                    <ItemVisitas  key={i+1} item={item} usuario={usuario}/> 
                                                     
                                                 )
                                             })

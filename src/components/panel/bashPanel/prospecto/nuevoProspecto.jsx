@@ -14,6 +14,11 @@ export default function NewProspect(props){
     const [prospect, setProspect] = useState({
         nombre: null,
         phone: null,
+        nombreEmpresa: null,
+        direccion: null,
+        cargo: null,
+        fijo:null,
+        url: null,
         email:null,
         arroba: null,
         punto: null,
@@ -24,6 +29,7 @@ export default function NewProspect(props){
     const sendNewProspect = async () => {
         setMistake(null);
         setOk(null);
+        const formulario = document.querySelector("#formulario");
 
         if(prospect.nombre == '' || prospect.phone == '') return setMistake('No puedes dejar campos vacios');
 
@@ -39,6 +45,8 @@ export default function NewProspect(props){
             dispatch(actions.AxiosGetClients(false));
             setMistake(null);
             setOk('Cliente creado con éxito');
+            const inputs = formulario.querySelectorAll("input");
+            inputs.forEach(inpt => inpt.value = "");
         }).catch(err => {
             setMistake('No hemos podido crear este cliente');
             setOk(null)
@@ -58,9 +66,12 @@ export default function NewProspect(props){
                             <MdClose className='icon' />
                         </button>
                     </div>
-                    <div className='containerForm'>
+                    <form className='containerForm' id="formulario" onSubmit={(e) => {
+                        e.preventDefault();
+                        sendNewProspect()
+                    }}>
                         <div className="inputDiv">
-                            <label htmlFor="">Nombre</label><br />
+                            <label htmlFor="">Nombre *</label><br />
                             <input type="text" placeholder='Nombre del encargado' 
                             onChange={(e) => {
                                 setProspect({
@@ -71,7 +82,7 @@ export default function NewProspect(props){
                         </div>
                        
                         <div className="inputDiv">
-                            <label htmlFor="">Número de teléfono</label><br />
+                            <label htmlFor="">Número de teléfono *</label><br />
                             <input type="text" placeholder='Escribe aquí...' 
                             onChange={(e) => {
                                 setProspect({
@@ -80,6 +91,62 @@ export default function NewProspect(props){
                                 })
                             }} defaultValue={prospect.phone}/> 
                         </div>
+                        <div className="inputDiv">
+                            <label htmlFor="">Cargo del encargado</label><br />
+                            <input type="text" placeholder='Escribe aquí...' 
+                            onChange={(e) => {
+                                setProspect({
+                                    ...prospect,
+                                    cargo: e.target.value
+                                })
+                            }} defaultValue={prospect.carga}/> 
+                        </div>
+
+                        <div className="inputDiv">
+                            <label htmlFor="">Nombre empresa</label><br />
+                            <input type="text" placeholder='Nombre de la empresa' 
+                            onChange={(e) => {
+                                setProspect({
+                                    ...prospect,
+                                    nombreEmpresa: e.target.value
+                                })
+                            }} defaultValue={prospect.nombreEmpresa}/>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label htmlFor="">Direccion</label><br />
+                            <input type="text" placeholder='Escribe aquí' 
+                            onChange={(e) => {
+                                setProspect({
+                                    ...prospect,
+                                    direccion: e.target.value
+                                })
+                            }} defaultValue={prospect.direccion}/>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label htmlFor="">URL - sitio web</label><br />
+                            <input type="text" placeholder='https://example.com.co' 
+                            onChange={(e) => {
+                                setProspect({
+                                    ...prospect,
+                                    url: e.target.value
+                                })
+                            }} defaultValue={prospect.url}/>
+                        </div>
+
+                        <div className="inputDiv">
+                            <label htmlFor="">Teléfono fijo</label><br />
+                            <input type="text" placeholder='Escribe aquí...' 
+                            onChange={(e) => {
+                                setProspect({
+                                    ...prospect,
+                                    fijo: e.target.value
+                                })
+                            }} defaultValue={prospect.fijo}/>
+                        </div>
+
+
                         <div className="inputDiv">
                             <label htmlFor="">Correo electrónico * Opcional</label><br />
                             <div className='emailRequired'>
@@ -138,11 +205,11 @@ export default function NewProspect(props){
                             {mistake ? <span className='mistake'>{mistake} <br /><br /></span> : null }
                             {ok ? <span className='mistake'>{ok} <br /><br /></span> : null } 
 
-                            <button onClick={() => sendNewProspect()}>
-                                <span>Crear fuente</span>
+                            <button>
+                                <span>Crear</span>
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
