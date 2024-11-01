@@ -1,0 +1,393 @@
+.byAsesor{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color: rgba(78, 77, 77, 0.178);
+    .containerByAsesor{
+        width:100%;
+        height:100%;
+        background-color: white;
+        box-sizing: border-box;
+
+        .headerNav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding:0px 20px;
+            height:10%;
+            .hidden{
+                background-color: transparent;
+                border: none;
+            }
+            .asesor{
+                width:30%;
+                background-color: transparent;
+                padding:10px;
+                box-sizing: border-box;
+                select{
+                    background-color: transparent;
+                    border:none;
+                    width:100%;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+            }
+            .close{
+                background-color: transparent;
+                border:none;
+                cursor: pointer;
+                transition: .3s;
+                .icon{
+                    font-size: 20px;
+                    
+                }
+            }
+            .close:hover{
+                transform: scale(1.1);
+            }
+        }
+        .containerScroll{
+            height:90%;
+            overflow-y: auto;
+            .ProfileAsesor{
+                width:90%;
+                margin:auto;
+                border-bottom: 1px solid #ccc;
+                .containerProfile{
+                    width:100%;
+                    display: flex;
+                    align-items: center;
+                    padding:60px 0px;
+                    justify-content: space-between;
+    
+                    .infoProfile{
+                        display: flex;
+                        align-items: center;
+                        width:40%;
+                        border-right: 1px solid #ccc;;
+                        .profileImg{
+                            width:40%;
+                            img{
+                                width:150px;
+                                height:150px;
+                                border-radius: 100%;
+                            }
+                        }
+                        .data{
+                            width:60%;
+                            h1{
+                                font-weight: 400;
+                                font-size: 32px;
+                            }
+                            span{
+                                font-size: 20px;
+                                color: #666;
+                                font-style: italic;
+                            }
+    
+                            .other{
+                                margin-top:10px;
+                                h3{
+                                    font-size: 20px;
+                                    font-weight: 100;
+                                    color: #666;
+                                    margin-bottom: 5px;
+                                }
+                                h4{
+                                    font-size: 20px;
+                                    color: #21D59B;
+                                }
+                            }
+                        }
+                    }
+    
+                    .meta{
+                        width:40%;
+                        .containerMeta{
+                            .circle{
+                                width:100%;
+                                text-align: center;
+                                .circleGraph{
+                                    width:200px;
+                                    height:200px;
+                                    margin:auto;
+                                    border:4px solid #21D59B;
+                                    border-radius: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    text-align: center;
+                                    h1{
+                                        margin:auto;
+                                        font-size: 42px;
+                                        font-weight: 400;
+                                        font-style: italic;
+                                        color: #21D59B;
+                                    }
+                                }
+                            }
+                            .dataMeta{
+                                width:100%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-top:50px;
+    
+                                .currently{
+                                    h3{
+                                        font-size: 28px;
+                                        color: #57B8FF;
+                                        span{
+                                            font-size: 12px;
+                                            color: #57B8FF;
+                                        }
+                                    }
+                                    span{
+                                        font-size: 12px;
+                                        color: black;
+                                    }
+                                }
+                                .finish{
+                                    text-align: right;
+                                    h3{
+                                        font-size: 28px;
+                                        color: #21D59B;
+                                        span{
+                                            color: #21D59B;
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    span{
+                                        font-size: 12px;
+                                        color: black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .resAsesor{
+                width:90%;
+                margin:auto;
+                margin-top:30px;
+                margin-bottom: 100px;
+
+                .containerResAsesor{
+                    width:100%;
+
+                    .tagsNav{
+                        width:100%;
+                        nav{
+                            ul{
+                                display: flex;
+                                justify-content: space-between;
+                                li{
+                                    display: inline-block;
+                                    button{
+                                        padding:6px 15px;
+                                        border-radius: 20px;
+                                        border:1px solid #efebeb;
+                                        background-color: transparent;
+                                        transition: .3s;
+                                        cursor: pointer;
+                                        span{
+                                            font-size: 12px;
+                                            color: #666;
+                                        }
+                                    }
+                                    button:hover{
+                                        transform: translateY(-10%);
+                                    }
+                                }
+                                li.Active{
+                                    button{
+                                        background-color: #57B8FF;
+                                        border:1px solid #57B8FF;
+                                        transform: scale(1.1);
+                                        span{
+                                            color: white;
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .results{
+                        margin-top:50px;
+                        .containerResults{
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            .notFound{
+                                height:50vh;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-around;
+                                text-align: center;
+                                width:100%;
+
+                                h1{
+                                    font-weight: 100;
+                                    color: #21D59B;
+                                }
+                            }
+                            .result{
+                                width:31%;
+                                border-radius: 5px;
+                                transition: .3s;
+                                cursor: pointer;
+                                margin-bottom:30px;
+                                -webkit-box-shadow: 0px 6px 14px -4px rgba(181,172,172,1);
+                                -moz-box-shadow: 0px 6px 14px -4px rgba(181,172,172,1);
+                                box-shadow: 0px 6px 14px -4px rgba(181,172,172,1);
+                                .containerResult{
+                                    padding:40px 20px;
+                                    box-sizing: border-box;
+                                    .headerTop{
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        .nameBusiness{
+                                            h3{
+                                                font-size: 24px;
+                                                font-weight: 400;
+                                                color:#57B8FF;
+                                            }
+                                        }
+                                        .state{
+                                            button{
+                                                background-color: transparent;
+                                                border:none;
+                                                span{
+                                                    font-size: 12px;
+                                                    color: #21D59B;
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                    .otherInfo{
+                                        margin-top:10px;
+                                        h3{
+                                            font-weight: 100;
+                                            font-size: 16px;
+                                        }
+                                        h4{
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    .calendaryTime{
+                                        margin-top:10px;
+                                        span{
+                                            font-size: 14px;
+                                            color: #21D59B;
+                                        }
+                                    }
+                                }
+                            }
+                            .result:hover{
+                                transform: translateY(-10%);
+                            }
+                            .result.Danger{
+                                border:1px solid rgba(153,10,5,1);
+                                -webkit-box-shadow: 0px 6px 14px -4px rgba(153,10,5,1);
+                                -moz-box-shadow: 0px 6px 14px -4px rgba(153,10,5,1);
+                                box-shadow: 0px 6px 14px -4px rgba(153,10,5,1);
+                            
+                                .containerResult{
+                                    .calendaryTime{
+                                        span{
+                                            color: rgba(153,10,5,1);
+                                        }
+                                    }
+                                }
+                                
+                            }
+                            .result.Alert{
+                                border:1px solid  rgba(230,157,12,1);
+                                -webkit-box-shadow: 0px 6px 14px -4px rgba(230,157,12,1);
+                                -moz-box-shadow: 0px 6px 14px -4px rgba(230,157,12,1);
+                                box-shadow: 0px 6px 14px -4px rgba(230,157,12,1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .choose{
+                width:100%;
+                height:100%;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                .containerCenter{
+                    width:90%;
+                    text-align: center;
+                    .message{
+                        margin:10px auto;
+                        width:40%;
+                        h1{
+                            font-weight: 100;
+                        }
+                    }
+                    .containerAsesores{
+                        margin-top:100px;
+                        .asesores{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            .asesor{
+                                width:20%;
+                                transition: .3s;
+                                cursor: pointer;
+                                .img{
+                                    width:100%;
+                                    margin:auto;
+                                    img{
+                                        width:100%;
+                                        border-radius: 100%;
+                                    }
+                                }
+                                .text{
+                                    width:100%;
+                                    margin-top:10px;
+                                    text-align: center;
+                                    h3{
+                                        color:#21D59B;
+                                        font-size: 22px;
+                                    }
+                                    span{
+                                        color: #666;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                            .asesor:hover{
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .loading{
+            height:90%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-around;
+            h1{
+                color: #21D59B;
+            }
+        }
+    }
+}

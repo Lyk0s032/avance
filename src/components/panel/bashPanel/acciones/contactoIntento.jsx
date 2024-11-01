@@ -341,8 +341,8 @@ export default function ContactoIntento(props){
                                             }} defaultValue={cotizacion.descuento} />
                                         </div>
 
-                                    </div>
-                                    <label htmlFor="">Selecciona fecha de visita</label>
+                                    </div> 
+                                    <label htmlFor="">Selecciona fecha de seguimiento</label>
                                     <input type="date" className='text' onChange={(e) => {
                                         setTime({
                                             ...time,

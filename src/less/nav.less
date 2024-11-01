@@ -16,32 +16,60 @@
                 width:90%;
             }
         }
-        .logged{
-            .containerLogged{
-                display: flex;
-                align-items: center;
-                img{
-                    width:40px;
-                    height:40px;
-                    margin-right: 10px;
-                    border-radius: 100%;
+        .visualizar{
+            display: flex;
+            width:auto;
+            align-items: center;
+            .asesores{
+                margin-right: 30px;
+                button{
+                    background-color: #57B8FF;
+                    border:1px solid #57B8FF;
+                    padding:7px 20px;
+                    border-radius: 20px;
+                    transition: .3s;
+                    cursor: pointer;
+                    span{
+                        font-size: 14px;
+                        color: white;
+                    }
+                }
+                button:hover{
+                    transform: scale(1.1);
+                    background-color: #0d5b92;
+                    border:1px solid #0d5b92;
+                }
+
+                
+            }
+            .logged{
+                .containerLogged{
+                    display: flex;
+                    align-items: center;
                     img{
                         width:40px;
                         height:40px;
-                        object-fit: cover;
+                        margin-right: 10px;
+                        border-radius: 100%;
+                        img{
+                            width:40px;
+                            height:40px;
+                            object-fit: cover;
+                        }
                     }
-                }
-                .infoLogged{
-                    h3{
-                        font-size: 18px;
-                        margin:0px;
-                    }
-                    span{
-                        font-size: 12px;
-                        color: #666;
+                    .infoLogged{
+                        h3{
+                            font-size: 18px;
+                            margin:0px;
+                        }
+                        span{
+                            font-size: 12px;
+                            color: #666;
+                        }
                     }
                 }
             }
         }
+        
     }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { BsQuestion } from 'react-icons/bs';
+import { BsPlus, BsQuestion } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
 import * as actions from './../../../store/action/action';
 import { useDispatch } from 'react-redux';
@@ -69,6 +69,17 @@ export default function ItemCotizaciones(props){
                 </div>
             </td>
             <td>
+                <div className="val">
+                    <h3>
+                        {
+                            item.cotizacions && item.cotizacions.length ?
+                                `${item.cotizacions[0].descuento}%`
+                            :null
+                        }
+                    </h3>
+                </div>
+            </td>
+            <td>
                 <div className='val'>
                     <h3>
                         {
@@ -98,7 +109,7 @@ export default function ItemCotizaciones(props){
                         !move ?
                         <div className='action' onClick={() => setMove(!move)}>
                             <button className='see'>
-                                Visualizar
+                                <BsPlus className='icon' />
                             </button>
                         </div>
                         :

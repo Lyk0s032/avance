@@ -11,6 +11,10 @@ const initialState = {
 
     cliente: null,
     loadingCliente: false,
+
+    // Visualizar asesores.
+    advisors: null,
+    loadingAdvisors: false,
     
     intentos: null,
     loadingIntentos:false,
@@ -83,6 +87,18 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loadingCliente:true
+            }
+        // OBTENER DATOS PARA VISUALIZAR ASESOR
+        case 'GET_ADVISORS':
+            return {
+                ...state,
+                advisors:action.payload,
+                loadingAdvisors: false
+            }
+        case 'GETTING_ADVISORS':
+            return {
+                ...state,
+                loadingAdvisors: action.payload
             }
         case 'GET_INTENTOS':
             return {

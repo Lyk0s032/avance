@@ -101,6 +101,43 @@ export function AxiosGetClientsByAsesor(carga, asesorId){
     }
 }
 
+// OBTENER DATOS PARA VISUALIZAR ASESORES.
+export function GET_ADVISORS(advisors){
+    return {
+        type: 'GET_ADVISORS',
+        payload: advisors
+    }
+}
+export function GETTING_ADVISORS(carga){
+    return {
+        type: 'GETTING_ADVISORS',
+        payload: carga
+    }
+}
+
+export function AxiosGetVisualizarAdvisors(carga, asesorId){
+    console.log('dispara')
+    return function(dispatch){
+        dispatch(GETTING_ADVISORS(carga))
+        axios.get(`/clients/get/visualizar/asesores/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(asesorId)
+            dispatch(GETTING_ADVISORS(false));
+            return dispatch(GET_ADVISORS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_ADVISORS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_ADVISORS(404))
+            }else{
+                return dispatch(GET_ADVISORS('request'));
+            }
+        })
+    }
+}
+
 
 // INTENTOS
 export function GET_INTENTOS(intentos){

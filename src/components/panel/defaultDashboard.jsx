@@ -5,6 +5,7 @@ import { BsCalendar } from 'react-icons/bs';
 import RoutesPanel from './bashPanel/routes';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Graph from './graph';
+import ByAsesorPanel from './bashPanel/visualizar/byAsesor';
 
 export default function DashboardDefault(props){
     const [params, setParams] = useSearchParams();
@@ -15,7 +16,13 @@ export default function DashboardDefault(props){
     return (
         <div className='dashb'>
             <NavTop user={user}/>
-            
+            {
+                params.get('watch') == 'asesores' ?
+                    <ByAsesorPanel asesores={clients.asesores ? clients.asesores : null}  /> 
+
+                :
+                    null
+            }
             <div className='dashPanel'>
                 <div className='center'>
                     <div className='boxTop'>
@@ -31,7 +38,7 @@ export default function DashboardDefault(props){
                             {
                                 user.rango == 'lider' ?
                                     <div className='box Prospect' onClick={() => {
-                                    navigate('/panel');
+                                        navigate('/panel');
                                     }}>
                                         <div className='title'>
                                              <span>Prospectos</span>

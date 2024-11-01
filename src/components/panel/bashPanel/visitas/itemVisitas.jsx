@@ -7,9 +7,6 @@ import * as actions from './../../../store/action/action';
 
 export default function ItemVisitas(props){
     const item = props.item;
-
-
-
     const [params, setParams] = useSearchParams();
     const [clic, setClick] = useState(false);
 
@@ -28,6 +25,7 @@ export default function ItemVisitas(props){
     return (
         <tr>
             <td>
+                {console.log(item)}
                 <div className='prospectProfile'>
                     <div className='cl'>    
                         <h2 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h2>
@@ -73,14 +71,7 @@ export default function ItemVisitas(props){
                             open(item);
                         }}>
                             <BsQuestion className='icon' />
-                        </div>
-                        <div className='stateBtn'>
-                            {
-                                <div>
-                                    Estado de la llamada
-                                </div>
-                            }
-                        </div>
+                        </div> 
                     </button>
                     
                 </div> 
