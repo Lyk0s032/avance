@@ -20,7 +20,7 @@ export default function Box(props){
         
     }
     return (
-        <div className={usuario.rango == 'asesor' ? 'box Asesor' : 'asesor'} onClick={() => {
+        <div className={usuario.rango == 'asesor' ? 'box Asesor' : 'box'} onClick={() => {
             type == 'Intentos' ?
                 navigate('try')
             : type == 'Contacto' ?
