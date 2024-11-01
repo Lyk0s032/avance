@@ -12,6 +12,9 @@ export default function NavTop(props){
                     <img src="https://metalicascosta.com.co/assets/img/logo_metalicas_costa.png" alt="" />
                 </div>
                 <div className='visualizar'>
+                    {
+                        user.rango == 'lider' ?
+                    
                     <div className="asesores">
                         <button onClick={() => {
                             params.set('watch', 'asesores');
@@ -20,6 +23,8 @@ export default function NavTop(props){
                             <span>Visualizar asesores</span>
                         </button>
                     </div>
+                        :null
+                    }
                     <div className="logged">
                         <div className='containerLogged'>
                             <img src={user.photo} alt="" />

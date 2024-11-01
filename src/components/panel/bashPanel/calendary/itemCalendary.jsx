@@ -20,7 +20,7 @@ export default function ItemCalendary(props){
                     <span>{new Date(item.fecha).toLocaleDateString('es-ES', {month: 'long'})}</span>
                 </div>
                 <div className={`containerInformation ${diferenciaEnDias > 2 ? 'Pendiente' : diferenciaEnDias > -2 && diferenciaEnDias < 2 ? 'Cerca' : 'Paso'}`}>
-                    <h3>{item.client.nombreEmpresa}</h3>
+                    <h3>{item.client ? item.client.nombreEmpresa : null}</h3>
                     <span>
                         {
                             item.type

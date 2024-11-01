@@ -34,7 +34,7 @@ export default function RoutesPanel(props){
                 params.get('w') == 'fuente' ?
                     <NewFuente clients={clients}/>
                 : params.get('w') == 'calendario' ?
-                    <Calendary />
+                    <Calendary usuario={usuario}/>
                 :
                 params.get('w') == 'action' ?
                     <ModalRight clients={clients} usuario={usuario} />

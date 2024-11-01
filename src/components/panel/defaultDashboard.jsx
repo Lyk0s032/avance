@@ -48,7 +48,7 @@ export default function DashboardDefault(props){
                             }
                             
 
-                            <div className='box Coti' onClick={() => navigate('/panel/aprobadas')}>
+                            <div className={user.rango == 'lider' ? 'box Coti' : 'box Coti Asesor'} onClick={() => navigate('/panel/aprobadas')}>
                                 <div className='title'>
                                     <span>Cotizaciones exitosas</span>
                                 </div>

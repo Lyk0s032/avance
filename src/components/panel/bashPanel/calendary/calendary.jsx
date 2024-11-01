@@ -5,7 +5,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
 
-export default function Calendary(){
+export default function Calendary(props){
+    const usuario = props.usuario;
 
     const dispatch = useDispatch();
     const calendario = useSelector(store => store.calendario);
@@ -20,7 +21,9 @@ export default function Calendary(){
     return ( 
         <div className='calendaryModal'>
             <div className='containerCalendary'>
-                <div className="boxCalendary">
+                {
+                    usuario.rango == 'lider' ?
+                    <div className="boxCalendary">
                     <div className="headerCalendary">
                         <div className='title'>
                             <h3>Calendario</h3>
@@ -49,7 +52,21 @@ export default function Calendary(){
                         }
 
                     </div>
-                </div>
+                    </div>
+                    : <div className='message'>
+                        <div>
+                            <h1>Pronto habilitaremos el calendario para ti.</h1>
+                            <span>Falta poco para activar esta funcionalidad.</span>
+                            <br /><br /><br /><br />
+                            <button onClick={() => {
+                                params.delete('w');
+                                setParams(params);
+                            }}>
+                                <span>Cerrar</span>
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     )
