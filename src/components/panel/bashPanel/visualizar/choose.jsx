@@ -33,7 +33,7 @@ export default function Choose(props){
                                                 <img src={asesor.photo} alt="" />
                                             </div>
                                             <div className='text'>
-                                                <h3>Kevin Andrés</h3>
+                                                <h3>{asesor.name}</h3>
                                                 <span>Asesor</span>
                                             </div>
                                         </div>
