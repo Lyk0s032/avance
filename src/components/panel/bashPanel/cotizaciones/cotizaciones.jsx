@@ -23,7 +23,7 @@ export default function Cotizaciones(props){
             <div className='containerIntentos'>
                 <div className='header'>
                     <div className='title'>
-                        <h3>Cotizaciones pendientes <span> (3)</span></h3>
+                        <h3>Cotizaciones pendientes </h3>
                     </div>
                 </div>
                 <div className='listsContainerProspects'>
