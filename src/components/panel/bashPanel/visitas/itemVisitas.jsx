@@ -7,6 +7,7 @@ import * as actions from './../../../store/action/action';
 
 export default function ItemVisitas(props){
     const item = props.item;
+    const usuario = props.usuario;
     const [params, setParams] = useSearchParams();
     const [clic, setClick] = useState(false);
 
@@ -37,15 +38,29 @@ export default function ItemVisitas(props){
             </td>
             <td>
                 <div className='prospectProfile'>
-                    <div className='containerAsesor'>
-                        <div className='img'>
-                            <img src={item.user.photo} alt="" />
+                    {
+                        usuario.range == 'lider' ?
+                        <div className='containerAsesor'>
+                            <div className='img'>
+                                <img src={item.user.photo} alt="" />
+                            </div>
+                            <div className='data'>
+                                <h3>{item.user.name}</h3>
+                                <span>{item.user.rango}</span>
+                            </div>
                         </div>
-                        <div className='data'>
-                            <h3>{item.user.name}</h3>
-                            <span>{item.user.rango}</span>
+                        :
+                        <div className='containerAsesor'>
+                            <div className='img'>
+                              <img src={usuario.photo} alt="" />
+                            </div>
+                            <div className='data'>
+                                <h3>{usuario.name}</h3>
+                                <span>{usuario.rango}</span>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    
                 </div>
             </td>
 

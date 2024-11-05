@@ -15,6 +15,7 @@
   left: 0;
   z-index: 1;
   display: flex;
+  z-index: 3;
   align-items: center;
 }
 .newFuente .modalNewContainer {
@@ -122,9 +123,11 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 3;
 }
 .calendaryModal .containerCalendary {
   width: 40%;
+  z-index: 3;
   margin: auto;
   height: 80vh;
   margin-top: 10vh;
@@ -243,6 +246,7 @@
 }
 .rightNube {
   position: fixed;
+  z-index: 3;
   right: 0;
   bottom: 0;
   height: 100vh;
@@ -1329,6 +1333,7 @@
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 3;
   bottom: 0;
   left: 0;
   background-color: rgba(78, 77, 77, 0.178);

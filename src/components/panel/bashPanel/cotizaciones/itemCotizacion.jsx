@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 
 export default function ItemCotizaciones(props){
     const item = props.item;
-
+    const usuario = props.usuario;
     const dispatch = useDispatch();
     const [params, setParams] = useSearchParams();
     const [move, setMove] = useState(false);
@@ -21,7 +21,9 @@ export default function ItemCotizaciones(props){
         }
         let send = await axios.put('/cotizacion/put/cambiarEstado', body)
         .then((res) => {
-            dispatch(actions.AxiosGetCotizaciones(false))
+            usuario.range == 'lider' ? dispatch(actions.AxiosGetCotizaciones(false)) : dispatch(actions.AxiosGetCotizacionesByAsesor(false, usuario.id))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
+            
             setMove(true);
         })
         .catch(err =>{
@@ -38,7 +40,7 @@ export default function ItemCotizaciones(props){
         }
         let send = await axios.put('/cotizacion/put/aplazarEstado', body)
         .then((res) => {
-            dispatch(actions.AxiosGetCotizaciones(false))
+            usuario.range == 'lider' ? dispatch(actions.AxiosGetCotizaciones(false)) : dispatch(actions.AxiosGetCotizacionesByAsesor(false, usuario.id))
             setMove(true);
         })
         .catch(err =>{

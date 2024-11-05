@@ -56,7 +56,9 @@ export default function VisitaIntento(props){
         }
         const send = await axios.put('/visita/put/llamarDespues', body)
         .then((res) => {
-            dispatch(actions.AxiosGetVisitas(false))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
+            usuario.range == 'lider' ? dispatch(actions.AxiosGetVisitas(false)) : dispatch(actions.AxiosGetVisitasByAsesor(false, usuario.id))
+ 
             setCall('question');
             setTime({
                 dia:null,
@@ -82,7 +84,7 @@ export default function VisitaIntento(props){
         const send = await axios.put('/visita/put/contestoPeroSinInteres', body)
         .then((res) => {
             dispatch(actions.AxiosGetVisitas(false))
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, user.user.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
             setTime({
@@ -109,7 +111,9 @@ export default function VisitaIntento(props){
 
         const send = await axios.put('/visita/put/otroServicio', body)
         .then((res) => {
-            dispatch(actions.AxiosGetVisitas(false))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
+            usuario.range == 'lider' ? dispatch(actions.AxiosGetVisitas(false)) : dispatch(actions.AxiosGetVisitasByAsesor(false, usuario.id))
+            
             setCall('question');
             setTime({
                 dia:null,
@@ -153,7 +157,9 @@ export default function VisitaIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
-            dispatch(actions.AxiosGetContactos(false))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
+            usuario.range == 'lider' ? dispatch(actions.AxiosGetVisitas(false)) : dispatch(actions.AxiosGetVisitasByAsesor(false, usuario.id))
+            
             setCall('question');
             setTime({
                 dia:null,

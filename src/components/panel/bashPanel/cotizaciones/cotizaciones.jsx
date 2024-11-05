@@ -47,7 +47,7 @@ export default function Cotizaciones(props){
                                 cotizaciones && cotizaciones.length ?
                                     cotizaciones.map((item, i) => {
                                         return (
-                                            <ItemCotizaciones key={i} item={item}  />
+                                            <ItemCotizaciones key={i} item={item} usuario={usuario} />
                                         )
                                     })
                                 :null

@@ -51,7 +51,7 @@ export default function ContactoIntento(props){
         const send = await axios.put('/contacto/put/dontCall', body)
         .then((res) => {
             dispatch(actions.AxiosGetContactos(false))    
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, user.user.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
             closeDiv()
         })
         .catch(err => {
@@ -69,8 +69,8 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoPeroLlamarLuego', body)
         .then((res) => {
-            dispatch(actions.AxiosGetContactos(false))
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, user.user.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
         
             setCall('question');
             setTime({
@@ -88,7 +88,8 @@ export default function ContactoIntento(props){
     // Programar visita
     const programarVisita = async () => {
         if(!time.mes || !time.dia || !time.ano) return setMistake('Es necesario asignar una fecha valida.');
-        usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, user.user.id));
+        console.log(usuario)
+        usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
      
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
@@ -141,7 +142,7 @@ export default function ContactoIntento(props){
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
             dispatch(actions.AxiosGetContactos(false))
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, user.user.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
             setTime({
@@ -168,7 +169,7 @@ export default function ContactoIntento(props){
         const send = await axios.put('/contacto/put/contestoPeroSinInteres', body)
         .then((res) => {
             dispatch(actions.AxiosGetContactos(false))
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, user.user.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
             setTime({

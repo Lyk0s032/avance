@@ -7,6 +7,7 @@ import * as actions from './../../../store/action/action';
 import { useDispatch } from 'react-redux';
 
 export default function ItemContact(props){
+    const usuario = props.usuario;
     const item = props.item;
     const [params, setParams] = useSearchParams();
     const [clic, setClick] = useState(false);
@@ -31,7 +32,7 @@ export default function ItemContact(props){
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
-                    <strong className="asesor">Por {item.user.name}</strong>
+                    <strong className="asesor">Por {usuario.range == 'lider' ? item.user.name : usuario.name}</strong>
                 </div>
             </td>
             <td>

@@ -36,7 +36,7 @@ export default function Contacts(props){
                             <span>Segundo Contacto</span>
                         </button>
                         <button className={stateShow == 'contacto 3' ? 'Active' : null} onClick={() => setStateShow('contacto 3')}>
-                            <span>Tercer Contacto (0)</span>
+                            <span>Tercer Contacto</span>
                         </button>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ export default function Contacts(props){
                                         contactos.map((item, i) => {
                                             return (
                                                 item.state == stateShow ?
-                                                    <ItemContact key={i+1} item={item} />
+                                                    <ItemContact key={i+1} item={item} usuario={usuario} />
                                                 :
                                                 null
                                             )
