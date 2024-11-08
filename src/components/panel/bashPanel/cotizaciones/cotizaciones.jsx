@@ -3,6 +3,8 @@ import { BsQuestion } from 'react-icons/bs';
 import ItemCotizaciones from './itemCotizacion';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
+import { useSearchParams } from 'react-router-dom';
+import NewCotizacion from './new/new';
 
 export default function Cotizaciones(props){
     const usuario = props.usuario;
@@ -10,7 +12,9 @@ export default function Cotizaciones(props){
     const cotizaciones = useSelector(store => store.cotizaciones);
     const loading = useSelector(store => store.loadingCotizaciones);
 
-    
+    const [params, setParams] = useSearchParams();
+
+
     useEffect(() => {
     usuario.rango == 'lider' ?
         dispatch(actions.AxiosGetCotizaciones(true))
@@ -20,10 +24,25 @@ export default function Cotizaciones(props){
     },[])
     return (
         <div className='intentos'>
+            {
+                params.get('w') && params.get('w') == 'newCotizacion' && usuario.rango == 'asesor' ? <NewCotizacion usuario={usuario} /> : null
+            }
             <div className='containerIntentos'>
                 <div className='header'>
                     <div className='title'>
-                        <h3>Cotizaciones pendientes </h3>
+                        <h3>Cotizaciones pendientes </h3>                    
+                    </div>
+                    <div className="btn">
+                        {
+                            usuario.rango == 'asesor' ?
+                            <button className="nuevaCotizacion" onClick={() => {
+                                params.set('w', 'newCotizacion');
+                                setParams(params);
+                            }}>
+                                <span>Nueva cotización + </span>
+                            </button>
+                            :null
+                        }
                     </div>
                 </div>
                 <div className='listsContainerProspects'>

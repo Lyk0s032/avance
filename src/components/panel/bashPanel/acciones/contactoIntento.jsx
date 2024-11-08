@@ -11,6 +11,14 @@ export default function ContactoIntento(props){
     const dispatch = useDispatch();
     const [params, setParams] = useSearchParams();
     const [mistake, setMistake] = useState(null);
+    const [iva, setIva] = useState(true);
+    
+    
+    const change = () => {
+        setIva(!iva);
+        console.log('entra');
+    }
+    
     const [time, setTime] = useState({
         dia: null,
         mes: null,
@@ -50,7 +58,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/dontCall', body)
         .then((res) => {
-            dispatch(actions.AxiosGetContactos(false))    
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
             closeDiv()
         })
@@ -98,7 +106,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
-            dispatch(actions.AxiosGetContactos(false))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
             setCall('question');
             setTime({
                 dia:null,
@@ -122,10 +130,10 @@ export default function ContactoIntento(props){
         let brt = cotizacion.bruto; 
         let descuento = cotizacion.descuento;
     
-        let valorConDescuento = Number(brt) * Number((1 - descuento / 100)); 
+        let valorConDescuento = Number(brt) - Number((Number(brt) * (descuento / 100))); 
         let valorConIva = valorConDescuento * (19 / 100);
     
-        let valorFinal = valorConDescuento + valorConIva;
+        let valorFinal = iva ? valorConDescuento + valorConIva : valorConDescuento;
     
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
@@ -136,12 +144,12 @@ export default function ContactoIntento(props){
             fecha: `${time.mes}-${time.dia}-${time.ano}`,
             bruto: cotizacion.bruto,
             descuento: cotizacion.descuento,
-            iva: cotizacion.iva,
+            iva: iva ? cotizacion.iva : 0,
             neto:valorFinal
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
-            dispatch(actions.AxiosGetContactos(false))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
@@ -168,7 +176,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoPeroSinInteres', body)
         .then((res) => {
-            dispatch(actions.AxiosGetContactos(false))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
@@ -324,22 +332,26 @@ export default function ContactoIntento(props){
                                             }} defaultValue={cotizacion.nroCotizacion}/>
                                         </div>
                                         <div className="input">
-                                            <label htmlFor="">Valor Bruto {cotizacion.bruto}</label>
+                                            <label htmlFor="">Valor Bruto {cotizacion.bruto ? `${new Intl.NumberFormat('es-CO', { currency:'COP'}).format(cotizacion.bruto)} COP` : null }</label>
                                             <input type="text" placeholder="Escribe aquí..." onChange={(e) =>{
                                                 setCotizacion({
                                                     ...cotizacion,
-                                                    bruto: e.target.value
+                                                    bruto: e.target.value.replace(/[^0-9]/g, '')
                                                 })
-                                            }} defaultValue={cotizacion.bruto}/>
+                                            }} value={cotizacion.bruto}/>
                                         </div>
                                         <div className="input">
-                                            <label htmlFor="">Descuento {cotizacion.descuento}</label>
-                                            <input type="number" placeholder="Escribe aquí..." onChange={(e) =>{
-                                                setCotizacion({
-                                                    ...cotizacion,
-                                                    descuento: e.target.value
-                                                })
-                                            }} defaultValue={cotizacion.descuento} />
+                                            <label htmlFor="">Descuento {cotizacion.descuento ? `${cotizacion.descuento} %` : null}</label>
+                                            <input type="text" placeholder="Escribe aquí..." onChange={(e) =>{
+                                                    setCotizacion({
+                                                        ...cotizacion,
+                                                        descuento: e.target.value.replace(/[^0-9]/g, '')
+                                                    })
+                                            }} value={cotizacion.descuento} />
+                                        </div>
+                                        <div className="inputDiv Check" onClick={() => change()}>
+                                            <input type="checkbox" checked={iva}/>
+                                            <label htmlFor="">Iva incluido</label>
                                         </div>
 
                                     </div> 

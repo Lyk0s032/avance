@@ -336,6 +336,29 @@ export function AxiosGetCotizacionesByAsesor(carga,asesorId){
     }
 }
 
+export function AxiosGetAllFunctionsForAsesor(carga, asesorId){
+    return function(dispatch){
+        dispatch(AxiosGetCotizacionesByAsesor(carga, asesorId))
+        dispatch(AxiosGetVisitasByAsesor(carga, asesorId))
+        dispatch(AxiosGetContactosByAsesor(carga, asesorId))
+        dispatch(AxiosGetClientsByAsesor(carga, asesorId))
+    }
+}
+export function AxiosGetAllFunctionForLider(carga){
+    return function(dispatch){
+        dispatch(AxiosGetCotizaciones(carga))
+        dispatch(AxiosGetVisitas(carga))
+        dispatch(AxiosGetContactos(carga));
+        dispatch(AxiosGetClients(carga));
+    }
+
+}
+export function GET_CLIENT_NEW_COTIZACION(client){
+    return {
+        type: 'GET_CLIENT_NEW_COTIZACION',
+        payload: client
+    }
+}
 
 // VISITAS
 export function GET_CALENDARIO(cotizaciones){

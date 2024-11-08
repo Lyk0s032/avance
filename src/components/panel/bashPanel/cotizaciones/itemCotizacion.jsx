@@ -75,7 +75,7 @@ export default function ItemCotizaciones(props){
                     <h3>
                         {
                             item.cotizacions && item.cotizacions.length ?
-                                `${item.cotizacions[0].descuento}%`
+                                `${item.cotizacions[0].descuento} %`
                             :null
                         }
                     </h3>
@@ -86,7 +86,7 @@ export default function ItemCotizaciones(props){
                     <h3>
                         {
                             item.cotizacions && item.cotizacions.length ?
-                                new Intl.NumberFormat('es-CO', {style: 'currency', currency:'COP'}).format(item.cotizacions[0].bruto) + ' COP'
+                                new Intl.NumberFormat('es-CO', {currency:'COP'}).format(item.cotizacions[0].bruto) + ' COP'
 
                             :null
                         } </h3>
@@ -97,7 +97,7 @@ export default function ItemCotizaciones(props){
                     <h3>
                         {
                             item.cotizacions && item.cotizacions.length ?
-                                new Intl.NumberFormat('es-CO', {style: 'currency', currency:'COP'}).format(item.cotizacions[0].neto) + ' COP'
+                                new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.cotizacions[0].neto) + ' COP'
 
 
                             :null

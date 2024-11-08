@@ -13,9 +13,15 @@ export default function VisitaIntento(props){
     const [call, setCall] = useState('question');
     const [note, setNote] = useState('');
     const [mistake, setMistake] = useState(null);
+    const [iva, setIva] = useState(true);
+
     const dispatch = useDispatch();
     const [params, setParams] = useSearchParams();
 
+    const change = () => {
+        setIva(!iva);
+        console.log('entra');
+    }
 
     const [time, setTime] = useState({
         dia: null,
@@ -83,7 +89,7 @@ export default function VisitaIntento(props){
         }
         const send = await axios.put('/visita/put/contestoPeroSinInteres', body)
         .then((res) => {
-            dispatch(actions.AxiosGetVisitas(false))
+            usuario.range == 'lider' ? dispatch(actions.AxiosGetVisitas(false)) : dispatch(actions.AxiosGetVisitasByAsesor(false, usuario.id))
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
@@ -138,10 +144,10 @@ export default function VisitaIntento(props){
         let brt = cotizacion.bruto; 
         let descuento = cotizacion.descuento;
 
-        let valorConDescuento = Number(brt) * Number((1 - descuento / 100)); 
+        let valorConDescuento = Number(brt) - Number((Number(brt) * (descuento / 100))); 
         let valorConIva = valorConDescuento * (19 / 100);
 
-        let valorFinal = valorConDescuento + valorConIva;
+        let valorFinal =  iva ? valorConDescuento + valorConIva : valorConDescuento;
 
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
@@ -152,7 +158,7 @@ export default function VisitaIntento(props){
             fecha: `${time.mes}-${time.dia}-${time.ano}`,
             bruto: cotizacion.bruto,
             descuento: cotizacion.descuento,
-            iva: cotizacion.iva,
+            iva: iva ? cotizacion.iva : 0,
             neto:valorFinal
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
@@ -238,7 +244,6 @@ export default function VisitaIntento(props){
                                 </div>
                             
                                 <div className='time'>
-                                    <label htmlFor="">Programar fecha</label>
                                     <div className='time'>
                                         <div className='cotizacion'>
                                             <div className="input">
@@ -260,24 +265,27 @@ export default function VisitaIntento(props){
                                                 }} defaultValue={cotizacion.nroCotizacion}/>
                                             </div>
                                             <div className="input">
-                                                <label htmlFor="">Valor Bruto {cotizacion.bruto}</label>
+                                                <label htmlFor="">Valor Bruto {cotizacion.bruto ? `${new Intl.NumberFormat('es-CO', { currency:'COP'}).format(cotizacion.bruto)} COP` : null }</label>
                                                 <input type="text" placeholder="Escribe aquí..." onChange={async (e) =>{
                                                     setCotizacion({
                                                         ...cotizacion,
-                                                        bruto: e.target.value
+                                                        bruto: e.target.value.replace(/[^0-9]/g, '')
                                                     })
-                                                }} defaultValue={cotizacion.bruto}/>
+                                                }} value={cotizacion.bruto}/>
                                             </div>
                                             <div className="input">
-                                                <label htmlFor="">Descuento {cotizacion.descuento}</label>
-                                                <input type="number" placeholder="Escribe aquí..." onChange={(e) =>{
+                                                <label htmlFor="">Descuento {cotizacion.descuento ? `${cotizacion.descuento} %` : null}</label>
+                                                <input type="text" placeholder="Escribe aquí..." onChange={(e) =>{
                                                     setCotizacion({
                                                         ...cotizacion,
-                                                        descuento: e.target.value
+                                                        descuento: e.target.value.replace(/[^0-9]/g, '')
                                                     })
-                                                }} defaultValue={cotizacion.descuento} />
+                                                }} value={cotizacion.descuento} />
                                             </div>
-
+                                            <div className="inputDiv Check" onClick={() => change()}>
+                                                <input type="checkbox" checked={iva}/>
+                                                <label htmlFor="">Iva incluido</label>
+                                            </div>
 
                                         </div>
                                         <label htmlFor="">Selecciona fecha de seguimiento</label>

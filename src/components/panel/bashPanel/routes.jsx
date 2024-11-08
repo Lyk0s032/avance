@@ -25,8 +25,8 @@ export default function RoutesPanel(props){
                 <Route path="/visita/*" element={<Visitas usuario={usuario}/>} />
                 <Route path="/cotizaciones/*" element={<Cotizaciones usuario={usuario} />} />
                 <Route path="/aprobadas/*" element={<Aprobadas clients={clients} usuario={usuario} />} />
-                <Route path="/espera/*" element={<Espera clients={clients} />} />
-                <Route path="/perdido/*" element={<Perdido clients={clients} />} />
+                <Route path="/espera/*" element={<Espera clients={clients} usuario={usuario} />} />
+                <Route path="/perdido/*" element={<Perdido clients={clients} usuario={usuario}/>} />
             
             </Routes>
 

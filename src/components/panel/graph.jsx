@@ -9,7 +9,7 @@ export default function Graph(props){
             
             <h3>
                 {
-                    new Intl.NumberFormat('es-CO', {style: 'currency', currency:'COP'}).format(total)
+                    new Intl.NumberFormat('es-CO', {currency:'COP'}).format(total)
                 } <span style={{fontSize:'16px'}}>COP</span>
             </h3>
         </div>

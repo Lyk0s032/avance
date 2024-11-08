@@ -1,10 +1,11 @@
 import React from 'react';
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdOutlineSettings } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import PrimerIntento from './acciones/primerIntento';
 import { useSearchParams } from 'react-router-dom';
 import ContactoIntento from './acciones/contactoIntento';
 import VisitaIntento from './acciones/visitaIntento';
+import EditClient from './acciones/editClient';
 
 export default function ModalRight(props){
     const usuario = props.usuario;
@@ -15,6 +16,7 @@ export default function ModalRight(props){
     
     return (
         <div className="rightNube">
+            {params.get('watch') == 'edit' ? <EditClient usuario={usuario} /> : null}
             <div className='header'>
                 <button onClick={() => {
                     params.delete('w');
@@ -28,7 +30,15 @@ export default function ModalRight(props){
                 <div className='infoR'>
                     <div className='ficha'>
                         <div className="headerFicha">
-                            Ficha tecnica
+                            <h3>
+                                Ficha Tecnica
+                            </h3>
+                            <button onClick={() => {
+                                params.set('watch', 'edit');
+                                setParams(params);
+                            }}>
+                                <MdOutlineSettings className="icon" />
+                            </button>
                         </div>
                         <div className='propiedades'>
                             <div className='parte'>
@@ -53,6 +63,9 @@ export default function ModalRight(props){
                                 <h3>Teléfono fijo:</h3>
                                 <span>{item.fijo ? item.fijo : 'Sin definir'}</span>
                             </div>
+                        </div>
+                        <div className="div">
+                            
                         </div>
                     </div>
                 </div>
