@@ -54,7 +54,9 @@ export default function Contacts(props){
                         </thead>
                         {
                             loading || !contactos ?
-                                <h3>Cargando...</h3>
+                                <div className="loading">
+                                    <h3>Cargando...</h3>
+                                </div>
                             :
                             <tbody>
                                 {

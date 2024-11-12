@@ -1482,6 +1482,19 @@
 .intentos .containerIntentos .listsContainerProspects table {
   width: 100%;
   border-collapse: collapse;
+  position: relative;
+}
+.intentos .containerIntentos .listsContainerProspects table .loading {
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  padding: 100px 0px;
+  text-align: center;
+}
+.intentos .containerIntentos .listsContainerProspects table .loading h1 {
+  font-size: 32px;
+  color: #1797f2;
+  font-weight: 100;
 }
 .intentos .containerIntentos .listsContainerProspects table thead {
   height: 10%;
@@ -1603,7 +1616,7 @@
   object-fit: cover;
 }
 .intentos .containerIntentos .listsContainerProspects table tbody tr td .containerAsesor .data h3 {
-  FFEB3Bfont-size: 16px;
+  font-size: 16px;
   font-weight: 400;
   color: #666;
 }

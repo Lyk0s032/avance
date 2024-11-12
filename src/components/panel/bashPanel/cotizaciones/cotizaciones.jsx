@@ -59,7 +59,9 @@ export default function Cotizaciones(props){
                         <tbody>
                             {
                                 loading || !cotizaciones ?
-                                    <h1>Cargando...</h1>
+                                    <div className="loading">
+                                        <h1>Cargando...</h1>
+                                    </div>
                                 :
                                 cotizaciones && cotizaciones.length ?
                                     cotizaciones.map((item, i) => {

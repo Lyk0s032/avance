@@ -40,7 +40,9 @@ export default function Visitas(props){
                         </thead>
                             {
                                 loading || !visitas ?
-                                    <h3>Cargando...</h3>
+                                    <div className="loading">
+                                        <h1>Cargando...</h1>
+                                    </div>
                                 :
                                 <tbody>
                                     {

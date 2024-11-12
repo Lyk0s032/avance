@@ -45,7 +45,9 @@ export default function Intentos(props){
                         </thead>
                         {
                             loading || !intentos ?
-                                <h3>Cargando...</h3>
+                                <div className="loading">
+                                    <h1>Cargando...</h1>
+                                </div>
                             :
                             <tbody>
                                 {
