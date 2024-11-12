@@ -23,35 +23,42 @@ export default function ItemAprobadas(props){
             </td>
             <td>
                 <div className='val'>
-                    <h3>
-                        {
-                                item.nro
-                        }
-                    </h3>
-                </div>
-            </td>
-            <td>
-                <div className='val'>
-                    <h3>
-                        {
-                                new Intl.NumberFormat('es-CO', {style: 'currency', currency:'COP'}).format(item.bruto) + ' COP'
+                    <div className="part">
+                        <span>Nro: </span>
+                        <h3 className="nro">
+                            { item.nro}
+                        </h3>
+                    </div>
+                    <div className="part">
+                        <span>Fecha: </span>
+                        <h3 className="nro">
+                            { item.fecha}
+                        </h3>
+                    </div>
+                    <div className="part">
+                        <span>Descuento: </span>
+                        <h3 className="nro">
+                           {`${new Intl.NumberFormat('es-CO', {currency:'COP'}).format(item.descuento)} COP`}
+                        </h3>
+                    </div>
+                    <div className="part">
+                        <span>V. Bruto: </span>
+                        <h3 className="bruto">
+                           {new Intl.NumberFormat('es-CO', {currency:'COP'}).format(item.bruto) + ' COP'}
+                        </h3>
+                    </div>
 
-                        } </h3>
-                </div>
-            </td>
-            <td>
-                <div className='val'>
-                    <h3>
-                        {
-                                new Intl.NumberFormat('es-CO', {style: 'currency', currency:'COP'}).format(item.neto) + ' COP'
-
-                        } 
-                    </h3>
+                    <div className="part">
+                        <span>V. Neto: </span>
+                        <h3 className="neto">
+                           {new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.neto) + ' COP'}
+                        </h3>
+                    </div>
                 </div>
             </td>
             <td>
                 <div className='options'>
-                    <span>Aprobada</span>
+                    <span style={{color: 'green'}}>Aprobada</span>
                 </div>
             </td>
         </tr>

@@ -28,10 +28,8 @@ export default function Aprobadas(props){
                         <thead>
                             <tr>
                                 <th>Cliente</th>
-                                <th>Nro Cotización</th>
-                                <th>Valor Bruto</th>
-                                <th>Valor Neto</th>
-                                <th></th>
+                                <th>Detalles cotización</th>
+                                <th>Estado</th>
 
                             </tr>
                         </thead>
