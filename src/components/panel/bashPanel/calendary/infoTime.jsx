@@ -24,9 +24,9 @@ export default function InfoTime(){
                 <div className="asesorBy">
                     <span>Encargado:</span>
                     <div className="asesorRes">
-                        <img src="https://res.cloudinary.com/dr8pv3hga/image/upload/v1730303001/crm-usuarios/felipe_ixagdn.jpg" alt="" />
+                        <img src={item.client.user.photo} alt="" />
                         <div className="resultadoAsesor">
-                            <h3>Brayan Ortega</h3>
+                            <h3>{item.client.user.name}</h3>
                             <span>Asesor</span> 
                         </div>
                     </div>
@@ -36,7 +36,11 @@ export default function InfoTime(){
                     <div className="cl">
                         <h1>{item.client.nombreEmpresa}</h1>
                         <h3>{item.client.name}</h3>
-                        <span>{item.client.phone}</span>
+                        <span>{item.client.phone}</span><br />
+                        <span>{item.client.email}</span><br />
+                        <span>{item.client.direccion}</span><br />
+                        <span>{item.client.fijo}</span><br />
+                        <span>{item.client.url}</span><br />
                     </div>
                     <div className="tagsCal">
                         <button>
