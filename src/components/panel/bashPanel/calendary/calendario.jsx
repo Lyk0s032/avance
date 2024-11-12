@@ -14,7 +14,8 @@ import { FcPrevious } from 'react-icons/fc';
 
 dayjs.locale('es');
 
-export default function Calendario(){
+export default function Calendario(props){
+    const usuario = props.usuario;
     const [params, setParams] = useSearchParams();
 
     const localizer = dayjsLocalizer(dayjs);
@@ -25,7 +26,6 @@ export default function Calendario(){
 
     const calendario = useSelector(store => store.calendario);
     const loading = useSelector(store => store.loadingCalendario);
-
 
     useEffect(() => {
         dispatch(actions.AxiosGetCalendario(true))
@@ -42,10 +42,10 @@ export default function Calendario(){
                 <div className="containerItem">
                     <div className="asesor">
                         <div className="img">
-                            <img src="https://res.cloudinary.com/dr8pv3hga/image/upload/v1730303001/crm-usuarios/felipe_ixagdn.jpg" alt="" />
+                            <img src={props.event.data.client.user.photo} alt="" />
                         </div>
                         <div className="data">
-                            <h3>Bryan</h3>
+                            <h3>{props.event.data.client.user.name}</h3>
                             <span>Asesor</span>
                         </div>
 
@@ -78,7 +78,9 @@ export default function Calendario(){
                     </button>
                 </div>
                 <div className="containerDivideCalendario">
-
+                    {
+                        usuario.rango == 'lider' ?
+                    
                     <div className="RightDesc">
                         <div className="containerDescRight">
                             {
@@ -134,6 +136,22 @@ export default function Calendario(){
                             </div>
                         </div>
                     </div>
+                
+                    :
+                    <div className='message'>
+                        <div>
+                            <h1>Pronto habilitaremos el calendario para ti.</h1>
+                            <span>Falta poco para activar esta funcionalidad.</span>
+                            <br /><br /><br /><br />
+                            <button onClick={() => {
+                                params.delete('w');
+                                setParams(params);
+                            }}>
+                                <span>Cerrar</span>
+                            </button>
+                        </div>
+                    </div>
+                    }
                 </div>
             </div>
         </div>

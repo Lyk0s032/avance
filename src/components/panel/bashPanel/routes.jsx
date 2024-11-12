@@ -16,11 +16,12 @@ import Calendario from "./calendary/calendario";
 export default function RoutesPanel(props){
     const usuario = props.user;
     const clients = props.clients;
+    console.log(usuario)
     const [params, setParams] = useSearchParams();
     return (
         <div className="routes">
             <Routes>
-                <Route path="/*" element={<Prospectos clients={clients} />} />
+                <Route path="/*" element={usuario.rango == 'lider' ? <Prospectos clients={clients} /> : <WelcomenAsesor usuario={usuario} />} />
                 <Route path="/try/*" element={<Intentos clients={clients} />} />
                 <Route path="/contacts/*" element={<Contacts usuario={usuario} />} />
                 <Route path="/visita/*" element={<Visitas usuario={usuario}/>} />
@@ -41,6 +42,20 @@ export default function RoutesPanel(props){
                     <ModalRight clients={clients} usuario={usuario} />
                 :null
             }                    
+        </div>
+    )
+}
+
+function WelcomenAsesor(props){
+    const usuario = props.usuario;
+    return (
+        <div className="welcomenAsesor">
+            <div className="hello">
+                <h1>
+                    Bienvenido/a, {usuario.name}. 
+                </h1>
+                <h3>Toma el control de todo tu espacio comercial</h3>
+            </div>
         </div>
     )
 }

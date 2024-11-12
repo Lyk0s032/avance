@@ -95,7 +95,7 @@ export default function Espera(props){
                                             </td>
                                             <td>
                                                 <div className='options'>
-                                                    <span>En espera</span>
+                                                    <span>En espera</span><br />
                                                 </div>
                                             </td>
                                         </tr>
