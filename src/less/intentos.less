@@ -96,6 +96,73 @@
                                     font-weight: bold;
                                 }
                             }
+                            .val{
+                                margin:20px 10px;
+                                .part{
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    margin-bottom: 10px;
+                                    span{
+                                        font-size: 11px;
+                                        color: #666;
+                                    }
+                                    .nro{
+                                        color: black;
+                                        font-weight: bold;
+                                        font-size: 14px;
+                                    }
+                                    .bruto{
+                                        font-weight: 400;
+                                        font-size: 15px;
+                                        color: #f44336;
+                                    }
+                                    .neto{
+                                        font-size: 15px;
+                                        font-weight: 400;
+                                        color: #1797f2;
+                                    }
+                                }
+                                .partCoti{
+                                    margin-bottom: 10px;
+                                    h1{
+                                        font-weight: bold;
+                                        font-size: 18px;
+                                        color: #484343;
+                                    }
+                                    h4{
+                                        color: #988a06;
+                                    }
+                                    span{
+                                        color: #666;
+                                    }
+                                }
+                            }
+                            .options{
+                                .cotiOptions{
+                                    button{
+                                        background-color: transparent;
+                                        border:none;
+                                        margin-right: 15px;
+                                        cursor: pointer;
+                                        transition: .3s;
+                                        .icon{
+                                            font-size: 18px;
+                                        }
+                                        .Cancel{
+                                            color:#f44336; 
+                                        }
+                                        .Check{
+                                            color:#21D59B;
+                                        }
+                                        span{
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    button:hover{
+                                        transform: scale(1.1);
+                                    }
+                                }
+                            }
                             .containerAsesor{
                                 display: flex;
                                 align-items: center;
@@ -115,7 +182,7 @@
                                 }
                                 .data{
                                     h3{
-                                        font-size: 16px;
+  FFEB3B                                      font-size: 16px;
                                         font-weight: 400;
                                         color: #666;
                                     }
@@ -473,6 +540,50 @@
                             .see:hover{
                                 background-color: #21D59B;
                                 border:1px solid #21D59B;
+                            }
+                            .WaitOrLost{
+                                margin:10px 0px;
+                                cursor: pointer;
+                                h2{
+                                    font-weight: 100;
+                                    color: #1797f2
+                                }
+                                h3{
+                                    font-size: 16px;
+                                    color: #484343
+                                }
+                                span{
+                                    color: #484343;
+                                }
+                            }
+                            .razon{
+                                padding:10px 0px;
+                                box-sizing: border-box;
+                                .note{
+                                    width:90%;
+                                    span{
+                                        font-size: 12px;
+                                        color: #484343;
+                                    }
+                                }
+                                .tags{
+                                    button{
+                                        background-color: transparent;
+                                        border:1px solid #ccc;
+                                        margin-bottom: 5px;
+                                        padding:7px 10px;
+                                        box-sizing: border-box;
+                                        border-radius: 20px;
+                                        cursor: pointer;
+                                        transition: .3s;
+                                        span{
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    button:hover{
+                                        transform: translateX(10%);
+                                    }
+                                }
                             }
                         }
                     }

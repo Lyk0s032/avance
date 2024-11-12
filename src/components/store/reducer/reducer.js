@@ -28,11 +28,16 @@ const initialState = {
     cotizaciones: null,
     loadingCotizaciones: null,
 
+    espera:null,
+    loadingEspera: false,
+
     newCotizacion: null,
     loadingNewCotizacion:false,
 
     calendario: null,
     loadingCalendario: false,
+
+    calendary: null
     // // asesor
     // asesor: null,
     // // Clientes
@@ -167,6 +172,24 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loadingCalerndario: action.payload
+            }
+        case 'GET_CALENDARY':
+            return {
+                ...state,
+                calendary: action.payload
+            }
+
+        case 'GETTING_ESPERA':
+            return {
+                ...state,
+                loadingEspera: action.payload
+            }
+        
+        case 'GET_ESPERA':
+            return {
+                ...state,
+                espera: action.payload,
+                loadingEspera: false
             }
 
         default:

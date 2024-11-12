@@ -1,0 +1,337 @@
+.itemCalendario{
+    width:100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding:10px 10px;
+    box-sizing: border-box;
+    transition: .3s;
+    background-color: white;
+    color: #666;
+
+    .asesor{
+        display: flex;
+        padding:0px 5px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+
+        img{
+            width:30px;
+            height:30px;
+            border-radius: 20px;
+
+        }
+        .data{
+            margin-left: 10px;
+            white-space:pre-wrap;
+            width:100%;
+
+            h3{
+                font-size: 12px;
+                margin:0px;
+                white-space:pre-wrap;
+            }
+            span{
+                font-size: 12px;
+            }
+        }
+        
+    }
+
+    .client{
+        margin-top:10px;
+        padding:0px 10px;
+
+        h3{
+            color: #314DE1;
+            font-size: 14px;
+        }
+        span{
+            font-size: 12px;
+        }
+    }
+}
+.itemCalendario:hover{
+    transform: scale(1.1);
+}
+.calendarioModal{
+    z-index:3;
+    position:fixed;
+    background-color: rgba(104, 104, 104, 0.111);
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+
+    .calendarioContainer{
+        background-color: white;
+        width:100%;
+        height:100vh;
+        box-sizing: border-box;
+        .header{
+            width:100%;
+            height: 5%;
+            box-sizing: border-box;
+            padding:0px 20px;
+
+            text-align: right;
+
+            button{
+                background-color: transparent;
+                border:none;
+                cursor: pointer;
+                transition: .3;
+                font-size: 18px;
+
+            }
+            button:hover{
+                transform: scale(1.1);
+            }
+        }
+        .containerDivideCalendario{
+            width:100%;
+            height:90%;
+            box-sizing: border-box;
+            display: flex;
+
+            .optionsNav{
+                height:100%;
+                border-right: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+            .RightDesc{
+                width:100%;
+                height:100%;
+                box-sizing: border-box;
+                .containerDescRight{
+                    width:100%;
+                    height:100%;
+                    .loading{
+                        height:100%;
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        .dataLoading{
+                            width:50%;
+                            h1{
+                                font-size: 38px;
+                                color: #314DE1;
+                                font-weight: 100;
+                            }
+                            span{
+                                font-size: 18px;
+                                color: #666;
+                            }
+                        }
+                    }
+                    .reactBig{
+                        width:90%;
+                        margin: auto;
+                        height:95%;
+
+                        .rbc-row-bg{
+                            .rbc-day-bg{
+                                padding:0px 10px;
+                            }
+                        }
+                        .rbc-time-view{
+                            overflow-y: auto;
+                            border:none;
+                        }
+                        
+                        .rbc-row-segment{
+                            padding:0px;
+                            flex-basis: 0%;
+                            border:none;
+                            .rbc-event{
+                                padding:0px;
+                                border:1px solid white;
+                                border-radius: 20px;
+                                margin:10px 0px;
+                            }
+                        }
+                        .rbc-event{
+                            background-color: transparent;
+                        }
+                        .rbc-event-label{
+                            display: none;
+                        }
+                        .rbc-time-content{
+                            display: none;
+                        }
+                        .rbc-time-gutter{
+                            display: none;
+                            .rbc-timeslot-group{
+                                display: none;
+                                .rbc-time-slot{
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                .Visualizator{
+                    border-left: 1px solid #ccc;
+                    background-color: white;
+                    z-index:4;
+                    position:fixed;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    width:40%;
+                    transform: translateX(100%);
+                    transition: .3s;
+                    .header{
+                        height: 10%;
+                        border-bottom:1px solid #ccc;
+                        display: flex;
+                        align-items: center;
+                        justify-content: end;
+                    }
+                    .containerType{
+                        width:100%;
+                        padding:10px;
+                        box-sizing: border-box;
+                        height:90%;
+                        overflow-y: auto;
+
+                        .infoTime{
+                            width:100%;
+                            .containerInfoTime{
+                                width:90%;
+                                margin:auto;
+                                .asesorBy{
+                                    width:100%;
+                                    padding:0px 10px;
+                                    box-sizing: border-box;
+
+                                        span{
+                                            font-size: 14px;
+                                            color: #666;
+                                        }
+                                        .asesorRes{
+                                            margin-top:10px;
+                                            display: flex;
+                                            align-items: center;
+                                            img{
+                                                width:40px;
+                                                height:40px;
+                                                border-radius: 20px;
+                                            }
+                                            .resultadoAsesor{
+                                                margin-left:10px;
+                                                h3{
+                                                    font-size: 16px;
+                                                }
+                                                span{
+                                                    font-size: 12px;
+                                                }
+                                            }
+                                        }
+                                }
+                                .titleInfoTime{
+                                    margin-top:30px;
+                                    width:100%;
+                                    padding:0px 10px;
+                                    box-sizing: border-box;
+                                    
+                                    span{
+                                        color: #666;
+                                        font-size: 14px;
+                                    }
+                                    .cl{
+                                        margin-top:5px;
+                                        h1{
+                                            font-weight: 100;
+                                            font-size: 18px;
+                                            color: #314DE1;
+                                        }
+                                        h3{
+                                            font-size: 14px;
+                                        }
+                                        span{
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    .tagsCal{
+                                        margin-top:10px;
+                                        button{
+                                            margin-right: 10px;
+                                            border:1px solid #314DE1;
+                                            background-color: transparent;
+                                            padding:6px 10px;
+                                            box-sizing: border-box;
+                                            border-radius: 20px;
+                                            transition: .3s; 
+
+                                            cursor: pointer;
+                                            span{
+                                                color: #314DE1;
+                                                font-size: 12px;
+                                            }
+
+                                        }
+                                        button:hover{
+                                            transform: translateY(5%);
+                                        }
+                                    }
+                                }
+                                .calendaryInfo{
+                                    border-top: 1px solid #ccc;
+                                    margin-top:30px;
+                                    padding: 10px;
+                                    box-sizing: border-box;
+                                    .time{
+                                        .boxTime{
+                                            text-align: center;
+
+                                            h1{
+                                                font-weight: bold;
+                                                font-size: 18px;
+                                                color: #314DE1;
+                                            }
+                                            span{
+                                                font-size: 14px;
+                                                color: #314DE1;
+                                            }
+                                        }
+                                    }
+                                    
+                                    .title{
+                                        margin-top:20px;
+                                        h1{
+                                            font-size: 18px;
+                                            font-weight: 400;
+                                            margin:0px;
+                                        }
+                                        h3{
+                                            font-size: 16px;
+                                            margin-bottom: 10px;
+                                            color: #314DE1;
+                                            strong{
+                                                font-style: italic;
+                                                font-weight: 600;
+                                            }
+                                        }
+                                        h4{
+                                            font-style: italic;
+                                            font-size: 14px;
+                                        }
+                                        span{
+                                            font-size: 12px;
+                                            color: #666;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .VisualizatorActive{
+                    transform: translateX(0%);
+                }
+            }
+        }
+    }
+}

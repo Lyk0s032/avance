@@ -130,7 +130,7 @@ export default function ContactoIntento(props){
         let brt = cotizacion.bruto; 
         let descuento = cotizacion.descuento;
     
-        let valorConDescuento = Number(brt) - Number((Number(brt) * (descuento / 100))); 
+        let valorConDescuento = Number(brt) - Number(descuento); 
         let valorConIva = valorConDescuento * (19 / 100);
     
         let valorFinal = iva ? valorConDescuento + valorConIva : valorConDescuento;
@@ -341,7 +341,7 @@ export default function ContactoIntento(props){
                                             }} value={cotizacion.bruto}/>
                                         </div>
                                         <div className="input">
-                                            <label htmlFor="">Descuento {cotizacion.descuento ? `${cotizacion.descuento} %` : null}</label>
+                                            <label htmlFor="">Descuento {cotizacion.descuento ? `${new Intl.NumberFormat('es-CO', { currency:'COP'}).format(cotizacion.descuento)} COP` : null}</label>
                                             <input type="text" placeholder="Escribe aquí..." onChange={(e) =>{
                                                     setCotizacion({
                                                         ...cotizacion,

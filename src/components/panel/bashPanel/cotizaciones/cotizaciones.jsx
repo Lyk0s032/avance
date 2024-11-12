@@ -50,10 +50,8 @@ export default function Cotizaciones(props){
                         <thead>
                             <tr>
                                 <th>Cliente</th>
-                                <th>Nro Cotización</th>
-                                <th>Desc. (%)</th>
-                                <th>V. Bruto</th>
-                                <th>V. Neto</th>
+                                <th>Detalles Cotización</th>
+                                <th>Estado</th>
                                 <th></th>
 
                             </tr>

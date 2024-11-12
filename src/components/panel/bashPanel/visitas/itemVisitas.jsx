@@ -52,11 +52,11 @@ export default function ItemVisitas(props){
                         :
                         <div className='containerAsesor'>
                             <div className='img'>
-                              <img src={usuario.photo} alt="" />
+                              <img src={item.user.photo} alt="" />
                             </div>
                             <div className='data'>
-                                <h3>{usuario.name}</h3>
-                                <span>{usuario.rango}</span>
+                                <h3>{item.user.name}</h3>
+                                <span>{item.user.rango}</span>
                             </div>
                         </div>
                     }

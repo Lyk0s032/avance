@@ -246,16 +246,78 @@ export default function PrimerIntento(props){
                                     }} className={tags.includes('mobiliario') ? 'Active' : null}>
                                         <span>Mobiliario</span>
                                     </button>
+
                                     <button onClick={() => {
-                                        if(tags.includes('estanteria')){
-                                            let newArray = tags.filter(item => item != 'estanteria');
+                                        if(tags.includes('estanteria supercarga')){
+                                            let newArray = tags.filter(item => item != 'estanteria supercarga');
                                             setTags(newArray);
                                         }else{
-                                            setTags([...tags, 'estanteria']);
+                                            setTags([...tags, 'estanteria supercarga']);
                                             console.log(tags)
                                         }
-                                    }} className={tags.includes('estanteria') ? 'Active' : null}> 
-                                        <span>Estanteria</span>
+                                    }} className={tags.includes('estanteria supercarga') ? 'Active' : null}> 
+                                        <span>Estanteria Supercarga</span>
+                                    </button>
+
+                                    <button onClick={() => {
+                                        if(tags.includes('estanteria liviana')){
+                                            let newArray = tags.filter(item => item != 'estanteria liviana');
+                                            setTags(newArray);
+                                        }else{
+                                            setTags([...tags, 'estanteria liviana']);
+                                            console.log(tags)
+                                        }
+                                    }} className={tags.includes('estanteria liviana') ? 'Active' : null}> 
+                                        <span>Estanteria Liviana</span>
+                                    </button>
+
+
+                                    <button onClick={() => {
+                                        if(tags.includes('mantenimiento estanteria')){
+                                            let newArray = tags.filter(item => item != 'mantenimiento estanteria');
+                                            setTags(newArray);
+                                        }else{
+                                            setTags([...tags, 'mantenimiento estanteria']);
+                                            console.log(tags)
+                                        }
+                                    }} className={tags.includes('mantenimiento estanteria') ? 'Active' : null}> 
+                                        <span>Mantenimiento estanteria</span>
+                                    </button>
+
+                                    <button onClick={() => {
+                                        if(tags.includes('mantenimiento sillas')){
+                                            let newArray = tags.filter(item => item != 'mantenimiento sillas');
+                                            setTags(newArray);
+                                        }else{
+                                            setTags([...tags, 'mantenimiento sillas']);
+                                            console.log(tags)
+                                        }
+                                    }} className={tags.includes('mantenimiento sillas') ? 'Active' : null}> 
+                                        <span>Mantenimiento sillas</span>
+                                    </button>
+
+                                    <button onClick={() => {
+                                        if(tags.includes('cerramiento en malla')){
+                                            let newArray = tags.filter(item => item != 'cerramiento en malla');
+                                            setTags(newArray);
+                                        }else{
+                                            setTags([...tags, 'cerramiento en malla']);
+                                            console.log(tags)
+                                        }
+                                    }} className={tags.includes('cerramiento en malla') ? 'Active' : null}> 
+                                        <span>Cerramiento en malla</span>
+                                    </button>
+
+                                    <button onClick={() => {
+                                        if(tags.includes('otros')){
+                                            let newArray = tags.filter(item => item != 'otros');
+                                            setTags(newArray);
+                                        }else{
+                                            setTags([...tags, 'otros']);
+                                            console.log(tags)
+                                        }
+                                    }} className={tags.includes('otros') ? 'Active' : null}> 
+                                        <span>Otros</span>
                                     </button>
 
                                     <button onClick={() => {
@@ -269,6 +331,7 @@ export default function PrimerIntento(props){
                                     }} className={tags.includes('sillas') ? 'Active' : null}> 
                                         <span>Sillas</span>
                                     </button>
+                                    
                                     <button onClick={() => {
                                         if(tags.includes('casilleros')){
                                             let newArray = tags.filter(item => item != 'casilleros');
@@ -280,6 +343,7 @@ export default function PrimerIntento(props){
                                     }} className={tags.includes('casilleros') ? 'Active' : null}> 
                                         <span>Casilleros</span>
                                     </button>
+
                                     <button onClick={() => {
                                         if(tags.includes('proyectos')){
                                             let newArray = tags.filter(item => item != 'proyectos');
@@ -291,6 +355,8 @@ export default function PrimerIntento(props){
                                     }} className={tags.includes('proyectos') ? 'Active' : null}> 
                                         <span>Proyectos</span>
                                     </button>
+
+
                                     <button onClick={() => {
                                         if(tags.includes('lockers')){
                                             let newArray = tags.filter(item => item != 'lockers');

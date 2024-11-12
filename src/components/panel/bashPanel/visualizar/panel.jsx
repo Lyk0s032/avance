@@ -12,7 +12,7 @@ export default function PanelVisualizar(props){
         })
     }
 
-    const aprobadas = advisor.aprobadas ? advisor.aprobadas.reduce((total, item) => total + Number(item.neto), 0) : 0;
+    const aprobadas = advisor.aprobadas ? advisor.aprobadas.reduce((total, item) => total + Number(item.bruto - item.descuento), 0) : 0;
 
     return (
         <div className="containerScroll">

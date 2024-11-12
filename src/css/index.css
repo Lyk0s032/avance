@@ -976,6 +976,31 @@
 }
 .rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .currently {
   width: 30%;
+  box-sizing: border-box;
+}
+.rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .currently .contenedorAsesor .wallpaperAsesor {
+  box-sizing: border-box;
+  text-align: center;
+  margin: 20px 0px;
+}
+.rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .currently .contenedorAsesor .wallpaperAsesor img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+.rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .currently .contenedorAsesor .dataAsesor {
+  text-align: center;
+  box-sizing: border-box;
+}
+.rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .currently .contenedorAsesor .dataAsesor h1 {
+  font-weight: 100;
+  color: #314DE1;
+  margin: 10px 0px;
+}
+.rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .currently .contenedorAsesor .dataAsesor span {
+  font-size: 16px;
+  color: #666;
 }
 .rightNube .editClient .containerEdit .asesorChangeOption .containerAsesor .changeAsesor {
   width: 60%;
@@ -1034,7 +1059,7 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 20px;
   background-color: #314DE1;
   border: 1px solid #314DE1;
   cursor: pointer;
@@ -1496,6 +1521,69 @@
   color: #666;
   font-weight: bold;
 }
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val {
+  margin: 20px 10px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .part {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .part span {
+  font-size: 11px;
+  color: #666;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .part .nro {
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .part .bruto {
+  font-weight: 400;
+  font-size: 15px;
+  color: #f44336;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .part .neto {
+  font-size: 15px;
+  font-weight: 400;
+  color: #1797f2;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .partCoti {
+  margin-bottom: 10px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .partCoti h1 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #484343;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .partCoti h4 {
+  color: #988a06;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .val .partCoti span {
+  color: #666;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .options .cotiOptions button {
+  background-color: transparent;
+  border: none;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .options .cotiOptions button .icon {
+  font-size: 18px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .options .cotiOptions button .Cancel {
+  color: #f44336;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .options .cotiOptions button .Check {
+  color: #21D59B;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .options .cotiOptions button span {
+  font-size: 12px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .options .cotiOptions button:hover {
+  transform: scale(1.1);
+}
 .intentos .containerIntentos .listsContainerProspects table tbody tr td .containerAsesor {
   display: flex;
   align-items: center;
@@ -1515,7 +1603,7 @@
   object-fit: cover;
 }
 .intentos .containerIntentos .listsContainerProspects table tbody tr td .containerAsesor .data h3 {
-  font-size: 16px;
+  FFEB3Bfont-size: 16px;
   font-weight: 400;
   color: #666;
 }
@@ -1846,6 +1934,48 @@
 .intentos .containerIntentos .listsContainerProspects table tbody tr td .see:hover {
   background-color: #21D59B;
   border: 1px solid #21D59B;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .WaitOrLost {
+  margin: 10px 0px;
+  cursor: pointer;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .WaitOrLost h2 {
+  font-weight: 100;
+  color: #1797f2;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .WaitOrLost h3 {
+  font-size: 16px;
+  color: #484343;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .WaitOrLost span {
+  color: #484343;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .razon {
+  padding: 10px 0px;
+  box-sizing: border-box;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .razon .note {
+  width: 90%;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .razon .note span {
+  font-size: 12px;
+  color: #484343;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .razon .tags button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  padding: 7px 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .razon .tags button span {
+  font-size: 12px;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody tr td .razon .tags button:hover {
+  transform: translateX(10%);
 }
 .intentos .containerIntentos .listsContainerProspects table tbody tr:hover {
   background-color: #f2f2f265;
@@ -2554,6 +2684,316 @@
 }
 .byAsesor .containerByAsesor .loading h1 {
   color: #21D59B;
+}
+.itemCalendario {
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  background-color: white;
+  color: #666;
+}
+.itemCalendario .asesor {
+  padding: 0px 5px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.itemCalendario .asesor img {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+.itemCalendario .asesor .data {
+  margin-left: 10px;
+  white-space: pre-wrap;
+  width: 100%;
+}
+.itemCalendario .asesor .data h3 {
+  font-size: 12px;
+  margin: 0px;
+  white-space: pre-wrap;
+}
+.itemCalendario .asesor .data span {
+  font-size: 12px;
+}
+.itemCalendario .client {
+  margin-top: 10px;
+  padding: 0px 10px;
+}
+.itemCalendario .client h3 {
+  color: #314DE1;
+  font-size: 14px;
+}
+.itemCalendario .client span {
+  font-size: 12px;
+}
+.itemCalendario:hover {
+  transform: scale(1.1);
+}
+.calendarioModal {
+  z-index: 3;
+  position: fixed;
+  background-color: rgba(104, 104, 104, 0.111);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.calendarioModal .calendarioContainer {
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.calendarioModal .calendarioContainer .header {
+  width: 100%;
+  height: 5%;
+  box-sizing: border-box;
+  padding: 0px 20px;
+  text-align: right;
+}
+.calendarioModal .calendarioContainer .header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3;
+  font-size: 18px;
+}
+.calendarioModal .calendarioContainer .header button:hover {
+  transform: scale(1.1);
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario {
+  width: 100%;
+  height: 90%;
+  box-sizing: border-box;
+  display: flex;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .optionsNav {
+  height: 100%;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight {
+  width: 100%;
+  height: 100%;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .loading {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .loading .dataLoading {
+  width: 50%;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .loading .dataLoading h1 {
+  font-size: 38px;
+  color: #314DE1;
+  font-weight: 100;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .loading .dataLoading span {
+  font-size: 18px;
+  color: #666;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig {
+  width: 90%;
+  margin: auto;
+  height: 95%;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-row-bg .rbc-day-bg {
+  padding: 0px 10px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-time-view {
+  overflow-y: auto;
+  border: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-row-segment {
+  padding: 0px;
+  flex-basis: 0%;
+  border: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-row-segment .rbc-event {
+  padding: 0px;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin: 10px 0px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-event {
+  background-color: transparent;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-event-label {
+  display: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-time-content {
+  display: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-time-gutter {
+  display: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-time-gutter .rbc-timeslot-group {
+  display: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .containerDescRight .reactBig .rbc-time-gutter .rbc-timeslot-group .rbc-time-slot {
+  display: none;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator {
+  border-left: 1px solid #ccc;
+  background-color: white;
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  transform: translateX(100%);
+  transition: 0.3s;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .header {
+  height: 10%;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 90%;
+  overflow-y: auto;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime {
+  width: 100%;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime {
+  width: 90%;
+  margin: auto;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy {
+  width: 100%;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy span {
+  font-size: 14px;
+  color: #666;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy .asesorRes {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy .asesorRes img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy .asesorRes .resultadoAsesor {
+  margin-left: 10px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy .asesorRes .resultadoAsesor h3 {
+  font-size: 16px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .asesorBy .asesorRes .resultadoAsesor span {
+  font-size: 12px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime {
+  margin-top: 30px;
+  width: 100%;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime span {
+  color: #666;
+  font-size: 14px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .cl {
+  margin-top: 5px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .cl h1 {
+  font-weight: 100;
+  font-size: 18px;
+  color: #314DE1;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .cl h3 {
+  font-size: 14px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .cl span {
+  font-size: 14px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .tagsCal {
+  margin-top: 10px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .tagsCal button {
+  margin-right: 10px;
+  border: 1px solid #314DE1;
+  background-color: transparent;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .tagsCal button span {
+  color: #314DE1;
+  font-size: 12px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .titleInfoTime .tagsCal button:hover {
+  transform: translateY(5%);
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .time .boxTime {
+  text-align: center;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .time .boxTime h1 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #314DE1;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .time .boxTime span {
+  font-size: 14px;
+  color: #314DE1;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .title {
+  margin-top: 20px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .title h1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .title h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #314DE1;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .title h3 strong {
+  font-style: italic;
+  font-weight: 600;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .title h4 {
+  font-style: italic;
+  font-size: 14px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .calendaryInfo .title span {
+  font-size: 12px;
+  color: #666;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .VisualizatorActive {
+  transform: translateX(0%);
 }
 .sign {
   width: 100%;

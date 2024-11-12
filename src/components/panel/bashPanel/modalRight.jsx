@@ -13,10 +13,9 @@ export default function ModalRight(props){
     const item = useSelector(store => store.cliente);
     const [params, setParams] = useSearchParams();
 
-    
     return (
         <div className="rightNube">
-            {params.get('watch') == 'edit' ? <EditClient usuario={usuario} /> : null}
+            {params.get('watch') == 'edit' ? <EditClient clients={clients} usuario={usuario} /> : null}
             <div className='header'>
                 <button onClick={() => {
                     params.delete('w');

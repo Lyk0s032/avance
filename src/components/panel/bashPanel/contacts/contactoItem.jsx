@@ -15,7 +15,7 @@ export default function ItemContact(props){
     
     const dispatch = useDispatch();
 
-
+    console.log(usuario)
     const open = async (cliente) => {
         dispatch(actions.ActionGetCliente(cliente));
         params.set('w', 'action');
@@ -32,7 +32,7 @@ export default function ItemContact(props){
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
-                    <strong className="asesor">Por {usuario.range == 'lider' ? item.user.name : usuario.name}</strong>
+                    <strong className="asesor">Por {usuario.rango == 'lider' ? item.user.name : usuario.name}</strong>
                 </div>
             </td>
             <td>
@@ -102,7 +102,7 @@ export default function ItemContact(props){
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
-                    <strong className="asesor">Por {usuario.range == 'lider' ? item.user.name : usuario.name}</strong>
+                    <strong className="asesor">Por {usuario.rango == 'lider' ? item.user.name : usuario.name}</strong>
                 </div>
             </td>
             <td>
@@ -198,7 +198,7 @@ export default function ItemContact(props){
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
-                    <strong className="asesor">Por {usuario.range == 'lider' ? item.user.name : usuario.name}</strong>
+                    <strong className="asesor">Por {usuario.rango == 'lider' ? item.user.name : usuario.name}</strong>
                 </div>
             </td>
             <td>

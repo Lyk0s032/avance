@@ -394,3 +394,68 @@ export function AxiosGetCalendario(carga){
         })
     }
 }
+
+export function GET_CALENDARY(data){
+    return {
+        type: 'GET_CALENDARY',
+        payload: data
+    }
+}
+
+export function GETTING_ESPERA(carga){
+    return {
+        type: 'GETTING_ESPERA',
+        payload: carga
+    }
+}
+export function GET_ESPERA(res){
+    return {
+        type: 'GET_ESPERA',
+        payload: res
+    }
+}
+// PARA LIDER
+export function AxiosGetEspera(carga){
+    return function(dispatch){
+        dispatch(GETTING_ESPERA(carga))
+        axios.get(`/clients/get/all/espera/`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_ESPERA(false));
+            return dispatch(GET_ESPERA(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_ESPERA(false));
+            if(e.response.status == 404){
+                return dispatch(GET_ESPERA(404))
+            }else{
+                return dispatch(GET_ESPERA('request'));
+            }
+        })
+    }
+}
+
+// PARA ASESOR
+export function AxiosGetEsperaByAsesor(carga,asesorId){
+    return function(dispatch){
+        dispatch(GETTING_ESPERA(carga))
+        axios.get(`/clients/get/all/espera/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_ESPERA(false));
+            return dispatch(GET_ESPERA(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_ESPERA(false));
+            if(e.response.status == 404){
+                return dispatch(GET_ESPERA(404))
+            }else{
+                return dispatch(GET_ESPERA('request'));
+            }
+        })
+    }
+}

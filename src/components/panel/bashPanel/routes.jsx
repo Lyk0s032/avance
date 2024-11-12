@@ -11,6 +11,7 @@ import Espera from "./espera/espera";
 import Aprobadas from "./aprobadas/aprobadas";
 import Perdido from "./espera/perdido";
 import ModalRight from "./modalRight";
+import Calendario from "./calendary/calendario";
 
 export default function RoutesPanel(props){
     const usuario = props.user;
@@ -34,7 +35,7 @@ export default function RoutesPanel(props){
                 params.get('w') == 'fuente' ?
                     <NewFuente clients={clients}/>
                 : params.get('w') == 'calendario' ?
-                    <Calendary usuario={usuario}/>
+                    <Calendario usuario={usuario}/>
                 :
                 params.get('w') == 'action' ?
                     <ModalRight clients={clients} usuario={usuario} />

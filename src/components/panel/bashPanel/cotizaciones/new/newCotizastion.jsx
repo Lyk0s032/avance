@@ -49,7 +49,7 @@ export default function FormNewCotization(props){
         let brt = cotizacion.bruto; 
         let descuento = cotizacion.descuento;
 
-        let valorConDescuento = Number(brt) - Number((Number(brt) * (descuento / 100))); 
+        let valorConDescuento = Number(brt) - Number(descuento); 
         let valorConIva = valorConDescuento * (19 / 100); 
         let valorFinal = iva ? valorConDescuento + valorConIva : valorConDescuento;
 
@@ -177,7 +177,7 @@ export default function FormNewCotization(props){
                             }} value={cotizacion.bruto}/>
                         </div>
                         <div className="inputDiv">
-                            <label htmlFor="">Descuento (Porcentaje) {cotizacion.descuento ? `${cotizacion.descuento} %` : null}</label><br />
+                            <label htmlFor="">Descuento {cotizacion.descuento ? `${new Intl.NumberFormat('es-CO', { currency:'COP'}).format(cotizacion.descuento)} COP` : null}</label><br />
                             <input type="text" placeholder='Escribe aquí...' onChange={(e) => {
                                 setCotizacion({
                                     ...cotizacion,

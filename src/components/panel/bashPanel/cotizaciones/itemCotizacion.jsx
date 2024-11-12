@@ -4,6 +4,7 @@ import { BsPlus, BsQuestion } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
 import * as actions from './../../../store/action/action';
 import { useDispatch } from 'react-redux';
+import { MdCheckCircleOutline, MdMoreTime, MdOutlineCancel } from 'react-icons/md';
 
 export default function ItemCotizaciones(props){
     const item = props.item;
@@ -36,7 +37,7 @@ export default function ItemCotizaciones(props){
     const aplazarCotizacion = async() => {
         let body = {
             clientId: item.id,
-            cotizationId: item.cotizations && item.cotizations.length ? item.cotizations[0].id : null,
+            cotizacionId: item.cotizacions && item.cotizacions.length ? item.cotizacions[0].id : null,
         }
         let send = await axios.put('/cotizacion/put/aplazarEstado', body)
         .then((res) => {
@@ -47,6 +48,7 @@ export default function ItemCotizaciones(props){
             console.log(err);
             console.log('error');
         })
+        console.log(body)
         return send;
     }
 
@@ -60,50 +62,72 @@ export default function ItemCotizaciones(props){
             </td>
             <td>
                 <div className='val'>
-                    <h3>
-                        {
-                            item.cotizacions && item.cotizacions.length ?
-                                item.cotizacions[0].nro
+                    <div className="part">
+                        <span>Nro: </span>
+                        <h3 className="nro">
+                            { item.cotizacions && item.cotizacions.length ? item.cotizacions[0].nro : null}
+                        </h3>
+                    </div>
+                    <div className="part">
+                        <span>Fecha: </span>
+                        <h3 className="nro">
+                            { item.cotizacions && item.cotizacions.length ? item.cotizacions[0].fecha : null}
+                        </h3>
+                    </div>
+                    <div className="part">
+                        <span>Descuento: </span>
+                        <h3 className="nro">
+                           {item.cotizacions && item.cotizacions.length ?`${new Intl.NumberFormat('es-CO', {currency:'COP'}).format(item.cotizacions[0].descuento)} COP` : null}
+                        </h3>
+                    </div>
+                    <div className="part">
+                        <span>V. Bruto: </span>
+                        <h3 className="bruto">
+                           {item.cotizacions && item.cotizacions.length ? new Intl.NumberFormat('es-CO', {currency:'COP'}).format(item.cotizacions[0].bruto) + ' COP' : null}
+                        </h3>
+                    </div>
 
-                            :null
-                        }
-                    </h3>
+                    <div className="part">
+                        <span>V. Neto: </span>
+                        <h3 className="neto">
+                           {item.cotizacions && item.cotizacions.length ?  new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.cotizacions[0].neto) + ' COP' : null}
+                        </h3>
+                    </div>
                 </div>
             </td>
+
             <td>
                 <div className="val">
-                    <h3>
-                        {
-                            item.cotizacions && item.cotizacions.length ?
-                                `${item.cotizacions[0].descuento} %`
-                            :null
-                        }
-                    </h3>
-                </div>
-            </td>
-            <td>
-                <div className='val'>
-                    <h3>
-                        {
-                            item.cotizacions && item.cotizacions.length ?
-                                new Intl.NumberFormat('es-CO', {currency:'COP'}).format(item.cotizacions[0].bruto) + ' COP'
+                    <div className="partCoti">
+                        <h1>Pendiente</h1>
+                    </div>
+                    {
+                        item.cotizacions && item.cotizacions.length ?
+                            item.cotizacions[0].state == 'aplazada' ?
+                            <div className='partCoti'>
+                                <h4>
+                                    Aplazada
+                                </h4>
+                                <span>
+                                    Próximo: 
+                                    
+                                    {
+                                        item.calendarios && item.calendarios.length ?
+                                            item.calendarios.find(calendario => calendario.type == 'Cotizacion aplazada') ?
+                                                ` ${item.calendarios.find(calendario => calendario.type == 'Cotizacion aplazada').fecha}`
+                                            : 'Sin definir'
+                                        :null
+                                    }
+                                </span>
 
-                            :null
-                        } </h3>
-                </div>
-            </td>
-            <td>
-                <div className='val'>
-                    <h3>
-                        {
-                            item.cotizacions && item.cotizacions.length ?
-                                new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.cotizacions[0].neto) + ' COP'
+                            </div>
+                        :null
+                        :
+                        null
+                    }
+                    
 
-
-                            :null
-                        } 
-                    </h3>
-                </div>
+                </div>                
             </td>
             <td>
                 <div className='options'>
@@ -115,15 +139,18 @@ export default function ItemCotizaciones(props){
                             </button>
                         </div>
                         :
-                        <div>
+                        <div className='cotiOptions'>
                             <button onClick={() => sendCotization('perdida')}> 
-                                <span>Perdida</span>
+                                <MdOutlineCancel className='icon Cancel' /><br />
+                                <span className='Cancel'>Perdida</span>
                             </button>
                             <button onClick={() => sendCotization('aprobada')}>
-                                <span>Aprobada</span>
+                                <MdCheckCircleOutline className="icon Check" /><br />
+                                <span className='Check'>Aprobar</span> 
                             </button>
                             <button onClick={() => aplazarCotizacion()}>
-                                <span>Aplazar</span>
+                                <MdMoreTime className="icon Time" /><br />
+                                <span >Aplazar</span>
                             </button>
                         </div>
                     }
