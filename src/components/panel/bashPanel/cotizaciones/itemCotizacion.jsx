@@ -18,11 +18,12 @@ export default function ItemCotizaciones(props){
         let body = {
             clientId: item.id,
             cotizacionId: item.cotizacions && item.cotizacions.length ? item.cotizacions[0].id : null,
+            note: enter == 'aprobada' ? 'Cotización aprobada con éxito.' : enter ==  'perdida' ? 'Cotización perdida' : null,
             stateEnter: enter
         }
         let send = await axios.put('/cotizacion/put/cambiarEstado', body)
         .then((res) => {
-            usuario.range == 'lider' ? dispatch(actions.AxiosGetCotizaciones(false)) : dispatch(actions.AxiosGetCotizacionesByAsesor(false, usuario.id))
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetCotizaciones(false)) : dispatch(actions.AxiosGetCotizacionesByAsesor(false, usuario.id))
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
             
             setMove(true);
@@ -51,13 +52,25 @@ export default function ItemCotizaciones(props){
         console.log(body)
         return send;
     }
-
+    const open = async (cliente, see) => {
+        dispatch(actions.ActionGetCliente(cliente));
+        params.set('w', 'action');
+        params.set('y', 'Cotizacion');
+        see ? params.set('watch', 'edit') : null
+        setParams(params);
+    }
     return (
         <tr>
-            <td>
-                <div className='prospectProfile'>
+            <td onClick={() => open(item)} style={{cursor: 'pointer'}}>
+                <div className='prospectProfile' >
                     <h3>{item.nombreEmpresa}</h3>
-                    <span>{item.phone}</span>
+                    <span>{item.phone}</span><br /><br />
+                    
+                    {
+                        usuario.rango == 'lider' ?
+                            <span>Por {item.user ? item.user.name : 'Sin definir'}</span>
+                        : null
+                    }
                 </div>
             </td>
             <td>

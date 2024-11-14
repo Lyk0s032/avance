@@ -101,6 +101,54 @@ export function AxiosGetClientsByAsesor(carga, asesorId){
     }
 }
 
+// OBTENER LEADS
+export function GET_LEADS(clientes){
+    return {
+        type: 'GET_LEADS',
+        payload: clientes
+    }
+}
+export function GETTING_LEADS(carga){
+    return {
+        type: 'GETTING_LEADS',
+        payload: carga
+    }
+}
+
+export function AxiosGetLeads(carga, page, asesor){
+    return function(dispatch){
+        dispatch(GETTING_LEADS(carga))
+        axios.get(`/client/get/all/visualizar/`, {
+            params: {
+                page: page,
+                asesor: asesor ? asesor : null
+            }
+        })
+        .then((info) => {
+            console.log(info);
+            return info.data.rows
+        })
+        .then(inf => {
+            dispatch(GETTING_LEADS(false));
+            return dispatch(GET_LEADS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_LEADS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_LEADS(404))
+            }else{
+                return dispatch(GET_LEADS('request'));
+            }
+        })
+    }
+}
+
+export function SearchClientLeads(leads){
+    return function(dispatch){
+        dispatch(GET_LEADS(leads))
+    }
+}
 // OBTENER DATOS PARA VISUALIZAR ASESORES.
 export function GET_ADVISORS(advisors){
     return {
@@ -336,20 +384,88 @@ export function AxiosGetCotizacionesByAsesor(carga,asesorId){
     }
 }
 
+// APROBADAS
+export function GET_APROBADAS(aprobadas){
+    return {
+        type: 'GET_APROBADAS',
+        payload: aprobadas
+    }
+}
+export function GETTING_APROBADAS(carga){
+    return {
+        type: 'GETTING_APROBADAS',
+        payload: carga
+    }
+}
+export function AxiosGetAprobadas(carga){
+    return function(dispatch){
+        dispatch(GETTING_APROBADAS(carga))
+        axios.get(`/clients/get/all/aprobadas/`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_APROBADAS(false));
+            return dispatch(GET_APROBADAS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_APROBADAS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_APROBADAS(404))
+            }else{
+                return dispatch(GET_APROBADAS('request'));
+            }
+        })
+    }
+}
+export function AxiosGetAprobadasByAsesor(carga,asesorId){
+    return function(dispatch){
+        dispatch(GETTING_APROBADAS(carga))
+        axios.get(`/clients/get/all/aprobadas/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_APROBADAS(false));
+            return dispatch(GET_APROBADAS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_APROBADAS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_APROBADAS(404))
+            }else{
+                return dispatch(GET_APROBADAS('request'));
+            }
+        })
+    }
+}
+
+
+
 export function AxiosGetAllFunctionsForAsesor(carga, asesorId){
     return function(dispatch){
         dispatch(AxiosGetCotizacionesByAsesor(carga, asesorId))
         dispatch(AxiosGetVisitasByAsesor(carga, asesorId))
         dispatch(AxiosGetContactosByAsesor(carga, asesorId))
         dispatch(AxiosGetClientsByAsesor(carga, asesorId))
+        dispatch(AxiosGetPerdidoByAsesor(carga, asesorId))
+        dispatch(AxiosGetEsperaByAsesor(carga, asesorId))
+        dispatch(AxiosGetAprobadas(carga, asesorId));
+
     }
 }
 export function AxiosGetAllFunctionForLider(carga){
     return function(dispatch){
+        dispatch(AxiosGetIntentos(carga));
         dispatch(AxiosGetCotizaciones(carga))
         dispatch(AxiosGetVisitas(carga))
         dispatch(AxiosGetContactos(carga));
         dispatch(AxiosGetClients(carga));
+        dispatch(AxiosGetPerdido(carga));
+        dispatch(AxiosGetEspera(carga));
+        dispatch(AxiosGetAprobadas(carga));
+
+
     }
 
 }
@@ -373,10 +489,14 @@ export function GETTING_CALENDARIO(carga){
         payload: carga
     }
 }
-export function AxiosGetCalendario(carga){
+export function AxiosGetCalendario(carga, asesor){
     return function(dispatch){
         dispatch(GETTING_CALENDARIO(carga))
-        axios.get(`/calendario/get/all/`)
+        axios.get(`/calendario/get/all/`, {
+            params:{
+                asesor: asesor ? asesor : null
+            }
+        })
         .then((info) => info.data)
         .then(inf => {
             console.log(inf)
@@ -455,6 +575,66 @@ export function AxiosGetEsperaByAsesor(carga,asesorId){
                 return dispatch(GET_ESPERA(404))
             }else{
                 return dispatch(GET_ESPERA('request'));
+            }
+        })
+    }
+}
+
+
+
+export function GETTING_PERDIDO(carga){
+    return {
+        type: 'GETTING_PERDIDO',
+        payload: carga
+    }
+}
+export function GET_PERDIDO(res){
+    return {
+        type: 'GET_PERDIDO',
+        payload: res
+    }
+}
+// PARA LIDER
+export function AxiosGetPerdido(carga){
+    return function(dispatch){
+        dispatch(GETTING_PERDIDO(carga))
+        axios.get(`/clients/get/all/perdido/`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_PERDIDO(false));
+            return dispatch(GET_PERDIDO(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_PERDIDO(false));
+            if(e.response.status == 404){
+                return dispatch(GET_PERDIDO(404))
+            }else{
+                return dispatch(GET_PERDIDO('request'));
+            }
+        })
+    }
+}
+
+// PARA ASESOR
+export function AxiosGetPerdidoByAsesor(carga,asesorId){
+    return function(dispatch){
+        dispatch(GETTING_PERDIDO(carga))
+        axios.get(`/clients/get/all/perdido/${asesorId}`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_PERDIDO(false));
+            return dispatch(GET_PERDIDO(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_PERDIDO(false));
+            if(e.response.status == 404){
+                return dispatch(GET_PERDIDO(404))
+            }else{
+                return dispatch(GET_PERDIDO('request'));
             }
         })
     }

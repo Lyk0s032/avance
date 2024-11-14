@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BsQuestion } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './../../../store/action/action';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Espera(props){
     const usuario = props.usuario;
@@ -9,8 +10,17 @@ export default function Espera(props){
 
     const espera = useSelector(store => store.espera);
     const loading = useSelector(store => store.loadingEspera);
-
+    const [params, setParams] = useSearchParams();
     const dispatch = useDispatch();
+
+    const open = async (cliente, see) => {
+        dispatch(actions.ActionGetCliente(cliente));
+        params.set('w', 'action');
+        see ? params.set('watch', 'edit') : null
+        setParams(params);
+    }
+
+
     useEffect(() => {
         usuario.rango == 'lider' ?
             dispatch(actions.AxiosGetEspera(false))
@@ -37,9 +47,7 @@ export default function Espera(props){
                         <thead>
                             <tr>
                                 <th>Cliente</th>
-                                <th>Nota</th>
-                                <th>Tags</th>
-                                <th></th>
+                                <th>Razones</th>
                                 <th>Estado</th>
 
                             </tr>
@@ -50,13 +58,16 @@ export default function Espera(props){
                                     espera.map((item, i) => {
                                         return (
                                             <tr>
-                                            <td>
+                                            <td onClick={() => open(item)}>
                                                 <div className='WaitOrLost'>
                                                     <h2>{item.nombreEmpresa ? item.nombreEmpresa : null}</h2>
                                                     <h3>{item.name}</h3>
                                                     <span>{item.phone}</span><br /><br />
+
+                                                    <span style={{color: 'green'}}>{item.embudo}</span><br /><br />
+
                                            
-                                                    <strong className="asesor">Por {usuario.range == 'lider' ? item.user.name : usuario.name}</strong>
+                                                    <strong className="asesor">{usuario.rango == 'lider' ? item.user ? `Por ${item.user.name}` : 'Sin asesor' : usuario.name }</strong>
                                                     
                                                 </div>
                                             </td>
@@ -70,8 +81,6 @@ export default function Espera(props){
                                                         }
                                                     </div>
                                                 </div>
-                                            </td>
-                                            <td>
                                                 <div className="razon">
                                                     <div className="tags">
                                                         {
@@ -88,11 +97,9 @@ export default function Espera(props){
                                                             : <span>vacio</span>
                                                         }
                                                     </div>
-                                                </div>        
+                                                </div>   
                                             </td>
-                                            <td>
-                                                
-                                            </td>
+
                                             <td>
                                                 <div className='options'>
                                                     <span>En espera</span><br />

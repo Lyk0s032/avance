@@ -12,6 +12,12 @@ const initialState = {
     cliente: null,
     loadingCliente: false,
 
+    // Leads
+    leads: null,
+    loadingLeads: false,
+
+    searchLeads: null,
+    loadingSearchLeads: false,
     // Visualizar asesores.
     advisors: null,
     loadingAdvisors: false,
@@ -28,8 +34,14 @@ const initialState = {
     cotizaciones: null,
     loadingCotizaciones: null,
 
+    aprobadas: null,
+    loadingAprobadas: false,
+
     espera:null,
     loadingEspera: false,
+
+    perdido: null,
+    loadingPerdido: false,
 
     newCotizacion: null,
     loadingNewCotizacion:false,
@@ -38,6 +50,8 @@ const initialState = {
     loadingCalendario: false,
 
     calendary: null
+
+
     // // asesor
     // asesor: null,
     // // Clientes
@@ -96,6 +110,31 @@ export default (state = initialState, action) => {
                 ...state,
                 loadingCliente:true
             }
+ 
+        // LEADS
+        case 'GET_LEADS':
+            return {
+                ...state,
+                leads: action.payload,
+                loadingLeads: false
+            }
+        case 'GETTING_LEADS':
+            return {
+                ...state,
+                loadingLeads: action.payload
+            }
+
+        case 'GET_SEARCH_LEADS':
+            return {
+                ...state,
+                searchLeads: action.payload
+            }
+        case 'GETTING_SEARCH_LEADS':
+            return {
+                ...state,
+                loadingSearchLeads: action.payload
+            }
+
         // OBTENER DATOS PARA VISUALIZAR ASESOR
         case 'GET_ADVISORS':
             return {
@@ -155,6 +194,19 @@ export default (state = initialState, action) => {
                 loadingCotizaciones: action.payload
             }
 
+        // APROBADAS
+        case 'GET_APROBADAS':
+            return {
+                ...state,
+                aprobadas:action.payload,
+                loadingAprobadas: false
+            }
+        case 'GETTING_APROBADAS':
+            return {
+                ...state,
+                loadingAprobadas: action.payload
+            }
+
         case 'GET_CLIENT_NEW_COTIZACION':
             return {
                 ...state,
@@ -190,6 +242,19 @@ export default (state = initialState, action) => {
                 ...state,
                 espera: action.payload,
                 loadingEspera: false
+            }
+
+        case 'GETTING_PERDIDO':
+            return {
+                ...state,
+                loadingPerdido: action.payload
+            }
+        
+        case 'GET_PERDIDO':
+            return {
+                ...state,
+                perdido: action.payload,
+                loadingPerdido: false
             }
 
         default:

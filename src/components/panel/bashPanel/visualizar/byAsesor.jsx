@@ -51,7 +51,7 @@ export default function ByAsesorPanel(props){
                         : <div></div>
                     }
                     <button className="close" onClick={() => {
-                        params.delete('watch');
+                        params.delete('view');
                         setParams(params);
                     }}>
                         <MdClose className="icon" />

@@ -15,10 +15,11 @@ export default function ItemVisitas(props){
     const dispatch = useDispatch();
 
 
-    const open = async (cliente) => {
+    const open = async (cliente, see) => {
         dispatch(actions.ActionGetCliente(cliente));
         params.set('w', 'action');
         params.set('y', 'Visita');
+        see ? params.set('watch', 'edit') : null
         setParams(params);
     }
 
@@ -26,9 +27,8 @@ export default function ItemVisitas(props){
     return (
         <tr>
             <td>
-                {console.log(item)}
                 <div className='prospectProfile'>
-                    <div className='cl'>    
+                    <div className='cl' onClick={() => open(item, true)}>    
                         <h2 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h2>
                         <h3 className="businessPersona">{item.name}</h3>
 
@@ -39,7 +39,7 @@ export default function ItemVisitas(props){
             <td>
                 <div className='prospectProfile'>
                     {
-                        usuario.range == 'lider' ?
+                        usuario.rango == 'lider' ?
                         <div className='containerAsesor'>
                             <div className='img'>
                                 <img src={item.user.photo} alt="" />
@@ -52,11 +52,11 @@ export default function ItemVisitas(props){
                         :
                         <div className='containerAsesor'>
                             <div className='img'>
-                              <img src={item.user.photo} alt="" />
+                              <img src={usuario.photo} alt="" />
                             </div>
                             <div className='data'>
-                                <h3>{item.user.name}</h3>
-                                <span>{item.user.rango}</span>
+                                <h3>{usuario.name}</h3>
+                                <span>{usuario.rango}</span> 
                             </div>
                         </div>
                     }

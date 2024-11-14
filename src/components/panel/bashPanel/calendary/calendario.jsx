@@ -28,7 +28,7 @@ export default function Calendario(props){
     const loading = useSelector(store => store.loadingCalendario);
 
     useEffect(() => {
-        dispatch(actions.AxiosGetCalendario(true))
+        dispatch(actions.AxiosGetCalendario(true, usuario.rango == 'lider' ? null : usuario.id))
     }, [])
 
     const component = {
@@ -42,10 +42,10 @@ export default function Calendario(props){
                 <div className="containerItem">
                     <div className="asesor">
                         <div className="img">
-                            <img src={props.event.data.client.user.photo} alt="" />
+                            <img src={props.event.data.client.user ?props.event.data.client.user.photo : null} alt="" />
                         </div>
                         <div className="data">
-                            <h3>{props.event.data.client.user.name}</h3>
+                            <h3>{props.event.data.client.user ? props.event.data.client.user.name : 'sin definir'}</h3>
                             <span>Asesor</span>
                         </div>
 
@@ -79,7 +79,7 @@ export default function Calendario(props){
                 </div>
                 <div className="containerDivideCalendario">
                     {
-                        usuario.rango == 'lider' ?
+                        usuario.rango != 'Cazanova' ?
                     
                     <div className="RightDesc">
                         <div className="containerDescRight">

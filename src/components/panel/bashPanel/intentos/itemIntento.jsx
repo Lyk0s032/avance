@@ -40,14 +40,6 @@ export default function ItemIntento(props){
                             }}>
                                 <BsQuestion className='icon' />
                             </div> 
-                            <div className='stateBtn' id="nube" >
-                                {
-                                    <div>
-                                        Se solicitó una llamada para el:
-                                        {item.createdAt.split('T')[0]}
-                                    </div>
-                                }
-                            </div>
                         </button>
                 </div> 
             </td>
@@ -124,14 +116,17 @@ export default function ItemIntento(props){
                             </div>
                             
                             <div className='stateBtn'>    
-                                {
-                                    clic ? 
-                                        <Nube item={item} clients={clients} />
-                                    :                       
-                                    <div>
-                                        Ideal llamar el
-                                        <br />2024 - 10 -22
-                                    </div> 
+                                {                      
+                                item.registers.map((r,l) => {
+                                    return (
+                                        r.type == 'intento 1' ?
+                                            <div>
+                                                Llamada para: <br />
+                                                {r.tiempo.split('T')[0] }
+                                            </div> 
+                                        :null
+                                    )
+                                })
                                 }
                             </div>
                     </button>
@@ -178,7 +173,7 @@ export default function ItemIntento(props){
                                             return (
                                                 r.type == 'intento 1' ?
                                                     <div key={l}>
-                                                        Fecha de intento {r.type} <br />
+                                                        Fecha <br />
                                                         {r.createdAt.split('T')[0] }
                                                     </div> 
                                                 :null
@@ -203,7 +198,7 @@ export default function ItemIntento(props){
                                         return (
                                             r.type == 'intento 2' ?
                                                 <div key={l}>
-                                                    Fecha de {r.type} <br />
+                                                    Fecha <br />
                                                     {r.createdAt.split('T')[0] }
                                                 </div> 
                                             :null
@@ -225,10 +220,16 @@ export default function ItemIntento(props){
                             </div>
                             <div className='stateBtn'>                           
                                 {                  
-                                    <div>
-                                        Ideal llamar el
-                                        <br />2024 - 10 -22
-                                    </div> 
+                                item.registers.map((r,l) => {
+                                    return (
+                                        r.type == 'intento 2' ?
+                                            <div>
+                                                Programada para <br />
+                                                {r.tiempo.split('T')[0] }
+                                            </div> 
+                                        :null
+                                    )
+                                }) 
                                 }
                             </div>
                     </button>

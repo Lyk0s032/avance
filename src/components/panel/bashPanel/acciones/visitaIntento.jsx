@@ -5,13 +5,18 @@ import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 
 export default function VisitaIntento(props){
+
+    const perdidosTags = ['precio', 'tiempo de entrega del producto', 'no disponibilidad de producto',
+        'demora en la entrega de cotizacion', 'área de cobertura', 'era solo consulta', 'no volvio a contestar'
+    ]
+
     const usuario = props.usuario;
     const item = props.item;
     const clients = props.clients;
 
-    const [tags, setTags] = useState(['']);
+    const [tags, setTags] = useState([]);
     const [call, setCall] = useState('question');
-    const [note, setNote] = useState('');
+    const [note, setNote] = useState(null);
     const [mistake, setMistake] = useState(null);
     const [iva, setIva] = useState(true);
 
@@ -58,7 +63,9 @@ export default function VisitaIntento(props){
         if(!time.mes || !time.dia || !time.ano) return setMistake('Selecciona una fecha valida.');
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
-            clientId: item.id
+            clientId: item.id,
+            note,
+            tags: tags.length ? tags : null
         }
         const send = await axios.put('/visita/put/llamarDespues', body)
         .then((res) => {
@@ -81,10 +88,11 @@ export default function VisitaIntento(props){
     }
     // No tiene interés
     const notInteres = async (stateNew) => {
-        if(!tags.length || tags.length == 1) return setMistake('No has seleccionado ningún tag.');
+        if(!tags.length || tags.length < 1) return setMistake('No has seleccionado ningún tag.');
         let body = {
             tag: tags,
             clientId: item.id,
+            note: note,
             newState: stateNew
         }
         const send = await axios.put('/visita/put/contestoPeroSinInteres', body)
@@ -159,7 +167,9 @@ export default function VisitaIntento(props){
             bruto: cotizacion.bruto,
             descuento: cotizacion.descuento,
             iva: iva ? cotizacion.iva : 0,
-            neto:valorFinal
+            neto:valorFinal,
+
+            note: `Se asignó una cotización`
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
@@ -323,6 +333,44 @@ export default function VisitaIntento(props){
                                             ano: e.target.value.split('-')[0],
                                         });
                                     }}/>
+
+                                    <div className="tags">
+                                        <label htmlFor="">Tags</label><br /><br />
+                                        <div className='optionsTags'>
+                                            <button onClick={() => {
+                                                if(tags.includes('sin interes')){
+                                                    let newArray = tags.filter(item => item != 'sin interes');
+                                                    setTags(newArray);
+                                                }else{
+                                                    setTags([...tags, 'sin interes']);
+                                                    console.log(tags)
+                                                }
+
+                                            }} className={tags.includes('sin interes') ? 'tag Active' : 'tag'}>
+                                                <span>Sin interes</span>
+                                            </button>
+                                            <button onClick={() => {
+                                                if(tags.includes('equivocado')){
+                                                    let newArray = tags.filter(item => item != 'equivocado');
+                                                    setTags(newArray);
+                                                }else{
+                                                    setTags([...tags, 'equivocado']);
+                                                    console.log(tags)
+                                                }
+                                            }} className={tags.includes('equivocado') ? 'tag Active' : 'tag'}> 
+                                                <span>Equivocado</span>
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div className="note">
+                                        <label htmlFor="Nota">Nota  </label><br />
+                                        <textarea name="" id="" placeholder='Nota' value={note}
+                                        onChange={(e) => {
+                                            setNote(e.target.value)
+                                        }}></textarea>
+                                    </div>
                                 </div>
                                 
                                 <div className='callOrGo'>
@@ -341,30 +389,31 @@ export default function VisitaIntento(props){
                                 </div>
                                 <div className="tags">
                                     <div className='optionsTags'>
-                                        <button onClick={() => {
-                                            if(tags.includes('sin interes')){
-                                                let newArray = tags.filter(item => item != 'sin interes');
-                                                setTags(newArray);
-                                            }else{
-                                                setTags([...tags, 'sin interes']);
-                                                console.log(tags)
+                                            {
+                                                perdidosTags.map((tg, i) => {
+                                                    return (
+                                                        <button key={i+1} onClick={() => {
+                                                            if(tags.includes(tg)){
+                                                                let newArray = tags.filter(item => item != tg);
+                                                                setTags(newArray);
+                                                            }else{
+                                                                setTags([...tags, tg]);
+                                                                console.log(tags)
+                                                            }
+            
+                                                        }} className={tags.includes(tg) ? 'tag Active' : 'tag'}>
+                                                            <span>{tg}</span>
+                                                        </button> 
+                                                    )
+                                                })
                                             }
-
-                                        }} className={tags.includes('sin interes') ? 'tag Active' : 'tag'}>
-                                            <span>Sin interes</span>
-                                        </button>
-                                        <button onClick={() => {
-                                            if(tags.includes('equivocado')){
-                                                let newArray = tags.filter(item => item != 'equivocado');
-                                                setTags(newArray);
-                                            }else{
-                                                setTags([...tags, 'equivocado']);
-                                                console.log(tags)
-                                            }
-
-                                        }} className={tags.includes('equivocado') ? 'tag Active' : 'tag'}>
-                                            <span>Equivocado</span>
-                                        </button>
+                                    </div>
+                                    <div className="note" style={{width:'100%', textAlign:'left'}}>
+                                        <label htmlFor="Nota" style={{fontSize:'12px', color: '#ccc'}}>Nota  </label><br />
+                                        <textarea name="" id="" placeholder='Nota' value={note}
+                                        onChange={(e) => {
+                                            setNote(e.target.value)
+                                        }} style={{width:'100%',resize:'none',marginTop:'10px', padding:'10px'}}></textarea>
                                     </div>
                                     <div className='bottom'>
                                         <h3>Enviar a</h3>

@@ -679,17 +679,17 @@
 }
 .rightNube {
   position: fixed;
-  z-index: 3;
+  z-index: 5;
   right: 0;
   bottom: 0;
   height: 100vh;
-  width: 80%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.156);
   box-sizing: border-box;
 }
 .rightNube .header {
   height: 10%;
   box-sizing: border-box;
-  background-color: white;
   width: 100%;
   text-align: right;
   padding: 0px 0px;
@@ -703,6 +703,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  color: white;
 }
 .rightNube .header button .icon {
   font-size: 22px;
@@ -1112,30 +1113,34 @@
   color: #f44336;
 }
 .rightNube .nubeA {
-  height: 90%;
+  height: 100%;
   box-sizing: border-box;
   padding: 0px;
-  width: 100%;
+  width: 80%;
+  margin-left: auto;
   display: flex;
-  align-items: end;
-  justify-content: space-between;
+  align-items: start;
+  justify-content: end;
 }
 .rightNube .nubeA .infoR {
   width: 40%;
+  height: 100%;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border-right: 1px solid #ccc;
+  border-radius: 10px 0px 0px;
   background-color: white;
-  padding: 30px 20px;
+  padding: 0px 0px;
 }
 .rightNube .nubeA .infoR .ficha {
   width: 100%;
-  padding: 10px 10px;
+  height: 90%;
+  padding: 10px 0px;
   padding-top: 0px;
   box-sizing: border-box;
 }
 .rightNube .nubeA .infoR .ficha .headerFicha {
-  padding: 10px 0px;
+  height: 10%;
+  padding: 10px 20px;
   box-sizing: border-box;
   border-bottom: 1px solid #ccc;
   display: flex;
@@ -1162,30 +1167,109 @@
 }
 .rightNube .nubeA .infoR .ficha .propiedades {
   margin-top: 20px;
+  height: 90%;
+  padding-left: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  margin-bottom: 100px;
 }
-.rightNube .nubeA .infoR .ficha .propiedades .parte {
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation {
+  padding: 20px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte {
   width: 100%;
-  display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte span {
+  font-size: 12px;
+  color: #666;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte h3 {
+  font-size: 16px;
+  color: #314DE1;
+  font-weight: 100;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .usuario {
+  color: #666;
+  font-size: 13px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .phone {
+  font-size: 13px;
+  color: #4CAF50;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .url {
+  text-decoration: underline;
+  font-size: 13px;
+  cursor: pointer;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+  padding: 10px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .headerActivity h3 {
+  font-weight: 100;
+  font-size: 16px;
+  font-weight: bold;
+  color: #666;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro {
+  padding: 20px 10px;
+  box-sizing: border-box;
   margin-bottom: 20px;
 }
-.rightNube .nubeA .infoR .ficha .propiedades .parte h3 {
-  font-size: 14px;
-  font-style: italic;
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .headerRegistro span {
+  font-size: 13px;
+  color: #666;
+  font-weight: bold;
 }
-.rightNube .nubeA .infoR .ficha .propiedades .parte span {
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .headerRegistro span strong {
+  font-size: 14px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .note {
+  margin: 10px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .note span {
   font-size: 14px;
   color: #666;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .note button {
+  border: none;
+  background-color: transparent;
+  padding: 10px 0px;
+  cursor: pointer;
+  color: #4CAF50;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .tagsRegistro {
+  margin-top: 15px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .tagsRegistro button {
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid #314DE1;
+  background-color: transparent;
+  box-sizing: border-box;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros .registro .tagsRegistro button span {
+  font-size: 12px;
+  color: #314DE1;
 }
 .rightNube .nubeA .acciones {
   width: 59%;
   background-color: white;
-  border-left: 1px solid #ccc;
   padding: 0px 10px;
   box-sizing: border-box;
-  height: 99%;
-  border-radius: 10px;
+  height: 100%;
   overflow-y: auto;
   align-items: center;
 }
@@ -1421,6 +1505,151 @@
 .rightNube .nubeA .acciones .primerIntentoModal .containerM .contesto .containerContesto .callOrGo .mistake {
   font-size: 14px;
   color: #f44336;
+}
+.prospectosGeneral {
+  background-color: rgba(104, 104, 104, 0.111);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+}
+.prospectosGeneral .containerGeneralProspectos {
+  width: 90%;
+  height: 96vh;
+  margin: auto;
+  margin-top: 2vh;
+  background-color: white;
+  border-radius: 10px;
+}
+.prospectosGeneral .containerGeneralProspectos .header {
+  height: 5%;
+  text-align: right;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+.prospectosGeneral .containerGeneralProspectos .header button {
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.prospectosGeneral .containerGeneralProspectos .header button .icon {
+  font-size: 22px;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .search {
+  width: 100%;
+  height: 10%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .search input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: 0px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  transition: 0.3s;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .search input:focus {
+  border-bottom: 1px solid #314DE1;
+  transform: scale(1.05);
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll {
+  height: 85%;
+  overflow-y: auto;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists {
+  height: 100%;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  cursor: pointer;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .numer {
+  width: 10%;
+  text-align: center;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .numer h3 {
+  font-weight: 100;
+  color: #314DE1;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .data {
+  width: 80%;
+  text-align: left;
+  transition: 0.3s;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .data h3 {
+  font-weight: 100;
+  color: #314DE1;
+  font-size: 18px;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .data .persona {
+  font-size: 14px;
+  color: #666;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .data .state {
+  color: #4CAF50;
+  font-weight: bold;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .btn {
+  width: 10%;
+  text-align: center;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .btn button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect .btn button .icon {
+  font-size: 20px;
+  color: #314DE1;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect:hover .data {
+  transform: translateX(2%);
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .listProspectsAll .containerLists .prospect:hover .btn button {
+  transform: translateX(100%);
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .pagination {
+  width: 30%;
+  height: 10%;
+  margin-left: auto;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .pagination .containerPagination {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .pagination .containerPagination button {
+  background-color: #314DE1;
+  border: 1px solid #314DE1;
+  margin: 0px 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .pagination .containerPagination button span {
+  font-size: 12px;
+  color: white;
+}
+.prospectosGeneral .containerGeneralProspectos .generalProjects .pagination .containerPagination span {
+  color: #314DE1;
 }
 .intentos {
   box-sizing: border-box;
@@ -3051,6 +3280,67 @@
   font-size: 12px;
   color: #666;
 }
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv {
+  margin: 40px 0px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .headerRegisters {
+  padding: 10px 0px;
+  border-bottom: 1px solid #ccc;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .headerRegisters h3 {
+  font-weight: 100;
+  font-size: 16px;
+  color: #666;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro {
+  padding: 20px 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .headerRegistro span {
+  font-size: 13px;
+  color: #666;
+  font-weight: bold;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .headerRegistro span strong {
+  font-size: 14px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .note {
+  margin: 10px 0px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .note span {
+  font-size: 14px;
+  color: #666;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .note button {
+  border: none;
+  background-color: transparent;
+  padding: 10px 0px;
+  cursor: pointer;
+  color: #4CAF50;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .tagsRegistro {
+  margin-top: 15px;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .tagsRegistro button {
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid #314DE1;
+  background-color: transparent;
+  box-sizing: border-box;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .Visualizator .containerType .infoTime .containerInfoTime .registerDiv .registros .registro .tagsRegistro button span {
+  font-size: 12px;
+  color: #314DE1;
+}
 .calendarioModal .calendarioContainer .containerDivideCalendario .RightDesc .VisualizatorActive {
   transform: translateX(0%);
 }
@@ -3128,6 +3418,15 @@
   display: flex;
   width: auto;
   align-items: center;
+}
+.navTop .container .visualizar .search {
+  margin-right: 10px;
+}
+.navTop .container .visualizar .search input {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  font-size: 12px;
 }
 .navTop .container .visualizar .asesores {
   margin-right: 30px;

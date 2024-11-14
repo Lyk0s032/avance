@@ -5,6 +5,9 @@ import * as actions from './../../../store/action/action';
 import { useSearchParams } from 'react-router-dom';
 
 export default function ContactoIntento(props){
+    const perdidosTags = ['precio', 'tiempo de entrega del producto', 'no disponibilidad de producto',
+        'demora en la entrega de cotizacion', 'área de cobertura', 'era solo consulta', 'no volvio a contestar'
+    ]
     const usuario = props.usuario;
     const clients = props.clients;
     const item = props.item;    const [call, setCall] = useState('question');
@@ -25,6 +28,8 @@ export default function ContactoIntento(props){
         ano: null
     });
     const [tags, setTags] = useState([]);
+
+    const [note, setNote] = useState(null);
     const [interes, setInteres] = useState({
         asesor: 1,
         dia: null,
@@ -53,8 +58,12 @@ export default function ContactoIntento(props){
     }
     // No contesto
     const dontCall = async () => {
+        const date = new Date();
+        let tiempo = `${date.getMonth() + 1}-${date.getDate() + 3}-${date.getFullYear()}`
+        
         let body = {
-            clientId: item.id
+            clientId: item.id,
+            tiempo: tiempo
         }
         const send = await axios.put('/contacto/put/dontCall', body)
         .then((res) => {
@@ -73,7 +82,9 @@ export default function ContactoIntento(props){
         if(!time.mes || !time.dia || !time.ano) return setMistake('Asigna una fecha valida, por favor.');
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
-            clientId: item.id
+            clientId: item.id,
+            note,
+            tags: tags.length ? tags : null
         }
         const send = await axios.put('/contacto/put/contestoPeroLlamarLuego', body)
         .then((res) => {
@@ -102,7 +113,8 @@ export default function ContactoIntento(props){
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
             clientId: item.id,
-            estado: 'visita'
+            estado: 'visita',
+            note: `Se programó una visita para la fecha: ${time.mes}-${time.dia}-${time-ano}`
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
@@ -145,7 +157,8 @@ export default function ContactoIntento(props){
             bruto: cotizacion.bruto,
             descuento: cotizacion.descuento,
             iva: iva ? cotizacion.iva : 0,
-            neto:valorFinal
+            neto:valorFinal,
+            note: 'Se asignó una cotización'
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
@@ -172,7 +185,8 @@ export default function ContactoIntento(props){
         let body = {
             tag: tags,
             clientId: item.id,
-            newState: stateNew
+            newState: stateNew,
+            note
         }
         const send = await axios.put('/contacto/put/contestoPeroSinInteres', body)
         .then((res) => {
@@ -391,6 +405,46 @@ export default function ContactoIntento(props){
                                         });
                                     }}/>
 
+                                                                
+                                    <div className="tags">
+                                        <label htmlFor="">Tags</label><br /><br />
+                                        <div className='optionsTags'>
+                                            
+                                            <button onClick={() => {
+                                                if(tags.includes('sin interes')){
+                                                    let newArray = tags.filter(item => item != 'sin interes');
+                                                    setTags(newArray);
+                                                }else{
+                                                    setTags([...tags, 'sin interes']);
+                                                    console.log(tags)
+                                                }
+
+                                            }} className={tags.includes('sin interes') ? 'tag Active' : 'tag'}>
+                                                <span>Sin interes</span>
+                                            </button>
+                                            <button onClick={() => {
+                                                if(tags.includes('equivocado')){
+                                                    let newArray = tags.filter(item => item != 'equivocado');
+                                                    setTags(newArray);
+                                                }else{
+                                                    setTags([...tags, 'equivocado']);
+                                                    console.log(tags)
+                                                }
+                                            }} className={tags.includes('equivocado') ? 'tag Active' : 'tag'}> 
+                                                <span>Equivocado</span>
+                                            </button>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div className="note">
+                                        <label htmlFor="Nota">Nota  </label><br />
+                                        <textarea name="" id="" placeholder='Nota' value={note}
+                                        onChange={(e) => {
+                                            setNote(e.target.value)
+                                        }}></textarea>
+                                    </div>
+
                                 </div>
                                 
                                 <div className='callOrGo'>
@@ -409,30 +463,32 @@ export default function ContactoIntento(props){
                                 </div>
                                 <div className="tags">
                                     <div className='optionsTags'>
-                                        <button onClick={() => {
-                                            if(tags.includes('sin interes')){
-                                                let newArray = tags.filter(item => item != 'sin interes');
-                                                setTags(newArray);
-                                            }else{
-                                                setTags([...tags, 'sin interes']);
-                                                console.log(tags)
+                                    {
+                                                perdidosTags.map((tg, i) => {
+                                                    return (
+                                                        <button key={i+1} onClick={() => {
+                                                            if(tags.includes(tg)){
+                                                                let newArray = tags.filter(item => item != tg);
+                                                                setTags(newArray);
+                                                            }else{
+                                                                setTags([...tags, tg]);
+                                                                console.log(tags)
+                                                            }
+            
+                                                        }} className={tags.includes(tg) ? 'tag Active' : 'tag'}>
+                                                            <span>{tg}</span>
+                                                        </button> 
+                                                    )
+                                                })
                                             }
 
-                                        }} className={tags.includes('sin interes') ? 'tag Active' : 'tag'}>
-                                            <span>Sin interes</span>
-                                        </button>
-                                        <button onClick={() => {
-                                            if(tags.includes('equivocado')){
-                                                let newArray = tags.filter(item => item != 'equivocado');
-                                                setTags(newArray);
-                                            }else{
-                                                setTags([...tags, 'equivocado']);
-                                                console.log(tags)
-                                            }
-
-                                        }} className={tags.includes('equivocado') ? 'tag Active' : 'tag'}>
-                                            <span>Equivocado</span>
-                                        </button>
+                                    </div>
+                                    <div className="note" style={{width:'100%', textAlign:'left'}}>
+                                        <label htmlFor="Nota" style={{fontSize:'12px', color: '#ccc'}}>Nota  </label><br />
+                                        <textarea name="" id="" placeholder='Nota' value={note}
+                                        onChange={(e) => {
+                                            setNote(e.target.value)
+                                        }} style={{width:'100%',resize:'none',marginTop:'10px', padding:'10px'}}></textarea>
                                     </div>
                                     <div className='bottom'>
                                         <h3>Enviar a</h3>

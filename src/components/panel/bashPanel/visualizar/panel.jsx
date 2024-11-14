@@ -16,7 +16,6 @@ export default function PanelVisualizar(props){
 
     return (
         <div className="containerScroll">
-            {console.log(advisor[0])}
             <div className="ProfileAsesor">
                 <div className='containerProfile'>
                     <div className='infoProfile'>
@@ -127,7 +126,7 @@ export default function PanelVisualizar(props){
                                                 <Result cliente={cliente} key={i+1} />
                                             )
                                         })
-                                    : <h1>No hay clientes</h1>
+                                    : <div className="notFound" id="notFound"><h1>No hay clientes en este estado</h1></div>
                                 : filter == 'visitas' ?
                                     advisor.visitas && advisor.visitas.length ?
                                         advisor.visitas.map((cliente, i) => {
@@ -135,7 +134,7 @@ export default function PanelVisualizar(props){
                                                 <Result cliente={cliente} key={i+1} />
                                             )
                                         })
-                                    : <h1>No hay clientes</h1>
+                                    : <div className="notFound" id="notFound"><h1>No hay clientes en este estado</h1></div>
                                 :filter == 'pendientes' ?
                                     advisor.cotizacion && advisor.cotizacion.length ?
                                         advisor.cotizacion.map((cliente, i) => {
@@ -143,15 +142,15 @@ export default function PanelVisualizar(props){
                                                 <Result cliente={cliente} key={i+1} />
                                             )
                                         })
-                                    : <h1>No hay clientes</h1>
+                                    : <div className="notFound" id="notFound"><h1>No hay clientes  con cotización pendiente</h1></div>
                                 :filter == 'aprobadas' ?
                                     advisor.aprobadas && advisor.aprobadas.length ?
                                         advisor.aprobadas.map((cliente, i) => {
                                             return (
-                                                <Result cliente={cliente} type='aprobadas' key={i+1} />
+                                                <Result aprobada={cliente} type='aprobadas' key={i+1} />
                                             )
                                         })
-                                    : <h1>No hay clientes</h1>
+                                    : <div className="notFound" id="notFound"><h1>No hay Cotizaciones aprobadas</h1></div>
                                 :null
                             }
                             {/* <div className="result Alert">

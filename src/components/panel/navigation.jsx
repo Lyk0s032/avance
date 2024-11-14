@@ -11,14 +11,21 @@ export default function NavTop(props){
                 <div className='logo'>
                     <img src="https://metalicascosta.com.co/assets/img/logo_metalicas_costa.png" alt="" />
                 </div>
+                
                 <div className='visualizar'>
+                    <div className="search">
+                        <input type="text" className="searchInput" placeholder='Buscar' onClick={() => {
+                            params.set('v', 'prospects');
+                            setParams(params); 
+                        }}/>
+                    </div>
                     {
                         user.rango == 'lider' ?
                     
                     <div className="asesores">
                         <button onClick={() => {
-                            params.set('watch', 'asesores');
-                            setParams(params);
+                            params.set('view', 'asesores');
+                            setParams(params); 
                         }}>
                             <span>Visualizar asesores</span>
                         </button>

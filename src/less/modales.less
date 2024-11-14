@@ -721,16 +721,16 @@
 }
 .rightNube{
     position:fixed;
-    z-index:3;
+    z-index:5;
     right:0;
     bottom:0;
     height:100vh;
-    width:80%;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.156);
     box-sizing: border-box;
     .header{
         height:10%;
         box-sizing: border-box;
-        background-color: white;
         width:100%;
         text-align: right;
         padding:0px 0px;
@@ -744,6 +744,7 @@
             border:none;
             background-color: transparent;
             cursor: pointer;
+            color: white;
             .icon{
                 font-size: 22px;
             }
@@ -1189,27 +1190,33 @@
         }
     }
     .nubeA{
-        height:90%;
+        height:100%;
         box-sizing: border-box;
         padding:0px;
-        width:100%;
+        width:80%;
+        margin-left: auto;
         display: flex;
-        align-items: end;
-        justify-content: space-between;
+        align-items: start;
+        justify-content: end;
         .infoR{
             width:40%;
+            height:100%;
             box-sizing: border-box;
-            border:1px solid #ccc;
-            border-radius: 10px;
+            box-sizing: border-box;
+            border-right:1px solid #ccc;
+            border-radius: 10px 0px 0px;
             background-color: white;
-            padding:30px 20px;
+            padding:0px 0px;
             .ficha{
                 width:100%;
-                padding:10px 10px;
+                height:90%;
+                padding:10px 0px;
                 padding-top: 0px;
                 box-sizing: border-box;
+                box-sizing: border-box;
                 .headerFicha{
-                    padding:10px 0px;
+                    height:10%;
+                    padding:10px 20px;
                     box-sizing: border-box;
                     border-bottom: 1px solid #ccc;
                     display: flex;
@@ -1236,20 +1243,108 @@
                 }
                 .propiedades{
                     margin-top: 20px;
-                    .parte{
-                        width:100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        margin-bottom:20px;
-                        h3{
-                            font-size: 14px;
-                            font-style: italic;
-                        }
+                    height:90%;
+                    padding-left:20px;
+                    box-sizing: border-box;
+                    overflow-y: auto;
+                    margin-bottom: 100px;
+                    .clientInformation{
+                        padding:20px 0px;
+                        .parte{
+                            width:100%;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom:10px;
+                            span{
+                                font-size: 12px;
+                                color: #666;
+                            }
+                            h3{
+                                font-size: 16px;
+                                color: #314DE1;
+                                font-weight: 100;
+                            }
+                            .usuario{
+                                color: #666;
+                                font-size: 13px;
+                            }
+                            .phone{
+                                font-size: 13px;
+                                color: #4CAF50;
+                            }
+                            .url{
+                                text-decoration: underline;
+                                font-size: 13px;
+                                cursor: pointer;
 
-                        span{
-                            font-size: 14px;
-                            color: #666;
+                            }
+
+                            
+                        }
+                    }
+                    .registroActividades{
+                        margin-top:10px;
+                        border-top:1px solid #ccc;
+                        padding:10px 0px;
+                        .headerActivity{
+                            h3{
+                                font-weight: 100;
+                                font-size: 16px;
+                                font-weight: bold;
+                                color: #666;
+                            }
+                        }
+                        .registros{
+                            margin-top:10px;
+                            padding-right: 10px;
+                            .registro{
+                                padding:20px 10px;
+                                box-sizing: border-box;
+                                margin-bottom: 20px;
+                                .headerRegistro{
+                                    span{
+                                        font-size: 13px;
+                                        color: #666;
+                                        font-weight: bold;
+                                        strong{
+                                            font-size: 14px;
+                                            color: #4CAF50;
+                                            font-weight: bold;
+                                        }
+
+                                    }
+                                }
+                                .note{
+                                    margin:10px 0px;
+                                    span{
+                                        font-size: 14px;
+                                        color: #666;
+                                    }
+                                    button{
+                                        border:none;
+                                        background-color: transparent;
+                                        padding:10px 0px;
+                                        cursor: pointer;
+                                        color: #4CAF50;
+                                    }
+                                }
+                                .tagsRegistro{
+                                    margin-top:15px;
+                                    button{
+                                        padding:2px 10px;
+                                        border-radius: 20px;
+                                        border:1px solid #314DE1;
+                                        background-color: transparent;
+                                        box-sizing: border-box;
+                                        margin-right: 5px;
+                                        cursor: pointer;
+                                        span{
+                                            font-size: 12px;
+                                            color: #314DE1;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -1258,11 +1353,9 @@
         .acciones{
             width:59%;
             background-color: white;
-            border-left: 1px solid #ccc;
             padding:0px 10px;
             box-sizing: border-box;
-            height:99%;
-            border-radius: 10px;
+            height:100%;
             overflow-y: auto;
             align-items: center;
             .primerIntentoModal{
@@ -1515,6 +1608,160 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.prospectosGeneral{
+    background-color: rgba(104, 104, 104, 0.111);
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index:4;
+
+    .containerGeneralProspectos{
+        width:90%;
+        height:96vh;
+        margin:auto;
+        margin-top:2vh;
+        background-color: white;
+        border-radius: 10px;
+        .header{
+            height:5%;
+            box-sizing: border-box;
+            text-align: right;
+            padding:0px 10px;
+            box-sizing: border-box;
+            button{
+                height: 100%;
+                background-color: transparent;
+                border:none;
+                cursor: pointer;
+                .icon{
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .generalProjects{
+            width:90%;
+            height:90%;
+            margin:auto;
+            .search{
+                width:100%;
+                height:10%;
+                margin:auto;
+                display: flex;
+                align-items: center;
+                input{
+                    width:100%;
+                    box-sizing: border-box;
+                    border:none;
+                    outline: 0px;
+                    border-bottom:1px solid #ccc;
+                    padding:10px;
+                    transition: .3s;
+                }
+                input:focus{
+                    border-bottom: 1px solid #314DE1;
+                    transform: scale(1.05);
+                }
+            }
+            .listProspectsAll{
+                height:85%;
+                overflow-y: auto;
+                .containerLists{
+                    height:100%;
+                    .prospect{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding:10px 0px;
+                        cursor: pointer;
+                        .numer{
+                            width:10%;
+                            text-align: center;
+                            h3{
+                                font-weight: 100;
+                                color: #314DE1;
+                            }
+                        }
+                        .data{
+                            width:80%;
+                            text-align: left;
+                            transition: .3s;
+                            h3{
+                                font-weight: 100;
+                                color: #314DE1;
+                                font-size: 18px;
+                            }
+                            .persona{
+                                font-size: 14px;
+                                color: #666;
+                            }
+                            .state{
+                                color: #4CAF50;
+                                font-weight: bold;
+                            }
+                        }
+                        .btn{
+                            width:10%;
+                            text-align: center;
+                            button{
+                                background-color: transparent;
+                                border:none;
+                                cursor: pointer;
+                                transition: .3s;
+                                .icon{
+                                    font-size: 20px;
+                                    color: #314DE1;
+                                }
+                            }
+                        }
+                    }
+                    .prospect:hover{
+                        .data{
+                            transform: translateX(2%);
+                        }
+                        .btn{
+                            button{
+                                transform: translateX(100%);
+                            }
+                        }
+                    }
+                }
+            }
+            .pagination{
+                width:30%;
+                height:10%;
+                margin-left:auto;
+                .containerPagination{
+                    width:100%;
+                    height:100%;
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+
+                    button{
+                        background-color: #314DE1;
+                        border:1px solid #314DE1;
+                        margin:0px 10px;
+                        cursor: pointer;
+                        padding:5px 10px;
+                        box-sizing: border-box;
+                        border-radius: 20px;
+                        span{
+                            font-size: 12px;
+                            color: white;
+                        }
+                    }
+                    span{
+                        color: #314DE1;
                     }
                 }
             }

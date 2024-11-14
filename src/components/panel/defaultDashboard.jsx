@@ -17,7 +17,7 @@ export default function DashboardDefault(props){
         <div className='dashb'>
             <NavTop user={user}/>
             {
-                params.get('watch') == 'asesores' ?
+                params.get('view') == 'asesores' ?
                     <ByAsesorPanel asesores={clients.asesores ? clients.asesores : null}  /> 
 
                 :

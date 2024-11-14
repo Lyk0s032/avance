@@ -12,6 +12,7 @@ import Aprobadas from "./aprobadas/aprobadas";
 import Perdido from "./espera/perdido";
 import ModalRight from "./modalRight";
 import Calendario from "./calendary/calendario";
+import ProspectosComponent from "./prospectos/prospectos";
 
 export default function RoutesPanel(props){
     const usuario = props.user;
@@ -31,7 +32,11 @@ export default function RoutesPanel(props){
                 <Route path="/perdido/*" element={<Perdido clients={clients} usuario={usuario}/>} />
             
             </Routes>
-
+            {
+                params.get('v') == 'prospects' ?
+                    <ProspectosComponent />
+                :null
+            }
             {
                 params.get('w') == 'fuente' ?
                     <NewFuente clients={clients}/>
@@ -40,6 +45,7 @@ export default function RoutesPanel(props){
                 :
                 params.get('w') == 'action' ?
                     <ModalRight clients={clients} usuario={usuario} />
+                
                 :null
             }                    
         </div>

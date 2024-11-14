@@ -15,7 +15,7 @@ export default function InfoTime(){
     const diferenciaMilisegundo = fechaRegistro - hoy;
 
     const diferenciaEnDias = Math.round(diferenciaMilisegundo / unDia);
-
+    console.log(item)
     return (
         <div className="infoTime">
             {
@@ -65,6 +65,42 @@ export default function InfoTime(){
                         <h3>En <strong>{item.client.state}</strong></h3><br />
                         <span>Tiempo: </span>
                         <h4>{diferenciaEnDias > 2 ? 'Faltan' : diferenciaEnDias >= 0 && diferenciaEnDias <= 2 ? 'Cerca: ' : 'Hace: '} {Math.abs(diferenciaEnDias) + ' Días '}</h4>
+                    </div>
+                </div>
+                <div className="registerDiv">
+                    <div className="headerRegisters">
+                        <h3>Registro de acciones</h3>
+                    </div>
+                    <div className="registros">
+                        {
+                            item.client.registers && item.client.registers.length ?
+                                item.client.registers.map((reg, i) => {
+                                    return (
+                                        <div className="registro">
+                                            <div className="headerRegistro">
+                                                <span>{reg.createdAt.split('T')[0]} - <strong>En {reg.type}</strong></span>
+                                            </div>
+                                            <div className="note">
+                                                <span>{reg.note ? reg.note : 'No hay nota disponible'}</span><br />
+                                            </div>
+                                            <div className="tagsRegistro">
+                                                {
+                                                    reg.tags && reg.tags.length ?
+                                                        reg.tags.map((tag, i) => {
+                                                            return (
+                                                                <button key={i+1}>
+                                                                    <span>{tag}</span>
+                                                                </button>
+                                                            )
+                                                        })
+                                                    : null
+                                                }
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            : <span>No hay registro de acciones</span>
+                        }
                     </div>
                 </div>
             </div>

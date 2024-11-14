@@ -15,11 +15,12 @@ export default function ItemContact(props){
     
     const dispatch = useDispatch();
 
-    console.log(usuario)
-    const open = async (cliente) => {
+    const open = async (cliente, see) => {
         dispatch(actions.ActionGetCliente(cliente));
         params.set('w', 'action');
         params.set('y', 'Segundo');
+
+        see ? params.set('watch', 'edit') : null
         setParams(params);
     }
     return (
@@ -28,7 +29,7 @@ export default function ItemContact(props){
             
             <td>
                 <div className='prospectProfile'>
-                    <div className='cl'>    
+                    <div className='cl' onClick={() => open(item, true)}>    
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
@@ -47,7 +48,7 @@ export default function ItemContact(props){
                             <div className='stateBtn' id="nube" >
                                 {
                                     <div>
-                                        Se solicitó una llamada para el: <br />
+                                        Programada para: <br />
                                         {
                                             item.calendarios && item.calendarios.length ?
                                                 item.calendarios.map((cal,i) => {
@@ -98,7 +99,7 @@ export default function ItemContact(props){
         <tr>
             <td>
                 <div className='prospectProfile'>
-                    <div className='cl'>    
+                    <div className='cl' onClick={() => open(item, true)}>    
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
@@ -124,7 +125,7 @@ export default function ItemContact(props){
                                                 r.type == 'contacto 1' ?
                                                     <div key={l}>
                                                         Se intentó comunicar el <br />
-                                                        {formato}
+                                                        {r.createdAt.split('T')[0]}
                                                         {/* {formato.setDate(formato.getDate() + 3)} */}
                                                     </div> 
                                                 :null
@@ -158,8 +159,8 @@ export default function ItemContact(props){
                                                 return (
                                                     r.type == 'contacto 1' ?
                                                         <div key={l}>
-                                                            Ideal llamar el: <br />
-                                                            {formato}
+                                                            Programada para: <br />
+                                                            {r.tiempo.split('T')[0]}
                                                             {/* {formato.setDate(formato.getDate() + 3)} */}
                                                         </div> 
                                                     :null
@@ -194,7 +195,7 @@ export default function ItemContact(props){
         <tr>
             <td>
                 <div className='prospectProfile'>
-                    <div className='cl'>    
+                    <div className='cl' onClick={() => open(item, true)}>    
                         <h3 className="business">{item.nombreEmpresa ? item.nombreEmpresa : item.name}</h3>
                         <span className="phone">{item.phone}</span><br />
                     </div>
@@ -212,15 +213,11 @@ export default function ItemContact(props){
                       
                                         item.registers.map((r, l) => {
                                             let date = new Date(r.createdAt.split('T')[0])
-                                            let day = date.getDate();
-                                            let mes = date.getMonth() + 1;
-                                            let ano = date.getFullYear();
-                                            let formato = `${ano}-${mes}-${day}`;
                                             return (
                                                 r.type == 'contacto 1' ?
                                                     <div key={l}>
                                                         Se intentó comunicar el <br />
-                                                        {formato}
+                                                        {r.createdAt.split('T')[0]}
                                                         {/* {formato.setDate(formato.getDate() + 3)} */}
                                                     </div> 
                                                 :null
@@ -251,7 +248,7 @@ export default function ItemContact(props){
                                                 r.type == 'contacto 2' ?
                                                     <div key={l}>
                                                         Se intentó comunicar el <br />
-                                                        {formato}
+                                                        {r.createdAt.split('T')[0]}
                                                         {/* {formato.setDate(formato.getDate() + 3)} */}
                                                     </div> 
                                                 :null
@@ -278,15 +275,11 @@ export default function ItemContact(props){
                                         {
                                             item.registers.map((r, l) => {
                                                 let date = new Date(r.createdAt.split('T')[0])
-                                                let day = date.getDate();
-                                                let mes = date.getMonth() + 1;
-                                                let ano = date.getFullYear();
-                                                let formato = `${ano}-${mes}-${day + 3}`;
                                                 return (
                                                     r.type == 'contacto 2' ?
                                                         <div key={l}>
-                                                            Ideal llamar el: <br />
-                                                            {formato}
+                                                            Programado para: <br />
+                                                            {r.tiempo.split('T')[0]}
                                                             {/* {formato.setDate(formato.getDate() + 3)} */}
                                                         </div> 
                                                     :null
