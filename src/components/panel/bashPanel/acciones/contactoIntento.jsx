@@ -15,11 +15,11 @@ export default function ContactoIntento(props){
     const [params, setParams] = useSearchParams();
     const [mistake, setMistake] = useState(null);
     const [iva, setIva] = useState(true);
+    const [loadingButton, setLoadingButton] = useState(false);
     
     
     const change = () => {
         setIva(!iva);
-        console.log('entra');
     }
     
     const [time, setTime] = useState({
@@ -60,6 +60,7 @@ export default function ContactoIntento(props){
     const dontCall = async () => {
         const date = new Date();
         let tiempo = `${date.getMonth() + 1}-${date.getDate() + 3}-${date.getFullYear()}`
+        setLoadingButton(true);
         
         let body = {
             clientId: item.id,
@@ -75,11 +76,15 @@ export default function ContactoIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send
     }
     // Later
     const laterCall = async () => {
         if(!time.mes || !time.dia || !time.ano) return setMistake('Asigna una fecha valida, por favor.');
+        setLoadingButton(true);
+
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
             clientId: item.id,
@@ -102,19 +107,22 @@ export default function ContactoIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
     // Programar visita
     const programarVisita = async () => {
         if(!time.mes || !time.dia || !time.ano) return setMistake('Es necesario asignar una fecha valida.');
-        console.log(usuario)
+        setLoadingButton(true);
+
         usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
      
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
-            clientId: item.id,
+            clientId: item.id, 
             estado: 'visita',
-            note: `Se programó una visita para la fecha: ${time.mes}-${time.dia}-${time-ano}`
+            note: `Se programó una visita para la fecha: ${time.mes}-${time.dia}-${time.ano}`
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
@@ -131,6 +139,8 @@ export default function ContactoIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
 
@@ -182,6 +192,7 @@ export default function ContactoIntento(props){
     // No tiene interés
     const notInteres = async (stateNew) => {
         if(!tags.length) return setMistake('No has seleccionado ningún tag.');
+        setLoadingButton(true);
         let body = {
             tag: tags,
             clientId: item.id,
@@ -205,6 +216,8 @@ export default function ContactoIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
     // Actualizar por cada cambio.
@@ -241,13 +254,13 @@ export default function ContactoIntento(props){
                                 <h1>Y bueno... ¿Qué tal?</h1>
                             </div>
                             <div className='optionsButton'>
-                                <button className='si' onClick={() => setCall('contesto')}>
+                                <button className='si' onClick={() => setCall('contesto')} disabled={loadingButton}>
                                     <span>¡Contesto!</span>
                                 </button>
-                                <button className="no"  onClick={() => dontCall()}>
+                                <button className="no"  onClick={() => dontCall()} disabled={loadingButton}>
                                     <span>No contesto</span>
                                 </button>
-                                <button className="no"  onClick={() => setCall('later')}>
+                                <button className="no"  onClick={() => setCall('later')} disabled={loadingButton}>
                                     <span>Contactar después</span>
                                 </button>
                             </div>
@@ -310,7 +323,7 @@ export default function ContactoIntento(props){
                                 </div>
 
                                 <div className='callOrGo'>
-                                    <button className='go' onClick={() => programarVisita()}>
+                                    <button className='go' onClick={() => programarVisita()} disabled={loadingButton}>
                                         <span>Agendar</span>
                                     </button><br /><br /> 
  
@@ -381,7 +394,7 @@ export default function ContactoIntento(props){
 
                                 </div>
                                 <div className='callOrGo'>
-                                    <button className='go' onClick={() => registrarCotizacion('')}>
+                                    <button className='go' onClick={() => registrarCotizacion('')} disabled={loadingButton}>
                                         <span>Agentar</span>
                                     </button><br />
                                     <span className='mistake'>{mistake}</span>
@@ -410,7 +423,7 @@ export default function ContactoIntento(props){
                                         <label htmlFor="">Tags</label><br /><br />
                                         <div className='optionsTags'>
                                             
-                                            <button onClick={() => {
+                                            <button disabled={loadingButton} onClick={() => {
                                                 if(tags.includes('sin interes')){
                                                     let newArray = tags.filter(item => item != 'sin interes');
                                                     setTags(newArray);
@@ -422,7 +435,7 @@ export default function ContactoIntento(props){
                                             }} className={tags.includes('sin interes') ? 'tag Active' : 'tag'}>
                                                 <span>Sin interes</span>
                                             </button>
-                                            <button onClick={() => {
+                                            <button disabled={loadingButton} onClick={() => {
                                                 if(tags.includes('equivocado')){
                                                     let newArray = tags.filter(item => item != 'equivocado');
                                                     setTags(newArray);
@@ -463,7 +476,7 @@ export default function ContactoIntento(props){
                                 </div>
                                 <div className="tags">
                                     <div className='optionsTags'>
-                                    {
+                                            {
                                                 perdidosTags.map((tg, i) => {
                                                     return (
                                                         <button key={i+1} onClick={() => {
@@ -494,8 +507,8 @@ export default function ContactoIntento(props){
                                         <h3>Enviar a</h3>
 
                                         <div className="sendTo">
-                                            <button onClick={() => notInteres('perdido')}><span>Perdido</span></button>
-                                            <button onClick={() => notInteres('dessuscribir')}><span>Desuscribir</span></button><br /><br />
+                                            <button onClick={() => notInteres('perdido')} disabled={loadingButton}><span>Perdido</span></button>
+                                            <button onClick={() => notInteres('dessuscribir')} disabled={loadingButton}><span>Desuscribir</span></button><br /><br />
                                             <span className='mistake'>{mistake}</span>
                                         </div>
                                     </div>
@@ -503,8 +516,9 @@ export default function ContactoIntento(props){
                             </div>                        
                         </div>
                     : null
-                    
-            }
+                    }
+                    <span style={{fontSize:'12px', color:'blue'}}>{loadingButton ? 'Un momento...' : null}</span>
+
             </div>
         </div>
     )

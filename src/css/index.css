@@ -1270,6 +1270,7 @@
   padding: 0px 10px;
   box-sizing: border-box;
   height: 100%;
+  padding-bottom: 100px;
   overflow-y: auto;
   align-items: center;
 }
@@ -1895,248 +1896,6 @@
   display: none;
   transition: 0.3s;
 }
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .question {
-  padding: 10px 0px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .question .containerQuestion button {
-  width: 100%;
-  margin-bottom: 10px;
-  background-color: white;
-  padding: 5px 20px;
-  box-sizing: border-box;
-  border-radius: 2px;
-  cursor: pointer;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .question .containerQuestion button span {
-  font-size: 12px;
-  color: black;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .question .containerQuestion .true {
-  background-color: #57B8FF;
-  border: 1px solid #57B8FF;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .question .containerQuestion .false {
-  border: 1px solid red;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .question .containerQuestion .false span {
-  color: red;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto {
-  padding: 20px 10px;
-  box-sizing: border-box;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .title {
-  padding: 10px 0px;
-  border-bottom: 1px solid #ccc;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .title h1 {
-  font-weight: 400;
-  font-size: 20px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .optionsTrue {
-  padding: 10px 0px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .optionsTrue button {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 5px;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags {
-  padding: 10px 0px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .optionsTags {
-  display: flex;
-  flex-wrap: wrap;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .optionsTags .tag {
-  margin: 2px;
-  background-color: transparent;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  padding: 5px 10px;
-  box-sizing: border-box;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .optionsTags .tag span {
-  font-size: 12px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .optionsTags .tag.Active {
-  border: 2px solid #57B8FF;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .bottom {
-  border-top: 1px solid #ccc;
-  margin-top: 10px;
-  padding: 10px 0px;
-  box-sizing: border-box;
-  text-align: left;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .bottom h3 {
-  font-weight: 400;
-  font-size: 14px;
-  color: #666;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .bottom .sendTo {
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .bottom .sendTo button {
-  background-color: white;
-  border: 1px solid red;
-  padding: 5px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .tags .bottom .sendTo button span {
-  color: red;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .interesting {
-  text-align: left;
-  margin-top: 10px;
-  padding: 10px 0px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .interesting .tagsInteresting {
-  display: flex;
-  flex-wrap: nowrap;
-  margin-top: 5px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .interesting .tagsInteresting button {
-  cursor: pointer;
-  margin: 5px;
-  padding: 5px 10px;
-  border: 2px solid #ccc;
-  border-radius: 20px;
-  background-color: transparent;
-  transition: 0.3s;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .interesting .tagsInteresting button.Active {
-  border: 2px solid #57B8FF;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .interesting .tagsInteresting button:hover {
-  transform: translateY(15%);
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor {
-  width: 100%;
-  margin: 20px 0px;
-  text-align: left;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor label {
-  font-size: 12px;
-  color: #666;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor .choose {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor .choose button {
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  transition: 0.3s;
-  padding: 5px 20px;
-  border-radius: 20px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor .choose button span {
-  font-size: 12px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor .choose button.Active {
-  border: 1px solid #57B8FF;
-  background-color: #57B8FF;
-  transform: scale(1.1);
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .asesor .choose button.Active span {
-  color: white;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time {
-  margin-top: 10px;
-  text-align: left;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time .cotizacion .input {
-  margin: 10px 0px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time .cotizacion .input input {
-  width: 100%;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time label {
-  font-size: 12px;
-  color: #666;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time .text {
-  width: 100%;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time input {
-  margin-top: 5px;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  position: relative;
-  z-index: inherit;
-  display: block;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time .three {
-  position: relative;
-  display: flex;
-  margin-top: 5px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time .three input {
-  width: 100px;
-  transition: 0.3s;
-  margin: 0px 5px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time .three input:focus {
-  outline-color: #21D59B;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time select {
-  width: 100%;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  background-color: white;
-  margin-top: 10px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .time select span {
-  font-size: 12px;
-  color: #666;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo {
-  margin-top: 20px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo button {
-  padding: 5px 40px;
-  box-sizing: border-box;
-  margin: 0px 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo button span {
-  font-size: 12px;
-  color: white;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo button:hover {
-  transform: scale(1.1);
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo .call {
-  background-color: #57B8FF;
-  border: 1px solid #57B8FF;
-  box-sizing: border-box;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo .call span {
-  color: white;
-  font-size: 12px;
-}
-.intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn .formCall .contesto .containerContesto .callOrGo .go {
-  background-color: #21D59B;
-  border: 1px solid #21D59B;
-}
 .intentos .containerIntentos .listsContainerProspects table tbody tr td .tryButton .tt .stateBtn.Active {
   display: block;
   z-index: 2;
@@ -2562,6 +2321,96 @@
 }
 .dashboard .dashb .dashPanel .bottonOptions .info span {
   color: #21D59B;
+}
+.dashboard .dashb .notifications {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: 0.3s;
+}
+.dashboard .dashb .notifications .dark {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+}
+.dashboard .dashb .notifications .containerNotification {
+  width: 40%;
+  position: relative;
+  margin-left: auto;
+  background-color: white;
+  height: 100%;
+  z-index: 6;
+}
+.dashboard .dashb .notifications .containerNotification .headerNotification {
+  height: 10%;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+.dashboard .dashb .notifications .containerNotification .headerNotification h3 {
+  font-weight: 100;
+  font-size: 22px;
+  color: #21D59B;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer {
+  height: 90%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 10px 0px;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti {
+  display: flex;
+  align-items: center;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .calendarImg {
+  margin-right: 10px;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .calendarImg img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .dataNotification {
+  padding: 0px 10px;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .dataNotification h3 {
+  font-size: 16px;
+  color: #57B8FF;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .dataNotification span {
+  font-size: 14px;
+  color: #666;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .dataNotification span strong {
+  color: #314DE1;
+  font-weight: bold;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti .containerNoti .dataNotification .para {
+  font-size: 12px;
+  font-style: italic;
+}
+.dashboard .dashb .notifications .containerNotification .scrollContainer .noti:hover {
+  padding-left: 10%;
+}
+.dashboard .dashb .notificationActive {
+  transform: translateX(0%);
+}
+.dashboard .dashb .notificationActive .dark {
+  background-color: rgba(0, 0, 0, 0.156);
 }
 .loadingPanel {
   width: 100%;
@@ -3427,6 +3276,47 @@
   border: 1px solid #ccc;
   padding: 8px 10px;
   font-size: 12px;
+}
+.navTop .container .visualizar .notification {
+  margin: 0px 20px;
+}
+.navTop .container .visualizar .notification button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.navTop .container .visualizar .notification button .icon {
+  font-size: 24px;
+  transition: 0.3s;
+  color: #0d5b92;
+}
+.navTop .container .visualizar .notification button span {
+  color: #ccc;
+  font-weight: bold;
+}
+.navTop .container .visualizar .notification button .ActiveNoti {
+  color: #f44336;
+  animation: MoverCampana 1s infinite alternate;
+}
+@keyframes MoverCampana {
+  0% {
+    rotate: 0deg;
+    color: red;
+  }
+  50% {
+    rotate: 30deg;
+  }
+  100% {
+    rotate: -30deg;
+  }
+}
+.navTop .container .visualizar .notification button:hover .icon {
+  rotate: 30deg;
+  color: #0d5b99;
+}
+.navTop .container .visualizar .notification button:hover .ActiveNoti {
+  color: #f44336;
 }
 .navTop .container .visualizar .asesores {
   margin-right: 30px;

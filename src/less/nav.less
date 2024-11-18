@@ -29,6 +29,55 @@
                     font-size: 12px;
                 }
             }
+            .notification{
+                margin:0px 20px;
+                button{
+                    background-color: transparent;
+                    border:none;
+                    cursor: pointer;
+                    transition: .3s;
+                    .icon{
+                        font-size: 24px;
+                        transition: .3s;
+                        color: #0d5b92;
+                    }
+                    span{
+                        color: #ccc;
+                        font-weight: bold;
+
+                    }
+                    .ActiveNoti{
+                        color: #f44336;
+                        animation: MoverCampana 1s infinite alternate;
+                    }
+                    @keyframes MoverCampana {
+                        0% {
+                            rotate: 0deg;
+                            color: red;
+                        }
+
+                        50% {
+                            rotate: 30deg;
+                            
+                        }
+
+                        100%{
+                            rotate: -30deg
+                        }
+                    }
+                }
+                button:hover{
+                    .icon{
+                        rotate: 30deg;
+                        color: #0d5b99;
+                    }
+                    .ActiveNoti{
+                        color: #f44336;
+                    }
+                    
+                    
+                }
+            }
             .asesores{
                 margin-right: 30px;
                 

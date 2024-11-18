@@ -51,19 +51,20 @@ export function GETTING_CLIENTS(carga){
     }
 }
 export function AxiosGetClients(carga){
-    return function(dispatch){
+    return async function(dispatch){
         dispatch(GETTING_CLIENTS(carga))
         axios.get(`/clients/get/all/panel/`)
         .then((info) => info.data)
-        .then(inf => {
+        .then(async inf => {
             console.log(inf)
             dispatch(GETTING_CLIENTS(false));
             return dispatch(GET_CLIENTS(inf));
         })
+
         .catch(e => {
             console.log('error')
             dispatch(GETTING_CLIENTS(false));
-            if(e.response.status == 404){
+            if(e.status == 404){
                 return dispatch(GET_CLIENTS(404))
             }else{
                 return dispatch(GET_CLIENTS('request'));
@@ -156,6 +157,46 @@ export function GET_ADVISORS(advisors){
         payload: advisors
     }
 }
+
+
+// GETTINGS NOTIFICATIONS
+export function GET_NOTIFICATIONS(notifications){
+    return {
+        type: 'GET_NOTIFICATIONS',
+        payload: notifications
+    }
+}
+export function GETTING_NOTIFICATIONS(carga){
+    return {
+        type: 'GETTING_NOTIFICATIONS',
+        payload: carga
+    }
+}
+
+export function AxiosGetNotifications(carga){
+    return async function(dispatch){
+        dispatch(GETTING_NOTIFICATIONS(carga))
+        console.log('Llego aqui')
+
+        await axios.get(`/calendario/notification/get/all`)
+        .then((info) => info.data)
+        .then(inf => {
+            console.log(inf)
+            dispatch(GETTING_NOTIFICATIONS(false));
+            return dispatch(GET_NOTIFICATIONS(inf));
+        })
+        .catch(e => {
+            console.log('error')
+            dispatch(GETTING_NOTIFICATIONS(false));
+            if(e.response.status == 404){
+                return dispatch(GET_NOTIFICATIONS(404))
+            }else{
+                return dispatch(GET_NOTIFICATIONS('request'));
+            }
+        })
+    } 
+}
+
 export function GETTING_ADVISORS(carga){
     return {
         type: 'GETTING_ADVISORS',

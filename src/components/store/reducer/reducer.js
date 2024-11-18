@@ -12,6 +12,9 @@ const initialState = {
     cliente: null,
     loadingCliente: false,
 
+    //Notificaciones
+    notifications: null,
+    loadingNotifications: false,
     // Leads
     leads: null,
     loadingLeads: false,
@@ -135,6 +138,19 @@ export default (state = initialState, action) => {
                 loadingSearchLeads: action.payload
             }
 
+
+        case 'GETTING_NOTIFICATIONS':
+            return {
+                ...state,
+                loadingNotifications:action.payload
+            }
+        
+        case 'GET_NOTIFICATIONS':
+            return {
+                ...state,
+                notifications: action.payload,
+                loadingNotifications:false
+            }
         // OBTENER DATOS PARA VISUALIZAR ASESOR
         case 'GET_ADVISORS':
             return {

@@ -1,18 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdClose, MdOutlineSettings } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PrimerIntento from './acciones/primerIntento';
 import { useSearchParams } from 'react-router-dom';
 import ContactoIntento from './acciones/contactoIntento';
 import VisitaIntento from './acciones/visitaIntento';
 import EditClient from './acciones/editClient';
+import axios from 'axios';
+import * as actions from './../../store/action/action';
+
 
 export default function ModalRight(props){
     const usuario = props.usuario;
     const clients = props.clients;
+
+    const dispatch = useDispatch();
+
     const item = useSelector(store => store.cliente);
     const [params, setParams] = useSearchParams();
-    console.log(item)
+    const [novedad, setNovedad] = useState(false);
+    const [note, setNote] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [mistake, setMistake] = useState(null);
+
+    const sendNote = async () => {
+        console.log('Enviando nota.');
+        if(!note) return setMistake('No puedes dejar campo vacio.');
+        setLoading(true);
+        const body = {
+            clientId: item.id,
+            note: note
+        }
+        const sendPeticion = await axios.post('/client/post/newNote', body)
+        .then((res) => {
+            console.log(res)
+            setLoading(false);
+            setMistake(null);
+            setNote(null);
+            document.querySelector("#textNote").value = ""
+            setNovedad(false)
+            return res.data;
+        })
+        .catch(err => {
+            console.log(err);
+            setLoading(false);
+            setMistake('Ha ocurrido un error, intentalo mas tarde')
+            console.log('Error registrando nota.');
+            return null;
+        })
+
+        return sendPeticion
+    }
     return (
         <div className="rightNube">
             {params.get('watch') == 'edit' ? <EditClient clients={clients} usuario={usuario} /> : null}
@@ -56,7 +94,48 @@ export default function ModalRight(props){
 
                                 </div>
                             </div>
+                            {
+                                novedad ?
+                                <div className="registroActividades">
+                               
+                                <div className="headerActivity">
+                                    <h3>Nueva novedad</h3>
+
+                                        <div className="form">
+                                            <textarea name="" id="textNote" placeholder='Escribe aqui' 
+                                            style={{fontSize:'14px',color: '#666', width:'95%', padding:'0px',boxSizing:'border-box',height:'150px',padding:'10px', outline:'5px', resize:'none'}}
+                                            onChange={(e) => {
+                                                setNote(e.target.value)
+                                            }} value={note} defaultValue={note}></textarea>
+                                            <br /><br />
+                                            {
+                                                loading ?
+                                                    <span>Guardando nota...</span>
+                                                :
+                                                <div className="btn">
+                                                    <button style={{marginRight:'10px'}}
+                                                    onClick={() => sendNote()}>
+                                                        <span>Guardar nota</span>
+                                                    </button>
+                                                    <button onClick={() => setNovedad(!novedad)}>
+                                                        <span>Cancelar</span>
+                                                    </button>
+                                                </div>  
+                                            }  
+
+                                            <span className='mistake'>{mistake?mistake:null}</span>          
+                                    </div>
+                                </div>
+
+                            </div>
+                                :
+
                             <div className="registroActividades">
+                                <div className="btn">
+                                <button onClick={() => setNovedad(!novedad)}>
+                                        <span>Nueva novedad</span>
+                                    </button>
+                                </div>
                                 <div className="headerActivity">
                                     <h3>Registro de acciones</h3>
                                 </div>
@@ -97,6 +176,7 @@ export default function ModalRight(props){
                                 </div>
 
                             </div>
+                            }
                         </div>
                        
                     </div>

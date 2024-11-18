@@ -15,6 +15,8 @@ export default function PrimerIntento(props){
     const dispatch = useDispatch();
     const [params, setParams] = useSearchParams();
     const [mistake, setMistake] = useState(null);
+    const [loadingButton, setLoadingButton] = useState(false);
+
     const [interes, setInteres] = useState({ 
         asesor: 2,
         dia: null,
@@ -49,6 +51,7 @@ export default function PrimerIntento(props){
     // No contesto
     const dontCall = async () => {
         const date = new Date();
+        setLoadingButton(true);
         let tiempo = `${date.getMonth() + 1}-${date.getDate() + 3}-${date.getFullYear()}`
         let body = {
             clientId: item.id,
@@ -66,12 +69,17 @@ export default function PrimerIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send
+
     }
     // Avanzar   
     const avanceProspect = async (type) => {
         if(!tags.length) return setMistake('No has seleccionado ningún tag.')
-        if(!interes.mes || !interes.dia || !interes.ano) return setMistake('Fecha es obligatoría.')
+        if(!interes.mes || !interes.dia || !interes.ano) return setMistake('Fecha es obligatoría.');
+        setLoadingButton(true);
+
         let body = {
             clientId: item.id,
             estado: type,
@@ -102,16 +110,19 @@ export default function PrimerIntento(props){
 
         })
         .catch(err => {
+
             console.log(err) 
             console.log(body)
             return null
         })
+        setLoadingButton(false);
 
         return send
     }
     // no interes
     const notInteres = async (stateNew) => {
         if(!tags.length) return setMistake('No has seleccionado ningún tag.')
+            setLoadingButton(true);
        
         let body = {
             tag: tags,
@@ -135,12 +146,15 @@ export default function PrimerIntento(props){
         .catch(err =>{
             console.log(err);
             console.log('error');
-        })
+        });
+        setLoadingButton(false);
+
         return send;
     }
     // Después
     const laterCall = async () => {
         if(!time.mes || !time.dia || !time.ano) return setMistake('Fecha es obligatoría.')
+            setLoadingButton(true);
   
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
@@ -166,6 +180,8 @@ export default function PrimerIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
     // Actualizar por cada cambio.
@@ -203,12 +219,13 @@ export default function PrimerIntento(props){
                                 <h1>¿Contestó?</h1>
                             </div>
                             <div className='optionsButton'>
-                                <button className='si' onClick={() => setCall('contesto')}>
+                                <button className='si' onClick={() => setCall('contesto')} disabled={loadingButton}>
                                     <span>¡Si!</span>
                                 </button>
-                                <button className="no"  onClick={() => dontCall()}>
+                                <button className='no'  onClick={() => dontCall()} disabled={loadingButton}>
                                     <span>No</span>
                                 </button>
+
                             </div>
                         </div>
                     :  call == 'contesto' ?
@@ -469,10 +486,10 @@ export default function PrimerIntento(props){
 
 
                             <div className='callOrGo'>
-                                <button className='call' onClick={() => avanceProspect('llamada')}>
+                                <button className='call' onClick={() => avanceProspect('llamada')} disabled={loadingButton}>
                                     <span>Llamada</span>
                                 </button>
-                                <button className='go' onClick={() => avanceProspect('visita')}>
+                                <button className='go' onClick={() => avanceProspect('visita')} disabled={loadingButton}>
                                     <span>Visita</span>
                                 </button>
                                 <span className='mistake'>{mistake}</span>
@@ -537,7 +554,7 @@ export default function PrimerIntento(props){
                             </div>
                             
                             <div className='callOrGo'>
-                                <button className='call' onClick={() => laterCall()}>
+                                <button className='call' onClick={() => laterCall()} disabled={loadingButton}>
                                     <span>Reservar</span>
                                 </button><br />
                                 <span className='mistake'>{mistake}</span>
@@ -584,8 +601,8 @@ export default function PrimerIntento(props){
                                     <h3>Enviar a</h3>
 
                                     <div className="sendTo">
-                                        <button className="lost" onClick={() => notInteres('perdido')}><span>Perdido</span></button>
-                                        <button className='desus' onClick={() => notInteres('desuscribir')}><span>Desuscribir</span></button><br /><br />
+                                        <button className="lost" onClick={() => notInteres('perdido')} disabled={loadingButton}><span>Perdido</span></button>
+                                        <button className='desus' onClick={() => notInteres('desuscribir')} disabled={loadingButton}><span>Desuscribir</span></button><br /><br />
                                         <span className='mistake'>{mistake}</span>
 
                                     </div>
@@ -595,6 +612,7 @@ export default function PrimerIntento(props){
                     </div>
                     : null
                 }
+                <span style={{fontSize:'12px', color:'blue'}}>{loadingButton ? 'Un momento...' : null}</span>
             </div>
         </div>
     )

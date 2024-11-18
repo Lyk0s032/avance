@@ -6,6 +6,7 @@ import RoutesPanel from './bashPanel/routes';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Graph from './graph';
 import ByAsesorPanel from './bashPanel/visualizar/byAsesor';
+import Notification from './bashPanel/notification/notifications';
 
 export default function DashboardDefault(props){
     const [params, setParams] = useSearchParams();
@@ -91,6 +92,7 @@ export default function DashboardDefault(props){
                     </div>
                 </div>
             </div>
+            <Notification />
         </div>
     )
 }

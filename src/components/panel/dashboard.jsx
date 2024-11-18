@@ -17,6 +17,8 @@ export default function Dashboard(props){
  
     useEffect(() => {
         !user ? <Navigate path="sign/" /> : null 
+
+        dispatch(actions.AxiosGetNotifications(true));
         user.user.rango == 'lider' ? 
             dispatch(actions.AxiosGetClients(true))
         :

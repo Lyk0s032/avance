@@ -1,10 +1,13 @@
 import React from 'react';
+import { MdOutlineNotifications, MdOutlineNotificationsActive } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
 export default function NavTop(props){
     const user = props.user;
     const [params, setParams] = useSearchParams();
 
+    const notifications = useSelector(store => store.notifications);
     return (
         <div className='navTop'>
             <div className='container'>
@@ -31,6 +34,22 @@ export default function NavTop(props){
                         </button>
                     </div>
                         :null
+                    }
+                    {
+                        <div className="notification"> 
+                            <button className='icon' onClick={() => {
+                                document.querySelector('#notification').classList.toggle('notificationActive')
+                            }}>
+                                {
+                                    notifications && notifications.length ? 
+                                        <MdOutlineNotificationsActive className='icon ActiveNoti' />
+                                    :
+                                        <MdOutlineNotifications className='icon' />
+
+                                }
+                                <span className={notifications && notifications.length ? 'ActiveNoti' : null}>{notifications.length}</span>
+                            </button>
+                        </div>
                     }
                     <div className="logged">
                         <div className='containerLogged'>

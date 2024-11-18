@@ -12,9 +12,10 @@ export default function ItemCotizaciones(props){
     const dispatch = useDispatch();
     const [params, setParams] = useSearchParams();
     const [move, setMove] = useState(false);
-
+    const [loadingButton, setLoadingButton] = useState(false);
     // Aprobar o perder cotacion
     const sendCotization = async(enter) => {
+        setLoadingButton(true)
         let body = {
             clientId: item.id,
             cotizacionId: item.cotizacions && item.cotizacions.length ? item.cotizacions[0].id : null,
@@ -32,10 +33,13 @@ export default function ItemCotizaciones(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false)
+
         return send;
     }
     // Aplazar contización
     const aplazarCotizacion = async() => {
+        setLoadingButton(true)
         let body = {
             clientId: item.id,
             cotizacionId: item.cotizacions && item.cotizacions.length ? item.cotizacions[0].id : null,
@@ -49,7 +53,8 @@ export default function ItemCotizaciones(props){
             console.log(err);
             console.log('error');
         })
-        console.log(body)
+        setLoadingButton(false)
+
         return send;
     }
     const open = async (cliente, see) => {
@@ -153,18 +158,20 @@ export default function ItemCotizaciones(props){
                         </div>
                         :
                         <div className='cotiOptions'>
-                            <button onClick={() => sendCotization('perdida')}> 
+                            <button onClick={() => sendCotization('perdida')} disabled={loadingButton}> 
                                 <MdOutlineCancel className='icon Cancel' /><br />
                                 <span className='Cancel'>Perdida</span>
                             </button>
-                            <button onClick={() => sendCotization('aprobada')}>
+                            <button onClick={() => sendCotization('aprobada')} disabled={loadingButton}>
                                 <MdCheckCircleOutline className="icon Check" /><br />
                                 <span className='Check'>Aprobar</span> 
                             </button>
-                            <button onClick={() => aplazarCotizacion()}>
+                            <button onClick={() => aplazarCotizacion()} disabled={loadingButton}>
                                 <MdMoreTime className="icon Time" /><br />
                                 <span >Aplazar</span>
                             </button>
+                            <br /><br />
+                            <span style={{fontSize:'12px', color: 'blue'}}>{loadingButton ? 'Un momento...' : null}</span>
                         </div>
                     }
                     

@@ -24,6 +24,7 @@ export default function ItemContact(props){
         setParams(params);
     }
     return (
+        
         item.state == 'contacto 1' ?
         <tr>
             
@@ -52,6 +53,8 @@ export default function ItemContact(props){
                                         {
                                             item.calendarios && item.calendarios.length ?
                                                 item.calendarios.map((cal,i) => {
+                                                   
+
                                                     return (
                                                         cal.type == 'Solicita una llamada' ?
                                                         <span>{cal.fecha}</span>

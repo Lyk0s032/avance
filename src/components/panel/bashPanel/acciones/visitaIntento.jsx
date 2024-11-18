@@ -19,6 +19,7 @@ export default function VisitaIntento(props){
     const [note, setNote] = useState(null);
     const [mistake, setMistake] = useState(null);
     const [iva, setIva] = useState(true);
+    const [loadingButton, setLoadingButton] = useState(false);
 
     const dispatch = useDispatch();
     const [params, setParams] = useSearchParams();
@@ -61,6 +62,8 @@ export default function VisitaIntento(props){
     // Después
     const laterCall = async () => {
         if(!time.mes || !time.dia || !time.ano) return setMistake('Selecciona una fecha valida.');
+        setLoadingButton(true);
+
         let body = {
             time: `${time.mes}-${time.dia}-${time.ano}`,
             clientId: item.id,
@@ -84,11 +87,15 @@ export default function VisitaIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
     // No tiene interés
     const notInteres = async (stateNew) => {
         if(!tags.length || tags.length < 1) return setMistake('No has seleccionado ningún tag.');
+        setLoadingButton(true);
+
         let body = {
             tag: tags,
             clientId: item.id,
@@ -112,11 +119,15 @@ export default function VisitaIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
     // OTRO SERVICIO
     const otherServices = async () => {
         if(!note) return setMistake('Describe el otro servicio.');
+        setLoadingButton(true);
+
 
         let body = {
             clientId: item.id,
@@ -141,13 +152,16 @@ export default function VisitaIntento(props){
         .catch(err =>{
             console.log(err);
             console.log('error');
-        })
+        });
+        setLoadingButton(false);
+
         return send;
     }
     // COTIZACION
     const registrarCotizacion = async () => {
         if(!cotizacion.nit || !cotizacion.nroCotizacion || !cotizacion.bruto) return setMistake('No puedes dejar campos vacios.');
         if(!time.dia || !time.mes || !time.ano) return setMistake('Selecciona una fecha valida.');
+        setLoadingButton(true);
     
         let brt = cotizacion.bruto; 
         let descuento = cotizacion.descuento;
@@ -188,6 +202,8 @@ export default function VisitaIntento(props){
             console.log(err);
             console.log('error');
         })
+        setLoadingButton(false);
+
         return send;
     }
 
@@ -239,7 +255,7 @@ export default function VisitaIntento(props){
                                     }}></textarea>
                                 </div>
                                 <div className='callOrGo'>
-                                    <button className='call' onClick={() => otherServices()}>
+                                    <button className='call' onClick={() => otherServices()} disabled={loadingButton}>
                                         <span>Enviar</span>
                                     </button><br /><br />
                                     <span className="mistake">{mistake}</span>
@@ -310,7 +326,7 @@ export default function VisitaIntento(props){
                                     </div>
                                 </div>
                                 <div className='callOrGo'>
-                                    <button className='go' onClick={() => registrarCotizacion('')}>
+                                    <button className='go' onClick={() => registrarCotizacion('')} disabled={loadingButton}>
                                         <span>Agendar</span>
                                     </button><br />
                                     <spa className="mistake">{mistake}</spa>
@@ -374,7 +390,7 @@ export default function VisitaIntento(props){
                                 </div>
                                 
                                 <div className='callOrGo'>
-                                    <button className='call' onClick={() => laterCall()}>
+                                    <button className='call' onClick={() => laterCall()} disabled={loadingButton}>
                                         <span>Reservar</span>
                                     </button><br />
                                     <span className="mistake">{mistake}</span>
@@ -419,8 +435,8 @@ export default function VisitaIntento(props){
                                         <h3>Enviar a</h3>
 
                                         <div className="sendTo">
-                                            <button onClick={() => notInteres('perdido')}><span>Perdido</span></button>
-                                            <button onClick={() => notInteres('desuscribir')}><span>Desuscribir</span></button>
+                                            <button onClick={() => notInteres('perdido')} disabled={loadingButton}><span>Perdido</span></button>
+                                            <button onClick={() => notInteres('desuscribir')} disabled={loadingButton}><span>Desuscribir</span></button>
                                             <br /><br />
                                             <span className='mistake'>{mistake}</span>
                                         </div>
@@ -430,6 +446,8 @@ export default function VisitaIntento(props){
                         </div>
                     : null
                 }
+                <span style={{fontSize:'12px', color:'blue'}}>{loadingButton ? 'Un momento...' : null}</span>
+
              </div>
         </div>
     )
