@@ -17,7 +17,6 @@ import ProspectosComponent from "./prospectos/prospectos";
 export default function RoutesPanel(props){
     const usuario = props.user;
     const clients = props.clients;
-    console.log(usuario)
     const [params, setParams] = useSearchParams();
     return (
         <div className="routes">

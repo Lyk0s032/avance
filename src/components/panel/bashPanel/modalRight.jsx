@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MdClose, MdOutlineSettings } from 'react-icons/md';
+import { MdClose, MdOutlineEditNote, MdOutlineSettings } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import PrimerIntento from './acciones/primerIntento';
 import { useSearchParams } from 'react-router-dom';
@@ -8,7 +8,8 @@ import VisitaIntento from './acciones/visitaIntento';
 import EditClient from './acciones/editClient';
 import axios from 'axios';
 import * as actions from './../../store/action/action';
-
+import dayjs from 'dayjs';
+import { CiTimer } from 'react-icons/ci';
 
 export default function ModalRight(props){
     const usuario = props.usuario;
@@ -51,6 +52,10 @@ export default function ModalRight(props){
 
         return sendPeticion
     }
+
+    const val = item.calendarios && item.calendarios.length ?  item.calendarios.reduce((max, item) => 
+        new Date(item.createdAt) > new Date(max.createdAt) ? item : max
+    ) : null
     return (
         <div className="rightNube">
             {params.get('watch') == 'edit' ? <EditClient clients={clients} usuario={usuario} /> : null}
@@ -89,8 +94,62 @@ export default function ModalRight(props){
                                     <h3 className='phone'>{item.direccion}</h3>
                                     <h3 className='url'>{item.url}</h3>
                                     <h3 className='phone'>{item.fijo}</h3><br /><br />
+                                    {
+                                        item.cotizacions && item.cotizacions.length ?
+                                            <div className="showCoti">
+                                               <div className="headerCoti">
+                                                    <strong>Cotización</strong>
+                                               </div>
+                                               <div className="CotiContainer">
+                                                    <div className="part">
+                                                        <strong>Nit: </strong> <span>{item.cotizacions[0].nit}</span>
+                                                    </div>
+                                                    <div className="part">
+                                                        <strong>Nro: </strong> <span>{item.cotizacions[0].nro}</span>
+                                                    </div>
+                                                    <div className="part">
+                                                        <strong>Bruto: </strong> <span>{item.cotizacions[0].bruto ? new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.cotizacions[0].bruto): 0}</span>
+                                                    </div>
+                                                    <div className="part">
+                                                        <strong>Descuento: </strong> <span>{item.cotizacions[0].descuento ? new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.cotizacions[0].descuento) : 0}</span>
+                                                    </div>
+                                                    <div className="part">
+                                                        <strong>Iva: </strong> <span>{item.cotizacions[0].iva ? 'Si aplica' : 'No aplica'}</span>
+                                                    </div>
+                                                    <div className="part">
+                                                        <strong>Neto: </strong> <span>{item.cotizacions[0].bruto ? new Intl.NumberFormat('es-CO', { currency:'COP'}).format(item.cotizacions[0].neto) : 0}</span>
+                                                    </div>
+                                               </div>
+                                            </div>
+                                        : null
+                                    }
 
-                                    <h1 style={{fontSize:'14px', fontWeight:'100'}}>Actualmente en {item.state}</h1>
+                                    <h1 className='currentlyState'>Actualmente en {item.state}</h1>
+                                    <h1 className='currentlyState' style={{color: "#314DE1",fontWeight:'300'}}>{usuario.rango == 'lider' ? `Asesorado por ${item.user.name}` : null } </h1>
+                                    
+                                    {
+                                        !val ? 
+                                            null
+                                        :
+                                    <div className="detailsAboutTheInformationCalendary">
+                                        <div className="headerDetailsFicha">
+                                            <strong>Programación en calendario</strong>
+                                        </div>
+                                        <div className="containerInformationCalendary">
+                                            <div className="icono">
+                                                <CiTimer className="icon" />
+                                            </div>
+                                            <div className="dataC">
+                                                <span>
+                                                    {
+                                                        val.type
+                                                    }
+                                                </span>
+                                                <h3>{dayjs(val.fecha.split('T')[0]).format('dddd, D [de] MMMM [de] YYYY')}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
 
                                 </div>
                             </div>
@@ -103,11 +162,9 @@ export default function ModalRight(props){
 
                                         <div className="form">
                                             <textarea name="" id="textNote" placeholder='Escribe aqui' 
-                                            style={{fontSize:'14px',color: '#666', width:'95%', padding:'0px',boxSizing:'border-box',height:'150px',padding:'10px', outline:'5px', resize:'none'}}
                                             onChange={(e) => {
                                                 setNote(e.target.value)
                                             }} value={note} defaultValue={note}></textarea>
-                                            <br /><br />
                                             {
                                                 loading ?
                                                     <span>Guardando nota...</span>
@@ -132,12 +189,12 @@ export default function ModalRight(props){
 
                             <div className="registroActividades">
                                 <div className="btn">
-                                <button onClick={() => setNovedad(!novedad)}>
-                                        <span>Nueva novedad</span>
-                                    </button>
+                                        <button className="newNovedad" onClick={() => setNovedad(!novedad)}>
+                                            <MdOutlineEditNote className="icon" />
+                                        </button>
                                 </div>
                                 <div className="headerActivity">
-                                    <h3>Registro de acciones</h3>
+                                        <h3>Registro de acciones</h3>
                                 </div>
                                 <div className="registros">
 

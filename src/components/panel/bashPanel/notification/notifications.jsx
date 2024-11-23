@@ -10,9 +10,6 @@ export default function Notification(){
     const loading = useSelector(store => store.loadingNotifications);
     const [params, setParams] = useSearchParams();
 
-    console.log(notifications)
-
-    
     return (
         <div className="notifications" id="notification" >
             <div className="dark" onClick={() => {

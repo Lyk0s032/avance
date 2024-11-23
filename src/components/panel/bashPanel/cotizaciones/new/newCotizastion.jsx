@@ -158,12 +158,13 @@ export default function FormNewCotization(props){
                         </div>
                         <div className="inputDiv">
                             <label htmlFor="">Nro. Cotización {cotizacion.nroCotizacion}</label><br />
-                            <input type="text" placeholder='Escribe aquí...' onChange={(e) =>{
+                            <input type="text" placeholder='Escribe aquí...' maxLength={5} onChange={(e) =>{
                                 setCotizacion({
                                        ...cotizacion,
                                        nroCotizacion: e.target.value
                                    })
-                               }} defaultValue={cotizacion.nroCotizacion}/>
+                               }
+                            } value={cotizacion.nroCotizacion}/>
                         </div>
                     </div>
                     <div className="horizontal">

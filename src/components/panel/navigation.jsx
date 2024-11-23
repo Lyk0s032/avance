@@ -47,7 +47,7 @@ export default function NavTop(props){
                                         <MdOutlineNotifications className='icon' />
 
                                 }
-                                <span className={notifications && notifications.length ? 'ActiveNoti' : null}>{notifications.length}</span>
+                                <span className={notifications && notifications.length ? 'ActiveNoti' : null}>{notifications && notifications.length ? notifications.length : null}</span>
                             </button>
                         </div>
                     }

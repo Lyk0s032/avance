@@ -18,11 +18,15 @@ export default function Dashboard(props){
     useEffect(() => {
         !user ? <Navigate path="sign/" /> : null 
 
-        dispatch(actions.AxiosGetNotifications(true));
-        user.user.rango == 'lider' ? 
+        
+        if(user.user.rango == 'lider'){
             dispatch(actions.AxiosGetClients(true))
-        :
+            dispatch(actions.AxiosGetNotifications(true))
+        }else{
             dispatch(actions.AxiosGetClientsByAsesor(true, user.user.id));
+            dispatch(actions.AxiosGetNotifications(true, user.user.id));
+
+        }
     }, [])
     return (
         <div className="dashboard">

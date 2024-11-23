@@ -1204,16 +1204,141 @@
   font-size: 13px;
   cursor: pointer;
 }
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti {
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 20px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti .headerCoti {
+  padding: 10px 0px;
+  border-bottom: 1px solid #ccc;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti .headerCoti strong {
+  font-weight: bold;
+  color: #666;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti .CotiContainer {
+  padding: 30px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti .CotiContainer .part {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti .CotiContainer .part strong {
+  color: #666;
+  font-weight: 100;
+  font-size: 14px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .showCoti .CotiContainer .part span {
+  font-weight: 600;
+  font-size: 14px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .currentlyState {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: right;
+  margin-right: 10px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary {
+  margin: 20px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .headerDetailsFicha {
+  border-bottom: 1px solid #e4e2e2;
+  padding: 10px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .headerDetailsFicha strong {
+  font-weight: bold;
+  font-size: 14px;
+  color: #666;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .containerInformationCalendary {
+  margin-top: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .containerInformationCalendary .icono {
+  width: 10%;
+  text-align: center;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .containerInformationCalendary .icono .icon {
+  font-size: 18px;
+  color: #314DE1;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .containerInformationCalendary .dataC {
+  margin-left: 10px;
+  width: 90%;
+  box-sizing: border-box;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .containerInformationCalendary .dataC span {
+  font-size: 14px;
+  color: #4CAF50;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .clientInformation .parte .detailsAboutTheInformationCalendary .containerInformationCalendary .dataC h3 {
+  font-style: italic;
+  color: #314DE1;
+}
 .rightNube .nubeA .infoR .ficha .propiedades .registroActividades {
   margin-top: 10px;
   border-top: 1px solid #ccc;
   padding: 10px 0px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .btn {
+  text-align: right;
+  padding: 0px 20px;
+  box-sizing: border-box;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .btn .newNovedad {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .btn .newNovedad .icon {
+  font-size: 26px;
+  color: #666;
+  transition: 0.3s;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .btn .newNovedad:hover {
+  transform: scale(1.1);
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .btn .newNovedad:hover .icon {
+  color: #314DE1;
 }
 .rightNube .nubeA .infoR .ficha .propiedades .registroActividades .headerActivity h3 {
   font-weight: 100;
   font-size: 16px;
   font-weight: bold;
   color: #666;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .headerActivity .form {
+  margin-bottom: 30px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .headerActivity .form textarea {
+  height: 80px;
+  resize: none;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #666;
+  width: 95%;
+  margin-top: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  outline: 0px;
+  border-radius: 5px;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .headerActivity .form textarea:focus {
+  border: 1px solid #314DE1;
+}
+.rightNube .nubeA .infoR .ficha .propiedades .registroActividades .headerActivity .form .btn {
+  margin-top: 10px;
 }
 .rightNube .nubeA .infoR .ficha .propiedades .registroActividades .registros {
   margin-top: 10px;
@@ -1670,21 +1795,54 @@
 .intentos .containerIntentos .header .title {
   padding: 10px 0px;
   box-sizing: border-box;
+  width: 100%;
 }
-.intentos .containerIntentos .header .nuevaCotizacion {
+.intentos .containerIntentos .header .title .forSearch {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intentos .containerIntentos .header .title .forSearch .searchInput {
+  width: 50%;
+  text-align: right;
+}
+.intentos .containerIntentos .header .title .forSearch .searchInput input {
+  width: 50%;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  outline: 0px;
+  font-size: 12px;
+  transition: 0.3s;
+}
+.intentos .containerIntentos .header .title .forSearch .searchInput input:focus {
+  border: 1px solid #1797f2;
+  width: 100%;
+}
+.intentos .containerIntentos .header .btn {
+  width: 30%;
+  margin-left: 10px;
+}
+.intentos .containerIntentos .header .btn .nuevaCotizacion {
   padding: 8px 20px;
   border-radius: 20px;
   border: 1px solid #21D59B;
   background-color: #21D59B;
   cursor: pointer;
   transition: 0.3s;
+  width: 100%;
 }
-.intentos .containerIntentos .header .nuevaCotizacion span {
+.intentos .containerIntentos .header .btn .nuevaCotizacion span {
   color: white;
   font-size: 12px;
 }
 .intentos .containerIntentos .header .nuevaCotizacion:hover {
   transform: scale(1.1);
+}
+.intentos .containerIntentos .header .filters {
+  width: 80%;
 }
 .intentos .containerIntentos .header .filters button {
   margin-left: 10px;
@@ -1738,6 +1896,23 @@
 .intentos .containerIntentos .listsContainerProspects table tbody {
   width: 100%;
   box-sizing: border-box;
+  position: relative;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody .notFound {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 50px 0px;
+  text-align: center;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody .notFound h1 {
+  font-weight: 100;
+  color: #666;
+  width: 70%;
+  margin: auto;
+}
+.intentos .containerIntentos .listsContainerProspects table tbody .notFound h1 strong {
+  color: black;
 }
 .intentos .containerIntentos .listsContainerProspects table tbody tr {
   width: 100%;

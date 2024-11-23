@@ -173,15 +173,18 @@ export function GETTING_NOTIFICATIONS(carga){
     }
 }
 
-export function AxiosGetNotifications(carga){
+export function AxiosGetNotifications(carga, asesor){
     return async function(dispatch){
         dispatch(GETTING_NOTIFICATIONS(carga))
-        console.log('Llego aqui')
 
-        await axios.get(`/calendario/notification/get/all`)
+        let p
+        await axios.get(`/calendario/notification/get/all`, {
+            params:{
+                asesorId: asesor ? asesor : null
+            }
+        })
         .then((info) => info.data)
         .then(inf => {
-            console.log(inf)
             dispatch(GETTING_NOTIFICATIONS(false));
             return dispatch(GET_NOTIFICATIONS(inf));
         })
@@ -491,7 +494,7 @@ export function AxiosGetAllFunctionsForAsesor(carga, asesorId){
         dispatch(AxiosGetClientsByAsesor(carga, asesorId))
         dispatch(AxiosGetPerdidoByAsesor(carga, asesorId))
         dispatch(AxiosGetEsperaByAsesor(carga, asesorId))
-        dispatch(AxiosGetAprobadas(carga, asesorId));
+        dispatch(AxiosGetAprobadasByAsesor(carga, asesorId));
 
     }
 }

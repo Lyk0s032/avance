@@ -47,7 +47,6 @@ export default function Result(props){
                 params.set('w', 'action');
                 setParams(params);
             }}>
-                {console.log(aprobada)}
                 <div className="containerResult">
                     <div className='headerTop'>
                         <div className="nameBusiness">

@@ -117,7 +117,8 @@ export default function ItemContact(props){
                             </div>
                             <div className='stateBtn'>
                                 {
-                      
+                                    item.registers && item.registers.length ? 
+
                                         item.registers.map((r, l) => {
                                             let date = new Date(r.createdAt.split('T')[0])
                                             let day = date.getDate();
@@ -134,7 +135,8 @@ export default function ItemContact(props){
                                                 :null
                                             )
                                         })
-                                }
+                                    : null
+                                    }
                             </div>
                         </button>
                 </div> 
@@ -153,6 +155,8 @@ export default function ItemContact(props){
                                 {
                                     <div>
                                         {
+                                            item.registers && item.registers.length ? 
+
                                             item.registers.map((r, l) => {
                                                 let date = new Date(r.createdAt.split('T')[0])
                                                 let day = date.getDate();
@@ -169,6 +173,8 @@ export default function ItemContact(props){
                                                     :null
                                                 )
                                             })
+                                            :
+                                            null
                                         }
                                     </div> 
                                 }
@@ -213,7 +219,8 @@ export default function ItemContact(props){
                             </div>
                             <div className='stateBtn'>
                                 {
-                      
+                                    item.registers && item.registers.legnth ? 
+
                                         item.registers.map((r, l) => {
                                             let date = new Date(r.createdAt.split('T')[0])
                                             return (
@@ -226,6 +233,7 @@ export default function ItemContact(props){
                                                 :null
                                             )
                                         })
+                                    : null
                                 }
                             </div>
                         </button>
@@ -240,7 +248,8 @@ export default function ItemContact(props){
                             
                             <div className='stateBtn'> 
                                 {
-                      
+                                    item.registers && item.registers.length ? 
+
                                         item.registers.map((r, l) => {
                                             let date = new Date(r.createdAt.split('T')[0])
                                             let day = date.getDate();
@@ -257,6 +266,7 @@ export default function ItemContact(props){
                                                 :null
                                             )
                                         })
+                                    : null
                                 }   
                                 
                             </div>
@@ -276,6 +286,8 @@ export default function ItemContact(props){
                                 {
                                     <div>
                                         {
+                                        item.registers && item.register.length ? 
+
                                             item.registers.map((r, l) => {
                                                 let date = new Date(r.createdAt.split('T')[0])
                                                 return (
@@ -288,6 +300,7 @@ export default function ItemContact(props){
                                                     :null
                                                 )
                                             })
+                                        : null
                                         }
                                     </div> 
                                 }

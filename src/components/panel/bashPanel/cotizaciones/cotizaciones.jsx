@@ -14,7 +14,21 @@ export default function Cotizaciones(props){
 
     const [params, setParams] = useSearchParams();
 
+    const [query, setQuery] = useState("");
+    const [resultados, setResultados] = useState(null);
 
+    const handlerSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setQuery(query);
+
+        const filtered = cotizaciones.filter((registro) => 
+            registro.nombreEmpresa.toLowerCase().includes(query) || 
+            registro.cotizacions[0].nro.toLowerCase().includes(query)
+        )
+
+        setResultados(filtered);
+    }
+    console.log(cotizaciones)
     useEffect(() => {
     usuario.rango == 'lider' ?
         dispatch(actions.AxiosGetCotizaciones(true))
@@ -30,7 +44,15 @@ export default function Cotizaciones(props){
             <div className='containerIntentos'>
                 <div className='header'>
                     <div className='title'>
-                        <h3>Cotizaciones pendientes </h3>                    
+                        <div className="forSearch">
+                            <h3>Cotizaciones {cotizaciones && cotizaciones.length ? cotizaciones.length : 0} </h3> 
+                            
+                            <div className="searchInput">
+                                <input type="text" 
+                                placeholder='Buscar cotización aquí' 
+                                onChange={(e) => handlerSearch(e)}/>
+                            </div>
+                        </div>                   
                     </div>
                     <div className="btn">
                         {
@@ -58,7 +80,20 @@ export default function Cotizaciones(props){
                         </thead>
                         <tbody>
                             {
-                                loading || !cotizaciones ?
+                                query ?
+                                    resultados && resultados.length ?
+                                        resultados.map((r, i) => {
+                                            return (
+                                                <ItemCotizaciones key={i} item={r} usuario={usuario} />
+                                            )
+                                        })
+                                    : <div className="notFound">
+                                        <h1>No hemos encontrado resultados para <strong>{query}</strong></h1>
+                                    </div>
+                                
+                                :
+
+                                    loading || !cotizaciones ?
                                     <div className="loading">
                                         <h1>Cargando...</h1>
                                     </div>

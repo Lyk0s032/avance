@@ -68,7 +68,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/dontCall', body)
         .then((res) => {
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactosByAsesor(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
             closeDiv()
         })
@@ -93,7 +93,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoPeroLlamarLuego', body)
         .then((res) => {
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactosByAsesor(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
         
             setCall('question');
@@ -126,7 +126,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactosByAsesor(false, usuario.id));
             setCall('question');
             setTime({
                 dia:null,
@@ -172,7 +172,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoYTieneInteresRealContacto', body)
         .then((res) => {
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactosByAsesor(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');
@@ -201,7 +201,7 @@ export default function ContactoIntento(props){
         }
         const send = await axios.put('/contacto/put/contestoPeroSinInteres', body)
         .then((res) => {
-            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactos(false, usuario.id));
+            usuario.rango == 'lider' ? dispatch(actions.AxiosGetContactos(false)) : dispatch(actions.AxiosGetContactosByAsesor(false, usuario.id));
             usuario.rango == 'lider' ? dispatch(actions.AxiosGetClients(false)) :  dispatch(actions.AxiosGetClientsByAsesor(false, usuario.id));
 
             setCall('question');

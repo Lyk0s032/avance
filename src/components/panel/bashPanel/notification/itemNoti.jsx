@@ -19,7 +19,6 @@ export default function ItemNoti(props){
     // Diferencia de días
     const currently = dayjs().format('MM/DD/YYYY');
     const fecha = dayjs(noti.fecha, 'MM/DD/YYYY');
-    console.log(fecha)
     const delta = fecha.diff(currently, 'day');
     return (
         <div className="noti" onClick={() => {
@@ -27,7 +26,7 @@ export default function ItemNoti(props){
         }}>
             <div className="containerNoti">
                 <div className="calendarImg">
-                    <img src={noti.client.user ? noti.client.user.photo : null} alt="" />
+                    <img src={noti && noti.client.user ? noti.client.user.photo : 0} alt="" />
                 </div>
                 <div className="dataNotification">
                     <h3>{noti.client.user ? noti.client.user.name : 'Sin asesor'}</h3>
