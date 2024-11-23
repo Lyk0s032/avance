@@ -19,7 +19,6 @@ export default function ItemVisitas(props){
         dispatch(actions.ActionGetCliente(cliente));
         params.set('w', 'action');
         params.set('y', 'Visita');
-        see ? params.set('watch', 'edit') : null
         setParams(params);
     }
 

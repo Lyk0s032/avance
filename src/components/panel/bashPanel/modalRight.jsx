@@ -145,7 +145,7 @@ export default function ModalRight(props){
                                                         val.type
                                                     }
                                                 </span>
-                                                <h3>{dayjs(val.fecha.split('T')[0]).format('dddd, D [de] MMMM [de] YYYY')}</h3>
+                                                <h3>{val.fecha ? dayjs(val.fecha.split('T')[0]).format('dddd, D [de] MMMM [de] YYYY') : null}</h3>
                                             </div>
                                         </div>
                                     </div>

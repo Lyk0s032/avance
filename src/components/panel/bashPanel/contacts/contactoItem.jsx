@@ -20,7 +20,6 @@ export default function ItemContact(props){
         params.set('w', 'action');
         params.set('y', 'Segundo');
 
-        see ? params.set('watch', 'edit') : null
         setParams(params);
     }
     return (

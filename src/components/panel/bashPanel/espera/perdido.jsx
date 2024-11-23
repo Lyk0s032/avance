@@ -108,6 +108,8 @@ export default function Perdido(props){
                                             <td>
                                                 <div className='options'>
                                                     <span style={{color: 'red'}}>Perdido</span><br />
+                                                    <span>{item.embudo ? item.embudo : null}</span>
+                                                    
                                                 </div>
                                             </td>
                                         </tr>
