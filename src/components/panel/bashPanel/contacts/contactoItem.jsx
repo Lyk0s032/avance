@@ -286,7 +286,7 @@ export default function ItemContact(props){
                                 {
                                     <div>
                                         {
-                                        item.registers && item.register.length ? 
+                                        item.registers && item.registers.length ? 
 
                                             item.registers.map((r, l) => {
                                                 let date = new Date(r.createdAt.split('T')[0])
