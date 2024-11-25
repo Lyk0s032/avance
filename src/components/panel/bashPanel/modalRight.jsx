@@ -125,7 +125,7 @@ export default function ModalRight(props){
                                     }
 
                                     <h1 className='currentlyState'>Actualmente en {item.state}</h1>
-                                    <h1 className='currentlyState' style={{color: "#314DE1",fontWeight:'300'}}>{usuario.rango == 'lider' ? `Asesorado por ${item.user.name}` : null } </h1>
+                                    <h1 className='currentlyState' style={{color: "#314DE1",fontWeight:'300'}}>{usuario.rango && item.user == 'lider' ? `Asesorado por ${item.user.name}` : null } </h1>
                                     
                                     {
                                         !val ? 
