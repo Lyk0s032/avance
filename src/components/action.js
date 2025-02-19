@@ -11,8 +11,8 @@ const signIn = async (data) => {
      
     const login = await axios.post('/user/signIn/', body)
     .then(async res => {
-        // const token = await SecureStore.setItemAsync('token', res.data.data);
-        // console.log(token);
+        const token = await SecureStore.setItemAsync('token', res.data.data);
+        console.log(token);
         return res;
     })
     .catch((err) => { 
