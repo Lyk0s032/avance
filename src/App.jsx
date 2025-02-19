@@ -17,6 +17,8 @@ function App() {
   useEffect(() => {
     const log = JSON.parse(window.localStorage.getItem("loggedPeople"));
     if(log && !user){
+        console.log('si hay token');
+        console.log(log);
         dispatch(actions.AxiosAuthUser(log, true));
     }else{
       console.log('No hay token');
