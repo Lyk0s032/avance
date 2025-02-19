@@ -9,7 +9,7 @@ const signIn = async (data) => {
     }
 
      
-    const login = await axios.post('/user/signIn/', body)
+    const login = await axios.post('/user/signIn', body)
     .then(async res => {
         // const token = await SecureStore.setItemAsync('token', res.data.data);
         window.localStorage.setItem("loggedPeople", JSON.stringify(res.data.data));
