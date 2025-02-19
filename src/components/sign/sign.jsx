@@ -38,6 +38,7 @@ export default function PanelSign(){
                 }else if(res == 401){
                     return setMistake('Contraseña incorrecta');
                 }else{
+                    console.log(res)
                     return setMistake('Ha ocurrido un contra tiempo, intentalo más tarde')
                 }
 
