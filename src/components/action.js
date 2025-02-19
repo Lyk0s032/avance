@@ -23,6 +23,7 @@ const signIn = async (data) => {
         }else if(err.status == 500) {
             return 500
         }else {
+            console.log(err)
             return 500
         }
     })
